@@ -2,5 +2,5 @@
 <Context path="/">
     <Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" maxIdle="20" maxActive="50"
               name="oracleConnInfo" password="jin1234" type="javax.sql.DataSource"
-              url="jdbc:oracle:thin:@14.37.192.101:1521:xe" username="c##jin"/>
+              url="jdbc:oracle:thin:@localhost:1521:xe" username="c##jin"/>
 </Context>
