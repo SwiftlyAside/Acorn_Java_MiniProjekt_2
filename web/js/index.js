@@ -1,0 +1,3 @@
+$(() => {
+  $('#mainContainer').load('temp.jsp');
+});
