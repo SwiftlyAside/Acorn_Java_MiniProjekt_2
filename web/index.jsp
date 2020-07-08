@@ -18,6 +18,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <!-- Propeller -->
+    <link href="${pageContext.request.contextPath}/css/propeller.min.css" rel="stylesheet">
     <!-- JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->
@@ -31,6 +33,8 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <!-- Propeller core JavaScript -->
+    <script src="${pageContext.request.contextPath}/js/propeller.min.js"></script>
     <!-- include summernote css/js -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
@@ -43,19 +47,19 @@
 <header>
     <!-- Sidebar -->
     <div class="sidebar-fixed position-fixed">
-        <a class="logo-wrapper justify-content-center" href="?"
+        <a class="logo-wrapper justify-content-center light-green-text" href="?"
            style="font-family: 'Julius Sans One', sans-serif; font-size: 36pt">Diary</a>
 
         <div class="list-group list-group-flush">
             <form class="list-group-item d-flex justify-content-center">
                 <!-- Default input -->
                 <input aria-label="Search" class="form-control" placeholder="Search" type="search">
-                <button class="btn btn-primary btn-sm my-0 p" type="submit">
+                <button class="btn btn-primary btn-sm my-0 p btn-light-green" type="submit">
                     <i class="fas fa-search"></i>
                 </button>
 
             </form>
-            <a class="list-group-item list-group-item-action waves-effect" href="?open=diary">
+            <a class="list-group-item list-group-item-action waves-effect light-green-text" href="?open=diary">
                 <i class="fas fa-book mr-3"></i>다이어리</a>
             <a class="list-group-item list-group-item-action waves-effect" href="?open=explorer">
                 <i class="fab fa-wpexplorer mr-3"></i>탐색기</a>
