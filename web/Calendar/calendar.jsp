@@ -10,7 +10,7 @@
             <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
         </div>
         <div id="dateMoveDiv" class="col my-auto text-center">
-            <a href="<%--calendarform에 전달할 조건? 이벤트?--%>"><i class="fas fa-chevron-circle-left"></i></a>
+            <a href="<%--a태그는 새 요청, ajax?--%>"><i class="fas fa-chevron-circle-left"></i></a>
             <a href=""><i class="fas fa-chevron-circle-right"></i></a>
         </div>
         <div id="changeCalendarFormDiv" class="col-5 my-auto">
@@ -25,7 +25,9 @@
         </div>
     </div>
 </div>
-<div id="calendarForm" class="card-body"></div>
+<div id="calendarForm" class="card-body">
+is testing for changing directory name
+</div>
 
 <script src="${pageContext.request.contextPath}/calendar/js/calendar.js"></script>
 
