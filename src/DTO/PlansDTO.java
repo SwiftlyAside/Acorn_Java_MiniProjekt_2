@@ -1,6 +1,6 @@
 package DTO;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class PlansDTO {
     // 계획번호

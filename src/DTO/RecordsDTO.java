@@ -18,9 +18,6 @@ public class RecordsDTO {
     // 내용
     private String content;
 
-    // 다이어리여부
-    private Integer isDiary;
-
     // 위치
     private Integer geoInfo;
 
@@ -68,14 +65,6 @@ public class RecordsDTO {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public Integer getIsDiary() {
-        return isDiary;
-    }
-
-    public void setIsDiary(Integer isDiary) {
-        this.isDiary = isDiary;
     }
 
     public Integer getGeoInfo() {
