@@ -1,26 +1,12 @@
-#weekBodyDiv {
-    margin-top: 2px;
+#blankDiv {
+    border-right: 2px solid #aaaaaa;
 }
 
-#weekBodyDiv > div {
-    border: 1px solid;
-    padding: 3px ;
-    box-sizing: border-box;
-    margin: 2px;
+#blankDiv2 {
+    padding: 10px;
 }
 
-#weekBodyDiv > div > div {
-    border: 1px solid #aaa;
-    height: 400px;
-}
-
-#weekHeadDiv > div {
-    border: 1px solid;
-    padding: 3px ;
-    box-sizing: border-box;
-    margin: 2px;
-}
-
-#weekHeadDiv .empty {
-    border: 0px;
+#dayBlockDiv > div > div {
+    margin-left: 1px;
+    border: 1px solid crimson;
 }
