@@ -1,5 +1,6 @@
 package Service;
 
+import DAO.MediaDAO;
 import DTO.MediaDTO;
 import DTO.PlansDTO;
 import DTO.RecordsDTO;
@@ -7,22 +8,15 @@ import DTO.RecordsDTO;
 import java.util.List;
 
 public class ExplorerService implements IExplorerService {
-    private String orderType = "date";
-    private String order = "asc";
+    private final MediaDAO mediaDAO;
 
-    @Override
-    public void setOrderType(String orderType) {
-        this.orderType = orderType;
-    }
-
-    @Override
-    public void setOrder(String order) {
-        this.order = order;
+    public ExplorerService() {
+        this.mediaDAO = new MediaDAO();
     }
 
     @Override
     public List<MediaDTO> getAllMedias(String userId, String condition) {
-        return null;
+        return mediaDAO.getMedia(userId, condition);
     }
 
     @Override

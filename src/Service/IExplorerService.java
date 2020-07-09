@@ -7,15 +7,6 @@ import DTO.RecordsDTO;
 import java.util.List;
 
 public interface IExplorerService {
-    /**
-     * 입력받은 정렬유형을 저장 (날짜, 이름)
-     */
-    void setOrderType(String orderType);
-
-    /**
-     * 입력받은 정렬방식을 저장 (오름차순, 내림차순)
-     */
-    void setOrder(String order);
 
     /**
      * 모든 미디어 데이터를 반환<br>

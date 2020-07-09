@@ -59,19 +59,25 @@ public class MediaDAO {
     /**
      * 조건을 만족하는 모든 미디어 반환.
      *
+     * @param userId    유저의 ID
      * @param condition 조건
      * @return 미디어 DTO로 구성된 리스트
      */
-    public List<MediaDTO> getMedia(String condition) {
+    public List<MediaDTO> getMedia(String userId, String condition) {
+        System.out.println("DAO");
         List<MediaDTO> mediaDTOList = new ArrayList<>();
         Connection connection = DBManager.getConnection();
-        String sql = "select RECORDNO, MEDIA from MEDIA " + condition;
-        try (PreparedStatement statement = connection.prepareStatement(sql);
-             ResultSet rs = statement.executeQuery()) {
-            while (rs.next()) {
-                mediaDTOList.add(new MediaDTO(
-                        rs.getString("RECORDNO"),
-                        rs.getString("MEDIA")));
+        String sql = "select R.RECORDNO, MEDIA, R.RECORDDATE from RECORDS R, MEDIA M " +
+                "where R.USERID = ? ";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, userId);
+            try (ResultSet rs = statement.executeQuery()) {
+                while (rs.next()) {
+                    mediaDTOList.add(new MediaDTO(
+                            rs.getString("RECORDNO"),
+                            rs.getString("MEDIA"),
+                            rs.getDate("RECORDDATE")));
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
