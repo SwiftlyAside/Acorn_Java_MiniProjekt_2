@@ -11,8 +11,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UsersDAO {
+    private static final UsersDAO usersDAO = new UsersDAO();
     private final String getUserIdSQL = "SELECT userId, userPass from USERS where userId = ?";
     private final String insertUserInfoSQL = "INSERT INTO USERS VALUES (?, ?, ?, ?)";
+
+    private UsersDAO() {}
+
+    public UsersDAO getInstance() {
+        return usersDAO;
+    }
+
 
     // 1. login
     // 2. id check
