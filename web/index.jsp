@@ -43,19 +43,19 @@
 <header>
     <!-- Sidebar -->
     <div class="sidebar-fixed position-fixed">
-        <a class="logo-wrapper justify-content-center" href="?"
+        <a class="logo-wrapper justify-content-center light-green-text" href="?"
            style="font-family: 'Julius Sans One', sans-serif; font-size: 36pt">Diary</a>
 
         <div class="list-group list-group-flush">
             <form class="list-group-item d-flex justify-content-center">
                 <!-- Default input -->
                 <input aria-label="Search" class="form-control" placeholder="Search" type="search">
-                <button class="btn btn-primary btn-sm my-0 p" type="submit">
+                <button class="btn btn-primary btn-sm my-0 p btn-light-green" type="submit">
                     <i class="fas fa-search"></i>
                 </button>
 
             </form>
-            <a class="list-group-item list-group-item-action waves-effect" href="?open=diary">
+            <a class="list-group-item list-group-item-action waves-effect light-green-text" href="?open=diary">
                 <i class="fas fa-book mr-3"></i>다이어리</a>
             <a class="list-group-item list-group-item-action waves-effect" href="?open=explorer">
                 <i class="fab fa-wpexplorer mr-3"></i>탐색기</a>
@@ -74,13 +74,9 @@
 <main class="pt-5 mx-lg-5">
     <div class="container-fluid mt-5">
         <!-- Heading -->
-        <div class="card mb-4 wow fadeIn <%=jsClass%>" id="mainContainer">
+        <div class="card mb-4 wow fadeIn <%=jsClass%>" id="mainContainer" style="height: 750px">
             <!--Card content-->
-            <div class="card-body d-sm-flex justify-content-between">
-                <h4 class="mb-2 mb-sm-0 pt-1">
                     Main Page
-                </h4>
-            </div>
         </div>
         <!-- Heading -->
     </div>
