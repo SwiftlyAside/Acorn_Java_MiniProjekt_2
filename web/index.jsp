@@ -11,9 +11,14 @@
     <title>index</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Material icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css"/>
     <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
+<%--    <!-- signHeader -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>--%>
     <!-- Bootstrap core CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
@@ -29,12 +34,25 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+    <!-- moment core JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+
+    <!-- FullCalendar core CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.1.0/main.min.css">
+
+    <!-- FullCalendar core JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.1.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.1.0/locales-all.min.js"></script>
+
     <!-- include summernote css/js -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/lang/summernote-ko-KR.min.js"></script>
+
     <script src="${pageContext.request.contextPath}/js/index.js"></script>
     <link href="${pageContext.request.contextPath}/css/style.min.css" rel="stylesheet">
 </head>
@@ -53,9 +71,10 @@
                 <button class="btn btn-primary btn-sm my-0 p btn-light-green" type="submit">
                     <i class="fas fa-search"></i>
                 </button>
-
             </form>
-            <a class="list-group-item list-group-item-action waves-effect light-green-text" href="?open=diary">
+            <a class="list-group-item list-group-item-action waves-effect" href="?open=login">
+                <i class="fas fa-sign-in-alt mr-3"></i>로그인</a>
+            <a class="list-group-item list-group-item-action waves-effect" href="?open=diary">
                 <i class="fas fa-book mr-3"></i>다이어리</a>
             <a class="list-group-item list-group-item-action waves-effect" href="?open=explorer">
                 <i class="fab fa-wpexplorer mr-3"></i>탐색기</a>
@@ -76,7 +95,7 @@
         <!-- Heading -->
         <div class="card mb-4 wow fadeIn <%=jsClass%>" id="mainContainer" style="height: 750px">
             <!--Card content-->
-                    Main Page
+            Main Page
         </div>
         <!-- Heading -->
     </div>
