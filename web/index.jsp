@@ -46,6 +46,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/lang/summernote-ko-KR.min.js"></script>
+    
+    <!-- diary -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.css" rel="stylesheet">
+	<!-- signHeader -->
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    
     <script src="${pageContext.request.contextPath}/js/index.js"></script>
     <link href="${pageContext.request.contextPath}/css/style.min.css" rel="stylesheet">
 </head>
@@ -66,12 +72,13 @@
                 </button>
 
             </form>
+            <a class="list-group-item list-group-item-action waves-effect" href="?open=login">
+                <i class="fas fa-sign-in-alt mr-3"></i>로그인</a>
             <a class="list-group-item list-group-item-action waves-effect light-green-text" href="?open=diary">
                 <i class="fas fa-book mr-3"></i>다이어리</a>
             <a class="list-group-item list-group-item-action waves-effect" href="?open=explorer">
                 <i class="fab fa-wpexplorer mr-3"></i>탐색기</a>
-            <a class="list-group-item list-group-item-action waves-effect"
-               href="?open=calendar">
+            <a class="list-group-item list-group-item-action waves-effect" href="?open=calendar">
                 <i class="far fa-calendar mr-3"></i>달력</a>
             <a class="list-group-item list-group-item-action waves-effect" href="?open=reader">
                 <i class="fas fa-book-reader mr-3"></i>모아보기</a>
