@@ -3,7 +3,7 @@ $(() => {
   const classList = $mainContainer.attr('class').split(/\s+/);
   $.each(classList, (index, item) => {
     if (item === 'diary') {
-      $mainContainer.load('/calendar/calendar.jsp');
+      $mainContainer.load('/diary/diaryList.jsp');
     } else if (item === 'explorer') {
       $mainContainer.load('/explorer/explorer.jsp');
     } else if (item === 'calendar') {

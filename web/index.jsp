@@ -35,7 +35,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/lang/summernote-ko-KR.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/index.js"></script>
+    <!-- diary -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.css" rel="stylesheet">
+	
+	<script src="${pageContext.request.contextPath}/js/index.js"></script>
     <link href="${pageContext.request.contextPath}/css/style.min.css" rel="stylesheet">
 </head>
 <body class="light-green lighten-5">
