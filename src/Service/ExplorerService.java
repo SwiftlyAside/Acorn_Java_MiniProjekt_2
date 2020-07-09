@@ -1,6 +1,7 @@
 package Service;
 
 import DAO.MediaDAO;
+import DAO.PlansDAO;
 import DTO.MediaDTO;
 import DTO.PlansDTO;
 import DTO.RecordsDTO;
@@ -9,9 +10,11 @@ import java.util.List;
 
 public class ExplorerService implements IExplorerService {
     private final MediaDAO mediaDAO;
+    private final PlansDAO plansDAO;
 
     public ExplorerService() {
         this.mediaDAO = MediaDAO.getInstance();
+        this.plansDAO = PlansDAO.getInstance();
     }
 
     @Override
@@ -31,6 +34,6 @@ public class ExplorerService implements IExplorerService {
 
     @Override
     public List<PlansDTO> getAllPlans(String userId, String condition) {
-        return null;
+        return plansDAO.selectAllPlans(userId, condition);
     }
 }

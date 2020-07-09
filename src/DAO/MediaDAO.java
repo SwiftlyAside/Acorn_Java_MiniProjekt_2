@@ -13,6 +13,9 @@ import java.util.List;
 public class MediaDAO {
     private static final MediaDAO instance = new MediaDAO();
 
+    private MediaDAO() {
+    }
+
     public static MediaDAO getInstance() {
         return instance;
     }
