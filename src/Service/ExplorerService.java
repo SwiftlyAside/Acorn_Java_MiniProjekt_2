@@ -11,7 +11,7 @@ public class ExplorerService implements IExplorerService {
     private final MediaDAO mediaDAO;
 
     public ExplorerService() {
-        this.mediaDAO = new MediaDAO();
+        this.mediaDAO = MediaDAO.getInstance();
     }
 
     @Override

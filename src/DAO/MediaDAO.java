@@ -11,6 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MediaDAO {
+    private static final MediaDAO instance = new MediaDAO();
+
+    public static MediaDAO getInstance() {
+        return instance;
+    }
+
     /**
      * 입력받은 미디어를 Media 테이블에 추가.
      *
