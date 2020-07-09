@@ -1,3 +1,4 @@
+<%@page import="DTO.RecordsDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Map"%>
@@ -11,38 +12,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-	.material-icons {
-	vertical-align: middle;
-	margin-right: 1em;
-	}
-	.btn{	padding: 0px;}
-	.card-body{ min-height: 300px;}
-	div.container{padding: 0px;}
-</style>
-<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.css" rel="stylesheet">
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
-
-<script>
-$(function () {
-	function toggleOpen(e) {
-		$(e.target)
-			.prev('.card-header')
-			.find(".expand-icon")
-			.text("remove_circle");
-	}
-	function toggleClose(e) {
-		$(e.target)
-			.prev('.card-header')
-			.find(".expand-icon")
-			.text("add_circle");
-	}
-	$('.panel-group').on('hidden.bs.collapse', toggleClose);
-	$('.panel-group').on('shown.bs.collapse', toggleOpen);
-});
-</script>
+<link href="${pageContext.request.contextPath}/css/diaryList.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath}/js/diaryList.js"></script>
 </head>
 <body>
 <div class="container">
@@ -50,9 +21,9 @@ $(function () {
 		<div class="card" style="">
 				<div class="card-header" id="subheadingAdd" style="background-color: #dd9; text-align: center; size: 100px;">
 					<h5 class="mb-0">
-						<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#subcollapseAdd" aria-expanded="false" aria-controls="subcollapseAdd">
-							<i class="expand-icon material-icons">add_circle</i>
-						</button>
+						<a class="list-group-item list-group-item-action waves-effect" id="a_writePage" href="?open=diaryWrite" style="background-color: #dd9; border: 0px;">
+               				<i class="expand-icon material-icons">add_circle</i>
+						</a>
 					</h5>
 				</div>
 		</div>
@@ -64,29 +35,29 @@ $(function () {
 		String userId = "sglee";
 		//String userId = (String)session.getAttribute("userId");
 	
-		RecordsDAO records = new RecordsDAO();
+		RecordsDAO recordsdao = new RecordsDAO();
 		
-		List<Map<String, String>> recordList = new ArrayList<Map<String, String>>();
+		List<RecordsDTO> recordList = new ArrayList<RecordsDTO>();
 		
-		recordList = records.getDiaryList(userId);
+		recordList = recordsdao.getDiary(userId, "order by recordDate desc");
 		
 		for(int i=0;i<recordList.size();i++){
-			Map<String, String> recordMap = recordList.get(i);
+			RecordsDTO recordsdto = recordList.get(i);
 	%>
 		<div class="card">
 			<div class="card-header" id="subheading<%=i %>" style="background-color: #cdb;">
 				<h5 class="mb-0">
 					<button class="btn btn-link" data-toggle="collapse" data-target="#subcollapse<%=i %>" aria-expanded="true" aria-controls="collapse<%=i %>">
 						<i class="expand-icon material-icons">add_circle</i>
-						<label style="text-align: left;"><%=recordMap.get("recordDate") %></label>&nbsp;&nbsp;&nbsp;
-                        <label style="text-align: center;"><%=recordMap.get("title") %></label>&nbsp;&nbsp;&nbsp;
+						<label style="text-align: left;"><%=recordsdto.getRecordDate() %></label>&nbsp;&nbsp;&nbsp;
+                        <label style="text-align: center;"><%=recordsdto.getTitle() %></label>&nbsp;&nbsp;&nbsp;
 					</button>
 				</h5>
 			</div>
 
 			<div id="subcollapse<%=i %>" class="collapse" aria-labelledby="subheading<%=i %>" data-parent="#accordion2">
 				<div class="card-body">
-					<%=recordMap.get("content") %>
+					<%=recordsdto.getContent() %>
 				</div>
 			</div>
 		</div>
