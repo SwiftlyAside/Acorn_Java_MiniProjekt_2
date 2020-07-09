@@ -1,6 +1,11 @@
 package DTO;
 
 public class MediaDTO {
+    public MediaDTO(String recordNo, String media) {
+        this.recordNo = recordNo;
+        this.media = media;
+    }
+
     // 글번호
     private String recordNo;
 

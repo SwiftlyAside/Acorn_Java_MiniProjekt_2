@@ -1,7 +1,10 @@
 package Service;
 
+import DTO.MediaDTO;
+import DTO.PlansDTO;
+import DTO.RecordsDTO;
+
 import java.util.List;
-import java.util.Map;
 
 public interface IExplorerService {
     /**
@@ -15,29 +18,38 @@ public interface IExplorerService {
     void setOrder(String order);
 
     /**
-     * 모든 미디어 데이터를 반환
-     * ID, [Stringify 처리된 이미지, 날짜] 순서의 맵을 반환한다.
+     * 모든 미디어 데이터를 반환<br>
+     * MediaDTO로 구성된 리스트를 반환한다.
+     *
+     * @param userId    유저의 ID
+     * @param condition 조건
      */
-    Map<String, List<String>> getAllMedias();
+    List<MediaDTO> getAllMedias(String userId, String condition);
 
     /**
      * 모든 다이어리 정보를 반환
      *
-     * @return ID와 [제목, 날짜, 내용] 순서의 맵을 반환.
+     * @param userId    유저의 ID
+     * @param condition 조건
+     * @return 다이어리 정보만 포함된 RecordsDTO로 구성된 리스트를 반환.
      */
-    Map<String, List<String>> getAllDiaries();
+    List<RecordsDTO> getAllDiaries(String userId, String condition);
 
     /**
      * 모든 메모 정보를 반환
      *
-     * @return ID와 [제목, 날짜] 순서의 맵을 반환.
+     * @param userId    유저의 ID
+     * @param condition 조건
+     * @return 메모 정보만 포함된 RecordsDTO로 구성된 리스트를 반환.
      */
-    Map<String, List<String>> getAllNotes();
+    List<RecordsDTO> getAllRecords(String userId, String condition);
 
     /**
      * 모든 작업 정보를 반환
      *
-     * @return ID와 [제목, 날짜] 순서의 맵을 반환.
+     * @param userId    유저의 ID
+     * @param condition 조건
+     * @return PlansDTO로 구성된 리스트를 반환.
      */
-    Map<String, List<String>> getAllTasks();
+    List<PlansDTO> getAllPlans(String userId, String condition);
 }

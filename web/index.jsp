@@ -11,9 +11,14 @@
     <title>index</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Material icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css"/>
     <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
+<%--    <!-- signHeader -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>--%>
     <!-- Bootstrap core CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
@@ -29,7 +34,8 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
     <!-- moment core JavaScript -->
@@ -46,12 +52,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/lang/summernote-ko-KR.min.js"></script>
-    
-    <!-- diary -->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.css" rel="stylesheet">
-	<!-- signHeader -->
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
-    
+
     <script src="${pageContext.request.contextPath}/js/index.js"></script>
     <link href="${pageContext.request.contextPath}/css/style.min.css" rel="stylesheet">
 </head>
@@ -70,15 +71,15 @@
                 <button class="btn btn-primary btn-sm my-0 p btn-light-green" type="submit">
                     <i class="fas fa-search"></i>
                 </button>
-
             </form>
             <a class="list-group-item list-group-item-action waves-effect" href="?open=login">
                 <i class="fas fa-sign-in-alt mr-3"></i>로그인</a>
-            <a class="list-group-item list-group-item-action waves-effect light-green-text" href="?open=diary">
+            <a class="list-group-item list-group-item-action waves-effect" href="?open=diary">
                 <i class="fas fa-book mr-3"></i>다이어리</a>
             <a class="list-group-item list-group-item-action waves-effect" href="?open=explorer">
                 <i class="fab fa-wpexplorer mr-3"></i>탐색기</a>
-            <a class="list-group-item list-group-item-action waves-effect" href="?open=calendar">
+            <a class="list-group-item list-group-item-action waves-effect"
+               href="?open=calendar">
                 <i class="far fa-calendar mr-3"></i>달력</a>
             <a class="list-group-item list-group-item-action waves-effect" href="?open=reader">
                 <i class="fas fa-book-reader mr-3"></i>모아보기</a>
@@ -94,7 +95,7 @@
         <!-- Heading -->
         <div class="card mb-4 wow fadeIn <%=jsClass%>" id="mainContainer" style="height: 750px">
             <!--Card content-->
-                    Main Page
+            Main Page
         </div>
         <!-- Heading -->
     </div>

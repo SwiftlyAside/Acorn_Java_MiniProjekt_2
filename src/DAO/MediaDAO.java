@@ -1,16 +1,16 @@
 package DAO;
 
 import DBCP.DBManager;
+import DTO.MediaDTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class MediaDAO {
-
     /**
      * 입력받은 미디어를 Media 테이블에 추가.
      *
@@ -59,9 +59,23 @@ public class MediaDAO {
     /**
      * 조건을 만족하는 모든 미디어 반환.
      *
-     * @return [글번호, 미디어] 형태의 맵
+     * @param condition 조건
+     * @return 미디어 DTO로 구성된 리스트
      */
-    public Map<String, String> getMedia(String condition) {
-        return null;
+    public List<MediaDTO> getMedia(String condition) {
+        List<MediaDTO> mediaDTOList = new ArrayList<>();
+        Connection connection = DBManager.getConnection();
+        String sql = "select RECORDNO, MEDIA from MEDIA " + condition;
+        try (PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet rs = statement.executeQuery()) {
+            while (rs.next()) {
+                mediaDTOList.add(new MediaDTO(
+                        rs.getString("RECORDNO"),
+                        rs.getString("MEDIA")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return mediaDTOList;
     }
 }

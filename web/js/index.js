@@ -2,9 +2,9 @@ $(() => {
   const $mainContainer = $('#mainContainer');
   const classList = $mainContainer.attr('class').split(/\s+/);
   $.each(classList, (index, item) => {
-	if (item === 'login') {
+    if (item === 'login') {
       $mainContainer.load('/joinheader/joinHeader.jsp');
-    }else if (item === 'diary') {
+    } else if (item === 'diary') {
       $mainContainer.load('/diary/diaryList.jsp');
     } else if (item === 'explorer') {
       $mainContainer.load('/explorer/explorer.jsp');
@@ -12,6 +12,6 @@ $(() => {
       $mainContainer.load('/calendar/calendar.jsp');
     } else if (item === 'reader') {
       $mainContainer.load('/calendar/calendar.jsp');
-    } 
+    }
   });
 });
