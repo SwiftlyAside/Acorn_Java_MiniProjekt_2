@@ -93,7 +93,7 @@
 <main class="pt-5 mx-lg-5">
     <div class="container-fluid mt-5">
         <!-- Heading -->
-        <div class="card mb-4 wow scrollbar fadeIn <%=jsClass%>" id="mainContainer" style="height: 750px">
+        <div class="card mb-4 wow fadeIn <%=jsClass%>" id="mainContainer" style="max-height: 600px">
             <!--Card content-->
             <div class="card-body">
                 Main Page
