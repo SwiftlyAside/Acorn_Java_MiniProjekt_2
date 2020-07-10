@@ -81,8 +81,18 @@
             <a class="list-group-item list-group-item-action waves-effect"
                href="?open=calendar">
                 <i class="far fa-calendar mr-3"></i>달력</a>
-            <a class="list-group-item list-group-item-action waves-effect" href="?open=reader">
+            <a class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target=".bd-example-modal-xl" href="#">
                 <i class="fas fa-book-reader mr-3"></i>모아보기</a>
+            <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-custom">
+                    <div class="modal-content">
+                        <div class="modal-body" style="height: 500px">
+                            <p>모아보기가 등장할 곳이다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <!-- Sidebar -->
