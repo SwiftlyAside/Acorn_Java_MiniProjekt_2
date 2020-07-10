@@ -4,10 +4,8 @@
     ExplorerService service = ExplorerService.getInstance();
     String target = request.getParameter("target");
     List<MediaDTO> mediaDTOList = service.getAllMedias("admin", "");
-
-
 %>
-<div class="card-body">
+<div>
     <h4><%=target%>
     </h4>
     <%--fullsize--%>
