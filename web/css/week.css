@@ -4,7 +4,7 @@
 
 #weekBodyDiv > div {
     border: 1px solid;
-    padding: 3px ;
+    padding: 3px;
     box-sizing: border-box;
     margin: 2px;
 }
@@ -16,7 +16,7 @@
 
 #weekHeadDiv > div {
     border: 1px solid;
-    padding: 3px ;
+    padding: 3px;
     box-sizing: border-box;
     margin: 2px;
 }

@@ -67,8 +67,8 @@
         <div class="list-group list-group-flush">
             <form class="list-group-item d-flex justify-content-center">
                 <!-- Default input -->
-                <input aria-label="Search" class="form-control" placeholder="Search" type="search">
-                <button class="btn btn-primary btn-sm my-0 p btn-light-green" type="submit">
+                <input id="searchText" aria-label="Search" class="form-control" placeholder="Search" type="search">
+                <button class="btn btn-primary btn-sm my-0 p btn-light-green" id="searchButton" type="button">
                     <i class="fas fa-search"></i>
                 </button>
             </form>
@@ -81,8 +81,18 @@
             <a class="list-group-item list-group-item-action waves-effect"
                href="?open=calendar">
                 <i class="far fa-calendar mr-3"></i>달력</a>
-            <a class="list-group-item list-group-item-action waves-effect" href="?open=reader">
+            <a class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target=".bd-example-modal-xl" href="#">
                 <i class="fas fa-book-reader mr-3"></i>모아보기</a>
+            <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-custom">
+                    <div class="modal-content">
+                        <div class="modal-body" style="height: 500px">
+                            <p>모아보기가 등장할 곳이다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <!-- Sidebar -->
@@ -90,12 +100,15 @@
 <!--Main Navigation-->
 
 <!--Main layout-->
-<main class="pt-5 mx-lg-5">
-    <div class="container-fluid mt-5">
+<main class="mx-lg-4">
+    <div class="container-fluid pt-4">
         <!-- Heading -->
-        <div class="card mb-4 wow fadeIn <%=jsClass%>" id="mainContainer" style="height: 750px">
+        <div class="card mb-4 wow fadeIn <%=jsClass%>" id="mainContainer" style="height: 88vh">
             <!--Card content-->
-            Main Page
+            <div class="card-body">
+                Main Page
+            </div>
+
         </div>
         <!-- Heading -->
     </div>
