@@ -26,6 +26,8 @@
             <div class="col col-md-auto"></div>
 
             <div class="col text-center font-weight-bold">토요일</div>
+            <div class="col col-md-auto"></div>
+
         </div>
 
         <div class="row">
@@ -53,6 +55,7 @@
             <div class="col col-md-auto"></div>
 
             <div class="col text-center">7</div>
+            <div class="col col-md-auto"></div>
 
         </div>
 
