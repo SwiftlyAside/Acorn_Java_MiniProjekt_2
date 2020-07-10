@@ -14,4 +14,8 @@ $(() => {
       $mainContainer.load('/calendar/calendar.jsp');
     }
   });
+
+  $('#searchButton').click(() => {
+    $mainContainer.load(`/explorer/explorer.jsp?search=${$('#searchText').val()}`);
+  });
 });

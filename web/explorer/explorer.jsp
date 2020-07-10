@@ -3,10 +3,15 @@
   Time: 오전 10:35
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%
+    String search = request.getParameter("search");
+    if (search == null) search = "";
+%>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/explorer.css">
 <script src="${pageContext.request.contextPath}/js/explorer.js"></script>
 <div class="card-body">
     <%--네비게이터 탭--%>
+    <input type="hidden" id="searchValue" value="<%=search%>">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" style="font-size: 20px">
             <a class="nav-link active" id="media-tab" data-toggle="tab" href="#media" role="tab" aria-controls="media"

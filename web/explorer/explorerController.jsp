@@ -3,10 +3,11 @@
 <%
     ExplorerService service = ExplorerService.getInstance();
     String target = request.getParameter("target");
+    String search = request.getParameter("search");
     List<MediaDTO> mediaDTOList = service.getAllMedias("admin", "");
 %>
 <div class="overflow-auto p-2" style="height: 70vh">
-    <h4><%=target%>
+    <h4><%=search == null || "".contentEquals(search) ? "" : search + "로 검색한 결과"%>
     </h4>
     <%--fullsize--%>
     <%--<img src="https://img.youtube.com/vi/tmERJ0R_vaE/0.jpg">--%>

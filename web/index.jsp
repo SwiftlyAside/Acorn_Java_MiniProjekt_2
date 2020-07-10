@@ -67,8 +67,8 @@
         <div class="list-group list-group-flush">
             <form class="list-group-item d-flex justify-content-center">
                 <!-- Default input -->
-                <input aria-label="Search" class="form-control" placeholder="Search" type="search">
-                <button class="btn btn-primary btn-sm my-0 p btn-light-green" type="submit">
+                <input id="searchText" aria-label="Search" class="form-control" placeholder="Search" type="search">
+                <button class="btn btn-primary btn-sm my-0 p btn-light-green" id="searchButton" type="button">
                     <i class="fas fa-search"></i>
                 </button>
             </form>
