@@ -12,7 +12,13 @@ public class ExplorerService implements IExplorerService {
     private final MediaDAO mediaDAO;
     private final PlansDAO plansDAO;
 
-    public ExplorerService() {
+    private static final ExplorerService instance = new ExplorerService();
+
+    public static ExplorerService getInstance() {
+        return instance;
+    }
+
+    private ExplorerService() {
         this.mediaDAO = MediaDAO.getInstance();
         this.plansDAO = PlansDAO.getInstance();
     }

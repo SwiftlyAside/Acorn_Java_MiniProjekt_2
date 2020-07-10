@@ -1,26 +1,30 @@
-<%@ page import="Service.ExplorerService" %>
+<%@ page import="DTO.MediaDTO, Service.ExplorerService, java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%
-    ExplorerService service = new ExplorerService();
+    ExplorerService service = ExplorerService.getInstance();
     String target = request.getParameter("target");
+    List<MediaDTO> mediaDTOList = service.getAllMedias("admin", "");
+
+
 %>
 <div class="card-body">
-    <h4><%=target%></h4>
+    <h4><%=target%>
+    </h4>
     <%--fullsize--%>
     <%--<img src="https://img.youtube.com/vi/tmERJ0R_vaE/0.jpg">--%>
     <%--small thumbnails--%>
     <div class="row">
-<%--        <div class="col view overlay zoom">
-            <img src="https://img.youtube.com/vi/tmERJ0R_vaE/1.jpg">
-        </div>
+        <%--        <div class="col view overlay zoom">
+                    <img src="https://img.youtube.com/vi/tmERJ0R_vaE/1.jpg">
+                </div>
+                <div class="col view overlay zoom">
+                    <img src="https://img.youtube.com/vi/tmERJ0R_vaE/2.jpg">
+                </div>
+                <div class="col view overlay zoom">
+                    <img src="https://img.youtube.com/vi/tmERJ0R_vaE/3.jpg">
+                </div>--%>
         <div class="col view overlay zoom">
-            <img src="https://img.youtube.com/vi/tmERJ0R_vaE/2.jpg">
-        </div>
-        <div class="col view overlay zoom">
-            <img src="https://img.youtube.com/vi/tmERJ0R_vaE/3.jpg">
-        </div>--%>
-        <div class="col view overlay zoom">
-            <%=service.getAllMedias("admin", "")%>
+            <%=mediaDTOList.get(0).getMedia()%>
         </div>
     </div>
     <%--embed player--%>
