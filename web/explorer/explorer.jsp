@@ -3,8 +3,10 @@
   Time: 오전 10:35
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/explorer.css">
 <script src="${pageContext.request.contextPath}/js/explorer.js"></script>
 <div class="card-body">
+    <%--네비게이터 탭--%>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" style="font-size: 20px">
             <a class="nav-link active" id="media-tab" data-toggle="tab" href="#media" role="tab" aria-controls="media"
@@ -23,6 +25,41 @@
                aria-selected="false"><i class="fas fa-briefcase mr-2"></i>작업</a>
         </li>
     </ul>
+    <%--네비게이터 정렬 탭--%>
+    <div class="btn-toolbar py-2" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons" id="orderTypeGroup">
+            <label class="btn btn-secondary btn-blue-grey ex-btn-order active">
+                <input type="radio" name="options" id="byDateButton" checked>날짜
+            </label>
+            <label class="btn btn-secondary btn-blue-grey ex-btn-order">
+                <input type="radio" name="options" id="byNameButton">이름
+            </label>
+        </div>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary btn-blue-grey ex-btn-order active">
+                <input type="radio" name="options" id="dateByYearButton" checked>년도
+            </label>
+            <label class="btn btn-secondary btn-blue-grey ex-btn-order">
+                <input type="radio" name="options" id="dateByMonthButton">월
+            </label>
+            <label class="btn btn-secondary btn-blue-grey ex-btn-order">
+                <input type="radio" name="options" id="dateByDayButton">일
+            </label>
+            <label class="btn btn-secondary btn-blue-grey ex-btn-order">
+                <input type="radio" name="options" id="allButton">전체
+            </label>
+            <button id="btnGroupDrop1" type="button" class="btn btn-info btn-blue-grey dropdown-toggle ex-btn-order" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-sort"></i>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href="#">오름차순</a>
+                <a class="dropdown-item" href="#">내림차순</a>
+            </div>
+        </div>
+    </div>
+
+    <%--네비게이터 탭 내용--%>
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="media" role="tabpanel" aria-labelledby="media-tab">
             <%--

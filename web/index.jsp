@@ -90,10 +90,10 @@
 <!--Main Navigation-->
 
 <!--Main layout-->
-<main class="pt-5 mx-lg-5">
-    <div class="container-fluid mt-5">
+<main class="mx-lg-4">
+    <div class="container-fluid pt-4">
         <!-- Heading -->
-        <div class="card mb-4 wow fadeIn <%=jsClass%>" id="mainContainer" style="max-height: 600px">
+        <div class="card mb-4 wow fadeIn <%=jsClass%>" id="mainContainer" style="height: 88vh">
             <!--Card content-->
             <div class="card-body">
                 Main Page
