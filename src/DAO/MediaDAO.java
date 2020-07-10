@@ -30,10 +30,9 @@ public class MediaDAO {
     public boolean insertMedia(String recordNo, List<String> mediaList) {
         // recordNo에 해당하는 Media를 모두 제거한다.
         deleteMedia(recordNo);
-
-        Connection connection = DBManager.getConnection();
         String sql = "insert into MEDIA values (?, ?)";
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (Connection connection = DBManager.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
             for (String media : mediaList) {
                 statement.clearParameters();
                 statement.setString(1, recordNo);
@@ -53,9 +52,9 @@ public class MediaDAO {
      * @return 성공 여부
      */
     public boolean deleteMedia(String recordNo) {
-        Connection connection = DBManager.getConnection();
         String sql = "delete from MEDIA where RECORDNO = ?";
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (Connection connection = DBManager.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, recordNo);
             statement.execute();
         } catch (SQLException e) {
@@ -74,10 +73,11 @@ public class MediaDAO {
      */
     public List<MediaDTO> getMedia(String userId, String condition) {
         List<MediaDTO> mediaDTOList = new ArrayList<>();
-        Connection connection = DBManager.getConnection();
+
         String sql = "select R.RECORDNO, MEDIA, R.RECORDDATE from RECORDS R, MEDIA M " +
                 "where R.USERID = ? " + condition;
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (Connection connection = DBManager.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, userId);
             try (ResultSet rs = statement.executeQuery()) {
                 while (rs.next()) {
