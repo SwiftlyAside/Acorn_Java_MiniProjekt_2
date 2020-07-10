@@ -6,8 +6,8 @@
         <div id="todayDiv" class="col text-center my-auto">
             <button type="button" id="todayButton" class="btn btn-light-green lighten-1">오늘</button>
         </div>
-        <div id="sd1" class="input-group date col my-auto">
-            <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+        <div id="sd1" class="input-group date col my-auto" style="padding-top: 7px">
+            <input type="text" class="form-control"><span class="input-group-addon"><h2><i class="fas fa-calendar-alt"></i></h2></span>
         </div>
         <div id="dateMoveDiv" class="col my-auto text-center">
             <a href="<%--a태그는 새 요청, ajax?--%>"><i class="fas fa-chevron-circle-left"></i></a>
@@ -26,7 +26,6 @@
     </div>
 </div>
 <div id="calendarForm" class="card-body">
-is testing for changing directory name
 </div>
 
 <script src="${pageContext.request.contextPath}/js/calendar.js"></script>

@@ -4,9 +4,25 @@
 
 #blankDiv2 {
     padding: 10px;
+    box-sizing: border-box;
+}
+
+#dayBlockDiv{
+    padding-top: 18px;
+    box-sizing: border-box;
 }
 
 #dayBlockDiv > div > div {
+    height: 56px;
     margin-left: 1px;
-    border: 1px solid crimson;
+    border: 1px solid #aaaaaa;
+}
+
+.task {
+    border: 1px solid olive;
+    border-radius: 4px;
+    background: olivedrab;
+    padding: 1px;
+    box-sizing: border-box;
+    margin: 1px;
 }
