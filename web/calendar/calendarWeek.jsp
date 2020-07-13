@@ -91,6 +91,9 @@
         <div class="row">
             <div>
                 <div class="text-right p-3">
+                    <span>오전 0시</span>
+                </div>
+                <div class="text-right p-3">
                     <span>오전 1시</span>
                 </div>
                 <div class="text-right p-3">
@@ -124,7 +127,7 @@
                     <span>오전 11시</span>
                 </div>
                 <div class="text-right p-3">
-                    <span>오전 12시</span>
+                    <span>오후 12시</span>
                 </div>
                 <div class="text-right p-3">
                     <span>오후 1시</span>
@@ -158,9 +161,6 @@
                 </div>
                 <div class="text-right p-3">
                     <span>오후 11시</span>
-                </div>
-                <div class="text-right p-3">
-                    <span>오후 12시</span>
                 </div>
             </div>
             <div class="row">
