@@ -1,9 +1,10 @@
 $(() => {
-  $('#media').load('/explorer/explorerController.jsp?target=media');
+  const searchParam = $('#searchValue').val();
+  $('#media').load(`/explorer/explorerController.jsp?target=media&search=${searchParam}`);
 
   $('a[data-toggle="tab"]').on('shown.bs.tab', (e) => {
     const target = e.target.getAttribute('aria-controls');
-    $(`#${target}`).load(`/explorer/explorerController.jsp?target=${target}`);
+    $(`#${target}`).load(`/explorer/explorerController.jsp?target=${target}&search=${searchParam}`);
   });
 
   $('#summer').summernote();

@@ -16,4 +16,12 @@ $(() => {
   });
 
   $('#timeLineDiv').load('/timeline/timeline.jsp');
+
+  $('#searchButton').click(() => {
+    $mainContainer.load(`/explorer/explorer.jsp?search=${$('#searchText').val()}`);
+  });
+
+  $('#readerAnchor').click(() => {
+    $('#reader').load('/explorer/reader.jsp');
+  });
 });

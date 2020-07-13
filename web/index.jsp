@@ -17,8 +17,6 @@
     <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
-    <%--    <!-- signHeader -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>--%>
     <!-- Bootstrap core CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
@@ -50,10 +48,6 @@
     <!-- FullCalendar core CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.1.0/main.min.css">
 
-    <!-- FullCalendar core JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.1.0/main.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.1.0/locales-all.min.js"></script>
-
     <!-- include summernote css/js -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
@@ -73,8 +67,8 @@
         <div class="list-group list-group-flush">
             <form class="list-group-item d-flex justify-content-center">
                 <!-- Default input -->
-                <input aria-label="Search" class="form-control" placeholder="Search" type="search">
-                <button class="btn btn-primary btn-sm my-0 p btn-light-green" type="submit">
+                <input id="searchText" aria-label="Search" class="form-control" placeholder="Search" type="search">
+                <button class="btn btn-primary btn-sm my-0 p btn-light-green" id="searchButton" type="button">
                     <i class="fas fa-search"></i>
                 </button>
             </form>
@@ -87,8 +81,15 @@
             <a class="list-group-item list-group-item-action waves-effect"
                href="?open=calendar">
                 <i class="far fa-calendar mr-3"></i>달력</a>
-            <a class="list-group-item list-group-item-action waves-effect" href="?open=reader">
+            <a class="list-group-item list-group-item-action waves-effect" id="readerAnchor" data-toggle="modal" data-target=".bd-example-modal-xl" href="#">
                 <i class="fas fa-book-reader mr-3"></i>모아보기</a>
+            <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-custom">
+                    <div class="modal-content modal-custom-content" id="reader">
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div id="timeLineDiv"></div>
@@ -99,12 +100,15 @@
 <!--Main Navigation-->
 
 <!--Main layout-->
-<main class="pt-5 mx-lg-5">
-    <div class="container-fluid mt-5">
+<main class="mx-lg-4">
+    <div class="container-fluid pt-4">
         <!-- Heading -->
-        <div class="card mb-4 wow fadeIn <%=jsClass%>" id="mainContainer" style="height: 750px">
+        <div class="card mb-4 wow fadeIn <%=jsClass%>" id="mainContainer" style="height: 88vh">
             <!--Card content-->
-            Main Page
+            <div class="card-body">
+                Main Page
+            </div>
+
         </div>
         <!-- Heading -->
     </div>
