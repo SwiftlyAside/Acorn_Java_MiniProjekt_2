@@ -7,7 +7,6 @@
     String search = request.getParameter("search");
     if (search == null) search = "";
 %>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/explorer.css">
 <script src="${pageContext.request.contextPath}/js/explorer.js"></script>
 <div class="card-body">
     <%--네비게이터 탭--%>

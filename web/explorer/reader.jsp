@@ -13,27 +13,39 @@
 %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reader.css">
 <script src="${pageContext.request.contextPath}/js/reader.js"></script>
-<div class="modal-header">
-
+<div class="modal-header flex-1">
+    <div class="btn-toolbar py-2" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="col-2 my-auto">
+            <input type="text" data-provide="datepicker" class="form-control">
+        </div>
+        <div class="col-1 my-auto">
+            부터
+        </div>
+        <div class="col-2 my-auto">
+            <input type="text" data-provide="datepicker" class="form-control">
+        </div>
+        <div class="col-1 my-auto">
+            까지
+        </div>
+        <div class="btn-group btn-group-toggle my-auto" data-toggle="buttons" id="orderTypeGroup">
+            <label class="btn btn-secondary btn-blue-grey ex-btn-order active">
+                <input type="radio" name="options" id="byWeekButton" checked>1주일
+            </label>
+            <label class="btn btn-secondary btn-blue-grey ex-btn-order">
+                <input type="radio" name="options" id="byMonthButton">1개월
+            </label>
+        </div>
+    </div>
 </div>
-<div class="modal-body flex-center" style="height: 70vh">
+<div class="modal-body flex-center my-2" style="height: 70vh">
     <div class="row flex-grow-1 py-5">
         <div class="col-1 flex-center align-self-center">
             <button class="btn bg-transparent" data-toggle="tooltip" data-placement="bottom" title="이전 일기"><i
                     class="fas fa-chevron-left"></i></button>
         </div>
-        <div class="col-xl-5 px-2" style="height: 70vh; overflow-x: hidden; overflow-y: auto">
-            <h1>OVERFLOW TEST</h1>
-            <h1>~~~~~~~~~~~~~</h1>
-            <h1>~~~~~~~~~~~~~</h1>
-            <h1>~~~~~~~~~~~~~</h1>
-            <h1>HEECHAN HWANGNAM STYLE</h1>
-            <h1>HEECHAN HWANGNAM STYLE</h1>
+        <div class="col readerElement">
         </div>
-        <div class="col px-2 flex-xl-grow-1 border-left" style="height: 70vh; overflow-x: hidden; overflow-y: auto">
-            <p>
-                <iframe frameborder="0" src="//www.youtube.com/embed/NNnpsdjmykU" class="note-video-clip"></iframe>
-                <br></p>
+        <div class="col border-left readerElement">
         </div>
         <div class="col-1 flex-center align-self-center">
             <button class="btn bg-transparent" data-toggle="tooltip" data-placement="bottom" title="다음 일기"><i

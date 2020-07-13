@@ -1,6 +1,16 @@
+.ex-btn-order {
+  border-radius: 1rem;
+  font-size: 1rem;
+  padding: 0.42rem 1.07rem;
+}
+
 .modal-custom {
   margin-top: -35vh;
   top: 50%;
+}
+
+.modal-custom-content {
+  width: 1280px;
 }
 
 .sidebar-fixed {
