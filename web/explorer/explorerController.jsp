@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="DTO.MediaDTO, Service.ExplorerService, java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%
@@ -12,37 +13,28 @@
     <%--fullsize--%>
     <%--<img src="https://img.youtube.com/vi/tmERJ0R_vaE/0.jpg">--%>
     <%--small thumbnails--%>
-    <div class="row">
-        <%--                <div class="col view overlay zoom">
-                            <img src="https://img.youtube.com/vi/tmERJ0R_vaE/1.jpg">
-                        </div>
-                        <div class="col view overlay zoom">
-                            <img src="https://img.youtube.com/vi/NNnpsdjmykU/2.jpg">
-                        </div>
-                        <div class="col view overlay zoom">
-                            <img src="https://img.youtube.com/vi/tmERJ0R_vaE/3.jpg">
-                        </div>--%>
-        <div class="col view overlay zoom">
-            <a><%=mediaDTOList.get(0).getMedia()%>
+    <%--<div class="col view overlay zoom">
+                    <img src="https://img.youtube.com/vi/tmERJ0R_vaE/1.jpg">
+                </div>
+                <div class="col view overlay zoom">
+                    <img src="https://img.youtube.com/vi/NNnpsdjmykU/2.jpg">
+                </div>
+                <div class="col view overlay zoom">
+                    <img src="https://img.youtube.com/vi/tmERJ0R_vaE/3.jpg">
+                </div>--%>
+    <%
+        for (int i = 0; i < mediaDTOList.size(); i++) {
+            System.out.println(mediaDTOList.size());
+            if (i % 3 == 0)
+                out.print("<div class='row'>");
+    %>
+        <div class="col-3">
+            <a class="view overlay zoom" href="#"><%=mediaDTOList.get(i).getMedia()%>
             </a>
         </div>
-    </div>
-    <%--embed player--%>
-    <h1>OVERFLOW TEST</h1>
-    <h1>~~~~~~~~~~~~~</h1>
-    <h1>~~~~~~~~~~~~~</h1>
-    <h1>~~~~~~~~~~~~~</h1>
-    <h1>HEECHAN HWANGNAM STYLE</h1>
-    <h1>HEECHAN HWANGNAM STYLE</h1>
-    <h1>HEECHAN HWANGNAM STYLE</h1>
-    <h1>HEECHAN HWANGNAM STYLE</h1>
-    <h1>THIS IS HEECHAN HWANGNAM STYLE</h1>
-    <p>
-        <iframe frameborder="0" src="//www.youtube.com/embed/NNnpsdjmykU" width="640" height="360"
-                class="note-video-clip"></iframe>
-        <br></p>
-    <p>
-        <iframe frameborder="0" src="//www.youtube.com/embed/tmERJ0R_vaE" width="640" height="360"
-                class="note-video-clip"></iframe>
-        <br></p>
+    <%
+            if (i % 3 == 2 || i == mediaDTOList.size() - 1)
+                out.print("</div>");
+        }
+    %>
 </div>
