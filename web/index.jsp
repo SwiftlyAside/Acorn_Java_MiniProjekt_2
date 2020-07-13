@@ -17,8 +17,8 @@
     <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
-<%--    <!-- signHeader -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>--%>
+    <%--    <!-- signHeader -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>--%>
     <!-- Bootstrap core CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
@@ -90,6 +90,9 @@
             <a class="list-group-item list-group-item-action waves-effect" href="?open=reader">
                 <i class="fas fa-book-reader mr-3"></i>모아보기</a>
         </div>
+
+        <div id="timeLineDiv"></div>
+
     </div>
     <!-- Sidebar -->
 </header>

@@ -14,4 +14,6 @@ $(() => {
       $mainContainer.load('/calendar/calendar.jsp');
     }
   });
+
+  $('#timeLineDiv').load('/timeline/timeline.jsp');
 });
