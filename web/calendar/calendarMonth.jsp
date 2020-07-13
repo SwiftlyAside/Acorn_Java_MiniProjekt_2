@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/month.css"/>
 
-<div class="overflow-auto" style="max-height: 625px">
+<div class="overflow-auto" style="max-height: 75vh">
     <div role="presentation">
         <table class="table table-sm table-bordered table-hover">
             <thead class="light-green lighten-1 black-text">

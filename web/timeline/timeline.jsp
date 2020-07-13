@@ -6,32 +6,32 @@
 </div>
 <div id="scroll" class="overflow-auto" style="max-height: 43vh">
     <div class="list-group list-group-flush">
-        <div class="list-group-item list-group-item-action waves-effect">
+        <div id="0" class="list-group-item list-group-item-action waves-effect">
             <span>날짜</span><br>
             <span>활동한 내용</span><br>
             <span>제목</span>
         </div>
-        <div class="list-group-item list-group-item-action waves-effect">
+        <div id="1" class="list-group-item list-group-item-action waves-effect">
             <span>날짜</span><br>
             <span>활동한 내용</span><br>
             <span>제목</span>
         </div>
-        <div class="list-group-item list-group-item-action waves-effect">
+        <div id="3" class="list-group-item list-group-item-action waves-effect">
             <span>날짜</span><br>
             <span>활동한 내용</span><br>
             <span>제목</span>
         </div>
-        <div class="list-group-item list-group-item-action waves-effect">
+        <div id="4" class="list-group-item list-group-item-action waves-effect">
             <span>날짜</span><br>
             <span>활동한 내용</span><br>
             <span>제목</span>
         </div>
-        <div class="list-group-item list-group-item-action waves-effect">
+        <div id="5" class="list-group-item list-group-item-action waves-effect">
             <span>날짜</span><br>
             <span>활동한 내용</span><br>
             <span>제목</span>
         </div>
-        <div class="list-group-item list-group-item-action waves-effect">
+        <div id="6" class="list-group-item list-group-item-action waves-effect">
             <span>날짜</span><br>
             <span>활동한 내용</span><br>
             <span>제목</span>

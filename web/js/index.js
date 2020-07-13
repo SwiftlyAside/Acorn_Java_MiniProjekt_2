@@ -16,6 +16,7 @@ $(() => {
   });
 
   $('#timeLineDiv').load('/timeline/timeline.jsp');
+  $('#scrollData').load('/timeline/scrollData.jsp');
 
   $('#searchButton').click(() => {
     $mainContainer.load(`/explorer/explorer.jsp?search=${$('#searchText').val()}`);
