@@ -21,7 +21,7 @@
                aria-selected="false"><i class="fas fa-book mr-2"></i>다이어리</a>
         </li>
         <li class="nav-item" style="font-size: 20px">
-            <a class="nav-link" id="note-tab" data-toggle="tab" href="#note" role="tab" aria-controls="note"
+            <a class="nav-link" id="record-tab" data-toggle="tab" href="#record" role="tab" aria-controls="record"
                aria-selected="false"><i class="far fa-sticky-note mr-2" style="font-size: 24px"></i>메모</a>
         </li>
         <li class="nav-item" style="font-size: 20px">
@@ -77,7 +77,7 @@
             RecordsDAO에 의해 정렬된 값 표시
             --%>
         </div>
-        <div class="tab-pane fade" id="note" role="tabpanel" aria-labelledby="note-tab">
+        <div class="tab-pane fade" id="record" role="tabpanel" aria-labelledby="record-tab">
             <%--
             네비게이터 (날짜, 이름) (년도, 월, 일, 전체 (ASC, DESC))
             RecordsDAO에 의해 정렬된 값 표시
