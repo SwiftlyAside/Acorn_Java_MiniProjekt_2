@@ -1,43 +1,43 @@
 .modal-custom {
-    top: 50%;
-    margin-top: -250px;
+  margin-top: -35vh;
+  top: 50%;
 }
 
 .sidebar-fixed {
-    height: 100vh;
-    width: 270px;
-    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    z-index: 1050;
-    background-color: #fff;
-    padding: 0 1.5rem 1.5rem;
+  background-color: #fff;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  height: 100vh;
+  padding: 0 1.5rem 1.5rem;
+  width: 270px;
+  z-index: 1050;
 }
 
 .sidebar-fixed .list-group .active {
-    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
 .sidebar-fixed .logo-wrapper {
-    padding: 2.5rem;
+  padding: 2.5rem;
 }
 
 .sidebar-fixed .logo-wrapper img {
-    max-height: 50px;
+  max-height: 50px;
 }
 
 @media (min-width: 1000px) {
-    .navbar,
-    .page-footer,
-    main {
-        padding-left: 270px;
-    }
+  .navbar,
+  .page-footer,
+  main {
+    padding-left: 270px;
+  }
 }
 
 @media (max-width: 999px) {
-    .sidebar-fixed {
-        display: none;
-    }
+  .sidebar-fixed {
+    display: none;
+  }
 }

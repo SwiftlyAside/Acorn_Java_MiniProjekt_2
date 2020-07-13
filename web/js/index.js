@@ -10,12 +10,14 @@ $(() => {
       $mainContainer.load('/explorer/explorer.jsp');
     } else if (item === 'calendar') {
       $mainContainer.load('/calendar/calendar.jsp');
-    } else if (item === 'reader') {
-      $mainContainer.load('/explorer/reader.jsp');
     }
   });
 
   $('#searchButton').click(() => {
     $mainContainer.load(`/explorer/explorer.jsp?search=${$('#searchText').val()}`);
+  });
+
+  $('#readerAnchor').click(() => {
+    $('#reader').load('/explorer/reader.jsp');
   });
 });
