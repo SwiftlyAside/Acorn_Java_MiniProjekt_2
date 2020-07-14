@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page
-        import="DTO.MediaDTO, DTO.PlansDTO, DTO.RecordsDTO, Service.ExplorerService, java.io.IOException, java.util.List" %>
+        import="DTO.MediaDTO, DTO.PlansDTO, DTO.RecordsDTO, Service.ExplorerService, java.io.IOException, java.util.List, java.time.LocalDate, java.util.Map" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%!
     public void generateMediaTable(List<MediaDTO> list, JspWriter out) {
@@ -8,7 +8,7 @@
             try {
                 if (i % 3 == 0)
                     out.print("<div class='row'>");
-                out.print("<div class='col-3 rounded'>");
+                out.print("<div class='col-3 border-lightgreen rounded'>");
                 out.print("<a class='view overlay zoom' href='#'>" + list.get(i).getMedia() + "</a></div>");
                 if (i % 3 == 2 || i == list.size() - 1)
                     out.print("</div>");
@@ -19,12 +19,33 @@
         }
     }
 
+    public void generateGroupedMediaTable(Map<LocalDate, List<MediaDTO>> groupedMediaMap, String group, JspWriter out) {
+        for (Map.Entry<LocalDate, List<MediaDTO>> entry : groupedMediaMap.entrySet()) {
+            try {
+                switch (group) {
+                    case "year":
+                        out.print("<h1>" + entry.getKey().getYear() + "</h1>");
+                        break;
+                    case "month":
+                        out.print("<h1>" + entry.getKey().getMonth() + "</h1>");
+                        break;
+                    case "day":
+                        out.print("<h1>" + entry.getKey() + "</h1>");
+                        break;
+                }
+                generateMediaTable(entry.getValue(), out);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public void generateRecordTable(List<RecordsDTO> list, JspWriter out) {
         for (int i = 0; i < list.size(); i++) {
             try {
                 if (i % 3 == 0)
                     out.print("<div class='row'>");
-                out.print("<div class='col-3 rounded'>");
+                out.print("<div class='col-3 border-lightgreen rounded'>");
                 out.print("<a class='view overlay zoom' href='#'>" + list.get(i).getTitle() + "</a></div>");
                 if (i % 3 == 2 || i == list.size() - 1)
                     out.print("</div>");
@@ -35,12 +56,33 @@
         }
     }
 
+    public void generateGroupedRecordTable(Map<LocalDate, List<RecordsDTO>> groupedRecordMap, String group, JspWriter out) {
+        for (Map.Entry<LocalDate, List<RecordsDTO>> entry : groupedRecordMap.entrySet()) {
+            try {
+                switch (group) {
+                    case "year":
+                        out.print("<h1>" + entry.getKey().getYear() + "</h1>");
+                        break;
+                    case "month":
+                        out.print("<h1>" + entry.getKey().getMonth() + "</h1>");
+                        break;
+                    case "day":
+                        out.print("<h1>" + entry.getKey() + "</h1>");
+                        break;
+                }
+                generateRecordTable(entry.getValue(), out);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public void generatePlanTable(List<PlansDTO> list, JspWriter out) {
         for (int i = 0; i < list.size(); i++) {
             try {
                 if (i % 3 == 0)
                     out.print("<div class='row'>");
-                out.print("<div class='col-3 rounded'>");
+                out.print("<div class='col-3 border-lightgreen rounded'>");
                 out.print("<a class='view overlay zoom' href='#'>" + list.get(i).getPlanTitle() + "</a></div>");
                 if (i % 3 == 2 || i == list.size() - 1)
                     out.print("</div>");
@@ -48,6 +90,27 @@
                 e.printStackTrace();
             }
 
+        }
+    }
+
+    public void generateGroupedPlanTable(Map<LocalDate, List<PlansDTO>> groupedPlanMap, String group, JspWriter out) {
+        for (Map.Entry<LocalDate, List<PlansDTO>> entry : groupedPlanMap.entrySet()) {
+            try {
+                switch (group) {
+                    case "year":
+                        out.print("<h1>" + entry.getKey().getYear() + "</h1>");
+                        break;
+                    case "month":
+                        out.print("<h1>" + entry.getKey().getMonth() + "</h1>");
+                        break;
+                    case "day":
+                        out.print("<h1>" + entry.getKey() + "</h1>");
+                        break;
+                }
+                generatePlanTable(entry.getValue(), out);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 %>
@@ -76,7 +139,10 @@
             case "media":
                 conditional = conditional1;
                 mediaDTOList = service.getAllMedias("admin", conditional);
-                generateMediaTable(mediaDTOList, out);
+                if (!"all".contentEquals(group))
+                    generateGroupedMediaTable(service.getGroupedMedias(mediaDTOList, group), group, out);
+                else
+                    generateMediaTable(mediaDTOList, out);
                 break;
             case "diary":
                 conditional = conditional1;

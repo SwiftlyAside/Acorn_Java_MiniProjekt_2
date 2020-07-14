@@ -9,6 +9,10 @@
   top: 50%;
 }
 
+.border-lightgreen {
+  border: 1px solid #dff6e5 !important;
+}
+
 .modal-custom-content {
   width: 1280px;
 }

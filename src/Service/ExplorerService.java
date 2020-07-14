@@ -7,12 +7,12 @@ import DTO.MediaDTO;
 import DTO.PlansDTO;
 import DTO.RecordsDTO;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.time.temporal.TemporalAdjuster;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ExplorerService implements IExplorerService {
     private static final ExplorerService instance = new ExplorerService();
@@ -21,7 +21,7 @@ public class ExplorerService implements IExplorerService {
     public static final String ORDER_PLAN_DATE = "ORDER BY STARTDATE ";
     public static final String ORDER_PLAN_TITLE = "ORDER BY PLANTITLE ";
 
-    Map<String, TemporalAdjuster> adjusterMap = new HashMap<>();
+    static final Map<String, TemporalAdjuster> adjusterMap = new HashMap<>();
 
     private final MediaDAO mediaDAO;
     private final PlansDAO plansDAO;
@@ -58,9 +58,8 @@ public class ExplorerService implements IExplorerService {
     }
 
     @Override
-    public Map<Date, List<MediaDTO>> getGroupedMedias(List<MediaDTO> mediaDTOList) {
-        Map<Date, List<MediaDTO>> listMap = new LinkedHashMap<>();
-
-        return null;
+    public Map<LocalDate, List<MediaDTO>> getGroupedMedias(List<MediaDTO> mediaDTOList, String group) {
+//        Map<Date, List<MediaDTO>> listMap = new LinkedHashMap<>();
+        return mediaDTOList.stream().collect(Collectors.groupingBy(mediaDTO -> mediaDTO.getDate().toLocalDate().withMonth(1).withDayOfMonth(1)));
     }
 }

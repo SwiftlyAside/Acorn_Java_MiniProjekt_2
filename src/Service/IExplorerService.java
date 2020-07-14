@@ -5,6 +5,7 @@ import DTO.PlansDTO;
 import DTO.RecordsDTO;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -48,9 +49,11 @@ public interface IExplorerService {
     /**
      * 배열을 날짜별로 그룹화한다
      *
-     *
      * @param mediaDTOList 그룹화 되지 않은 배열
+     * @param group        그룹화 기준
      * @return Date로 그룹화된 맵
      */
-    Map<Date, List<MediaDTO>> getGroupedMedias(List<MediaDTO> mediaDTOList);
+    Map<LocalDate, List<MediaDTO>> getGroupedMedias(List<MediaDTO> mediaDTOList, String group);
+
+
 }
