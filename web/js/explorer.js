@@ -6,7 +6,10 @@ $(() => {
   const searchParam = $('#searchValue').val();
 
   function loadPage(targetId) {
-    $(`#${targetId}`).load(`/explorer/explorerController.jsp?target=${targetId}&search=${searchParam}&group=${group}&orderBy=${orderBy}${desc}`);
+    $(`#${targetId}`).load(`/explorer/explorerController.jsp?target=${targetId}&search=${searchParam}&group=${group}&orderBy=${orderBy}${desc}`, () => {
+      $('img').width('320px');
+      $('img').height('240px');
+    });
   }
 
   loadPage('media');

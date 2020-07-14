@@ -10,7 +10,8 @@
 }
 
 .border-lightgreen {
-  border: 1px solid #dff6e5 !important;
+  min-height: 80px;
+  border: 2px solid #dff6e5 !important;
 }
 
 .modal-custom-content {

@@ -8,7 +8,7 @@
             try {
                 if (i % 3 == 0)
                     out.print("<div class='row'>");
-                out.print("<div class='col-3 border-lightgreen rounded'>");
+                out.print("<div class='col-3 border-lightgreen rounded m-2'>");
                 out.print("<a class='view overlay zoom' href='#'>" + list.get(i).getMedia() + "</a></div>");
                 if (i % 3 == 2 || i == list.size() - 1)
                     out.print("</div>");
@@ -24,13 +24,13 @@
             try {
                 switch (group) {
                     case "year":
-                        out.print("<h2>" + entry.getKey().getYear() + "</h2>");
+                        out.print("<h2 class='my-2'>" + entry.getKey().getYear() + "</h2>");
                         break;
                     case "month":
-                        out.print("<h2>" + entry.getKey().getYear() + "&nbsp;" + entry.getKey().getMonth() + "</h2>");
+                        out.print("<h2 class='my-2'>" + entry.getKey().getYear() + "&nbsp;" + entry.getKey().getMonth() + "</h2>");
                         break;
                     case "day":
-                        out.print("<h2>" + entry.getKey() + "</h2>");
+                        out.print("<h2 class='my-2'>" + entry.getKey() + "</h2>");
                         break;
                 }
                 generateMediaTable(entry.getValue(), out);
@@ -45,8 +45,9 @@
             try {
                 if (i % 3 == 0)
                     out.print("<div class='row'>");
-                out.print("<div class='col-3 border-lightgreen rounded'>");
-                out.print("<a class='view overlay zoom' href='#'>" + list.get(i).getTitle() + "</a></div>");
+                out.print("<div class='col-3 border-lightgreen rounded m-2'>");
+                out.print("<div class='row-1 font-weight-bold light-green-text'>" + list.get(i).getRecordDate() + "</div>");
+                out.print("<div class='row-1'><a class='view overlay zoom' href='#'>" + list.get(i).getTitle() + "</a></div></div>");
                 if (i % 3 == 2 || i == list.size() - 1)
                     out.print("</div>");
             } catch (IOException e) {
@@ -61,13 +62,13 @@
             try {
                 switch (group) {
                     case "year":
-                        out.print("<h2>" + entry.getKey().getYear() + "</h2>");
+                        out.print("<h2 class='my-2'>" + entry.getKey().getYear() + "</h2>");
                         break;
                     case "month":
-                        out.print("<h2>" + entry.getKey().getYear() + "&nbsp;" + entry.getKey().getMonth() + "</h2>");
+                        out.print("<h2 class='my-2'>" + entry.getKey().getYear() + "&nbsp;" + entry.getKey().getMonth() + "</h2>");
                         break;
                     case "day":
-                        out.print("<h2>" + entry.getKey() + "</h2>");
+                        out.print("<h2 class='my-2'>" + entry.getKey() + "</h2>");
                         break;
                 }
                 generateRecordTable(entry.getValue(), out);
@@ -82,7 +83,7 @@
             try {
                 if (i % 3 == 0)
                     out.print("<div class='row'>");
-                out.print("<div class='col-3 border-lightgreen rounded'>");
+                out.print("<div class='col-3 border-lightgreen rounded m-2'>");
                 out.print("<a class='view overlay zoom' href='#'>" + list.get(i).getPlanTitle() + "</a></div>");
                 if (i % 3 == 2 || i == list.size() - 1)
                     out.print("</div>");
@@ -98,13 +99,13 @@
             try {
                 switch (group) {
                     case "year":
-                        out.print("<h2>" + entry.getKey().getYear() + "</h2>");
+                        out.print("<h2 class='my-2'>" + entry.getKey().getYear() + "</h2>");
                         break;
                     case "month":
-                        out.print("<h2>" + entry.getKey().getYear() + "&nbsp;" + entry.getKey().getMonth() + "</h2>");
+                        out.print("<h2 class='my-2'>" + entry.getKey().getYear() + "&nbsp;" + entry.getKey().getMonth() + "</h2>");
                         break;
                     case "day":
-                        out.print("<h2>" + entry.getKey() + "</h2>");
+                        out.print("<h2 class='my-2'>" + entry.getKey() + "</h2>");
                         break;
                 }
                 generatePlanTable(entry.getValue(), out);
