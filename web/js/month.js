@@ -1,4 +1,8 @@
 $(document).ready(function () {
+
+  $('#right').unbind('click');
+  $('#left').unbind('click');
+
 // overflow 적용 func
   var overFn = function () {
     $('#monthBody tr div[id]').attr('class', 'overflow-auto');
