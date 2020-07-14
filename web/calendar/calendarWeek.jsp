@@ -36,25 +36,25 @@
         <div class="col col-md-auto"></div>
         <div class="col col-md-auto"></div>
 
-        <div class="col text-center">1</div>
+        <div id="sun" class="col text-center myWeek"></div>
         <div class="col col-md-auto"></div>
 
-        <div class="col text-center">2</div>
+        <div id="mon" class="col text-center myWeek"></div>
         <div class="col col-md-auto"></div>
 
-        <div class="col text-center">3</div>
+        <div id="tue" class="col text-center myWeek"></div>
         <div class="col col-md-auto"></div>
 
-        <div class="col text-center">4</div>
+        <div id="wed" class="col text-center myWeek"></div>
         <div class="col col-md-auto"></div>
 
-        <div class="col text-center">5</div>
+        <div id="thu" class="col text-center myWeek"></div>
         <div class="col col-md-auto"></div>
 
-        <div class="col text-center">6</div>
+        <div id="fri" class="col text-center myWeek"></div>
         <div class="col col-md-auto"></div>
 
-        <div class="col text-center">7</div>
+        <div id="sat" class="col text-center myWeek"></div>
         <div class="col col-md-auto"></div>
 
     </div>
