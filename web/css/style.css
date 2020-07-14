@@ -1,6 +1,21 @@
+.ex-btn-order {
+  border-radius: 1rem;
+  font-size: 1rem;
+  padding: 0.42rem 1.07rem;
+}
+
 .modal-custom {
   margin-top: -35vh;
   top: 50%;
+}
+
+.border-lightgreen {
+  min-height: 80px;
+  border: 2px solid #dff6e5 !important;
+}
+
+.modal-custom-content {
+  width: 1280px;
 }
 
 .sidebar-fixed {
