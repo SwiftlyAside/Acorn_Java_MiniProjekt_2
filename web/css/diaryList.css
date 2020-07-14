@@ -1,8 +1,11 @@
+card mb-4 wow fadeIn diary{ height: auto;}
 .material-icons {
 	vertical-align: middle;
 	margin-right: 1em;
 	}
 .btn{padding: 0px;}
 .card-body{ min-height: 300px;}
-div.container{padding: 0px;}
+.container{padding: 0px;}
+.card-header{ margin-top: 5px;}
+.card-footer{ background-color: #D6E8C8;}
 #a_writePage{padding:5px;}

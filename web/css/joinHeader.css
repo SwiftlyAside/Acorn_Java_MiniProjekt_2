@@ -1,6 +1,5 @@
-#div_joinheader{
-	margin-top: 20%;
-	margin-left: 35%;
-	min-width: 420px;
-	max-width: 450px;
+.card-body{
+	margin-top: 15%;
+	margin-left: 25%;
+	width: 330px;
 }
