@@ -16,11 +16,10 @@ import java.util.Map;
 
 public class ExplorerService implements IExplorerService {
     private static final ExplorerService instance = new ExplorerService();
-    public final String ORDER_RECORD_DATE = "ORDER BY RECORDDATE ";
-    public final String ORDER_RECORD_TITLE = "ORDER BY TITLE ";
-    public final String ORDER_PLAN_DATE = "ORDER BY STARTDATE ";
-    public final String ORDER_PLAN_TITLE = "ORDER BY PLANTITLE ";
-    public final String DESC = "DESC ";
+    public static final String ORDER_RECORD_DATE = "ORDER BY RECORDDATE ";
+    public static final String ORDER_RECORD_TITLE = "ORDER BY TITLE ";
+    public static final String ORDER_PLAN_DATE = "ORDER BY STARTDATE ";
+    public static final String ORDER_PLAN_TITLE = "ORDER BY PLANTITLE ";
 
     Map<String, TemporalAdjuster> adjusterMap = new HashMap<>();
 

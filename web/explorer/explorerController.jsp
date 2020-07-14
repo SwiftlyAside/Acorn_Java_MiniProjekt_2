@@ -51,18 +51,6 @@
         }
     }
 %>
-<%--fullsize--%>
-<%--<img src="https://img.youtube.com/vi/tmERJ0R_vaE/0.jpg">--%>
-<%--small thumbnails--%>
-<%--<div class="col view overlay zoom">
-                <img src="https://img.youtube.com/vi/tmERJ0R_vaE/1.jpg">
-            </div>
-            <div class="col view overlay zoom">
-                <img src="https://img.youtube.com/vi/NNnpsdjmykU/2.jpg">
-            </div>
-            <div class="col view overlay zoom">
-                <img src="https://img.youtube.com/vi/tmERJ0R_vaE/3.jpg">
-            </div>--%>
 <%
     ExplorerService service = ExplorerService.getInstance();
     String search = request.getParameter("search");
@@ -73,10 +61,15 @@
     <%
         // target: 탭 중 하나의 이름
         String target = request.getParameter("target");
+        String group = request.getParameter("group");
+        String orderBy = request.getParameter("orderBy");
+        String desc = request.getParameter("desc") != null ? "desc " : "";
         List<MediaDTO> mediaDTOList;
         List<RecordsDTO> diaryList;
         List<RecordsDTO> recordsList;
         List<PlansDTO> plansList;
+
+        // admin 부분에는 유저 이름을 입력받아야 함
         switch (target) {
             case "media":
                 mediaDTOList = service.getAllMedias("admin", "");

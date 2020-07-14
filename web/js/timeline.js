@@ -3,14 +3,13 @@
 // id가 갖고 있는 날짜를 가져와 띄우기.
 
 // tooltip setting
-const $scroller = $('#scroll');
 $(() => {
-  $scroller.tooltip({ /* boundary: 'window' */});
+  $('#scroll').tooltip({ /* boundary: 'window' */});
 });
-$scroller.attr('data-placement', 'right');
+$('#scroll').attr('data-placement', 'right');
 
 // tooltip scroll handle
 $('.myScroll').on('scroll', $.throttle(125, () => {
-  $scroller.attr('data-original-title', `${$scroller.scrollTop()}`);
-  $scroller.tooltip('show');
+  $('#scroll').attr('data-original-title', `${$('#scroll').scrollTop()}`);
+  $('#scroll').tooltip('show');
 }));
