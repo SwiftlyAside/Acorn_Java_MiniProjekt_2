@@ -17,7 +17,7 @@ public class UsersDAO {
 
     private UsersDAO() {}
 
-    public UsersDAO getInstance() {
+    public static UsersDAO getInstance() {
         return usersDAO;
     }
 

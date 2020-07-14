@@ -87,7 +87,7 @@
         <div class="col"></div>
         <div class="col col-md-auto"></div>
     </div>
-    <div class="overflow-auto" style="max-height: 552px">
+    <div class="overflow-auto" style="max-height: 70vh">
         <div class="row">
             <div>
                 <div class="text-right p-3">

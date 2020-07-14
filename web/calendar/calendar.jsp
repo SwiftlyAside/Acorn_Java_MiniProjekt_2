@@ -11,8 +11,8 @@
             <i class="fas fa-calendar-alt"></i></h2></span>
         </div>
         <div id="dateMoveDiv" class="col my-auto text-center">
-            <a href="<%--a태그는 새 요청, ajax?--%>"><i class="fas fa-chevron-circle-left"></i></a>
-            <a href=""><i class="fas fa-chevron-circle-right"></i></a>
+            <i class="fas fa-chevron-circle-left"></i>
+            <i class="fas fa-chevron-circle-right"></i>
         </div>
         <div id="changeCalendarFormDiv" class="col-4 my-auto">
             <button type="button" id="weekCalendar" class="btn">주</button>
