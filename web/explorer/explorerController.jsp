@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page
-        import="DTO.MediaDTO, DTO.PlansDTO, DTO.RecordsDTO, Service.ExplorerService, java.io.IOException, java.util.List, java.time.LocalDate, java.util.Map" %>
+        import="DTO.MediaDTO, DTO.PlansDTO, DTO.RecordsDTO, Service.ExplorerService, java.io.IOException, java.time.LocalDate, java.util.List, java.util.Map" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%!
     public void generateMediaTable(List<MediaDTO> list, JspWriter out) {
@@ -24,13 +24,13 @@
             try {
                 switch (group) {
                     case "year":
-                        out.print("<h1>" + entry.getKey().getYear() + "</h1>");
+                        out.print("<h2>" + entry.getKey().getYear() + "</h2>");
                         break;
                     case "month":
-                        out.print("<h1>" + entry.getKey().getMonth() + "</h1>");
+                        out.print("<h2>" + entry.getKey().getYear() + "&nbsp;" + entry.getKey().getMonth() + "</h2>");
                         break;
                     case "day":
-                        out.print("<h1>" + entry.getKey() + "</h1>");
+                        out.print("<h2>" + entry.getKey() + "</h2>");
                         break;
                 }
                 generateMediaTable(entry.getValue(), out);
@@ -61,13 +61,13 @@
             try {
                 switch (group) {
                     case "year":
-                        out.print("<h1>" + entry.getKey().getYear() + "</h1>");
+                        out.print("<h2>" + entry.getKey().getYear() + "</h2>");
                         break;
                     case "month":
-                        out.print("<h1>" + entry.getKey().getMonth() + "</h1>");
+                        out.print("<h2>" + entry.getKey().getYear() + "&nbsp;" + entry.getKey().getMonth() + "</h2>");
                         break;
                     case "day":
-                        out.print("<h1>" + entry.getKey() + "</h1>");
+                        out.print("<h2>" + entry.getKey() + "</h2>");
                         break;
                 }
                 generateRecordTable(entry.getValue(), out);
@@ -98,13 +98,13 @@
             try {
                 switch (group) {
                     case "year":
-                        out.print("<h1>" + entry.getKey().getYear() + "</h1>");
+                        out.print("<h2>" + entry.getKey().getYear() + "</h2>");
                         break;
                     case "month":
-                        out.print("<h1>" + entry.getKey().getMonth() + "</h1>");
+                        out.print("<h2>" + entry.getKey().getYear() + "&nbsp;" + entry.getKey().getMonth() + "</h2>");
                         break;
                     case "day":
-                        out.print("<h1>" + entry.getKey() + "</h1>");
+                        out.print("<h2>" + entry.getKey() + "</h2>");
                         break;
                 }
                 generatePlanTable(entry.getValue(), out);
@@ -140,24 +140,33 @@
                 conditional = conditional1;
                 mediaDTOList = service.getAllMedias("admin", conditional);
                 if (!"all".contentEquals(group))
-                    generateGroupedMediaTable(service.getGroupedMedias(mediaDTOList, group), group, out);
+                    generateGroupedMediaTable(service.getGroupedMedias(mediaDTOList, group, orderBy), group, out);
                 else
                     generateMediaTable(mediaDTOList, out);
                 break;
             case "diary":
                 conditional = conditional1;
                 diaryList = service.getAllDiaries("admin", conditional);
-                generateRecordTable(diaryList, out);
+                if (!"all".contentEquals(group))
+                    generateGroupedRecordTable(service.getGroupedRecords(diaryList, group, orderBy), group, out);
+                else
+                    generateRecordTable(diaryList, out);
                 break;
             case "record":
                 conditional = conditional1;
                 recordsList = service.getAllRecords("admin", conditional);
-                generateRecordTable(recordsList, out);
+                if (!"all".contentEquals(group))
+                    generateGroupedRecordTable(service.getGroupedRecords(recordsList, group, orderBy), group, out);
+                else
+                    generateRecordTable(recordsList, out);
                 break;
             case "plan":
                 conditional = ("date".contentEquals(orderBy) ? ExplorerService.ORDER_PLAN_DATE : ExplorerService.ORDER_PLAN_TITLE) + desc;
                 plansList = service.getAllPlans("admin", conditional);
-                generatePlanTable(plansList, out);
+                if (!"all".contentEquals(group))
+                    generateGroupedPlanTable(service.getGroupedPlans(plansList, group, orderBy), group, out);
+                else
+                    generatePlanTable(plansList, out);
                 break;
         }
     %>

@@ -4,7 +4,6 @@ import DTO.MediaDTO;
 import DTO.PlansDTO;
 import DTO.RecordsDTO;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
@@ -51,9 +50,10 @@ public interface IExplorerService {
      *
      * @param mediaDTOList 그룹화 되지 않은 배열
      * @param group        그룹화 기준
+     * @param orderBy
      * @return Date로 그룹화된 맵
      */
-    Map<LocalDate, List<MediaDTO>> getGroupedMedias(List<MediaDTO> mediaDTOList, String group);
+    Map<LocalDate, List<MediaDTO>> getGroupedMedias(List<MediaDTO> mediaDTOList, String group, String orderBy);
 
 
 }
