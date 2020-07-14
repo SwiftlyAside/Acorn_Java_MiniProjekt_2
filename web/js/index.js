@@ -10,12 +10,13 @@ $(() => {
       $mainContainer.load('/explorer/explorer.jsp');
     } else if (item === 'calendar') {
       $mainContainer.load('/calendar/calendar.jsp');
-    } else if (item === 'reader') {
-      $mainContainer.load('/explorer/reader.jsp');
     } else if (item === 'diaryWrite') {
         $mainContainer.load('/diary/diaryWrite.jsp');
     }
   });
+
+  $('#timeLineDiv').load('/timeline/timeline.jsp');
+  $('#scrollData').load('/timeline/scrollData.jsp');
 
   $('#searchButton').click(() => {
     $mainContainer.load(`/explorer/explorer.jsp?search=${$('#searchText').val()}`);

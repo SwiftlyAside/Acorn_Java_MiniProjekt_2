@@ -1,3 +1,6 @@
 $(() => {
-  $('[data-toggle="tooltip"]').tooltip()
+  $('#dayFrom').datepicker({});
+  $('#dayTo').datepicker({});
+
+  $('[data-toggle="tooltip"]').tooltip();
 });

@@ -1,0 +1,11 @@
+iframe {
+  height: 252px !important;
+  width: 448px !important;
+}
+
+.readerElement {
+  width: 640px;
+  height: 70vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
