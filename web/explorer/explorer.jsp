@@ -40,8 +40,8 @@
             </label>
         </div>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-secondary btn-blue-grey ex-btn-order active">
-                <input type="radio" name="options" id="dateByYearButton" checked>년도
+            <label class="btn btn-secondary btn-blue-grey ex-btn-order">
+                <input type="radio" name="options" id="dateByYearButton">년도
             </label>
             <label class="btn btn-secondary btn-blue-grey ex-btn-order">
                 <input type="radio" name="options" id="dateByMonthButton">월
@@ -49,8 +49,8 @@
             <label class="btn btn-secondary btn-blue-grey ex-btn-order">
                 <input type="radio" name="options" id="dateByDayButton">일
             </label>
-            <label class="btn btn-secondary btn-blue-grey ex-btn-order">
-                <input type="radio" name="options" id="allButton">전체
+            <label class="btn btn-secondary btn-blue-grey ex-btn-order active">
+                <input type="radio" name="options" id="allButton" checked>전체
             </label>
             <button id="btnGroupDrop1" type="button" class="btn btn-info btn-blue-grey dropdown-toggle ex-btn-order" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">

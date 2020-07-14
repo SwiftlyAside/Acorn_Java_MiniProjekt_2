@@ -23,6 +23,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
     <!-- JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
     <!-- Bootstrap tooltips -->
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
@@ -43,7 +45,8 @@
 
     <!-- stopWatch -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timecircles/1.5.3/TimeCircles.min.css">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/timecircles/1.5.3/TimeCircles.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/timecircles/1.5.3/TimeCircles.min.js"></script>
 
     <!-- FullCalendar core CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.1.0/main.min.css">
@@ -53,6 +56,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/lang/summernote-ko-KR.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/index.js"></script>
     <link href="${pageContext.request.contextPath}/css/style.min.css" rel="stylesheet">
 </head>
@@ -81,9 +85,11 @@
             <a class="list-group-item list-group-item-action waves-effect"
                href="?open=calendar">
                 <i class="far fa-calendar mr-3"></i>달력</a>
-            <a class="list-group-item list-group-item-action waves-effect" id="readerAnchor" data-toggle="modal" data-target=".bd-example-modal-xl" href="#">
+            <a class="list-group-item list-group-item-action waves-effect" id="readerAnchor" data-toggle="modal"
+               data-target=".bd-example-modal-xl" href="#">
                 <i class="fas fa-book-reader mr-3"></i>모아보기</a>
-            <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+            <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog"
+                 aria-labelledby="myExtraLargeModalLabel"
                  aria-hidden="true">
                 <div class="modal-dialog modal-xl modal-custom">
                     <div class="modal-content modal-custom-content" id="reader">
