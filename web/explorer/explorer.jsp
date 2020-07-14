@@ -90,9 +90,4 @@
             --%>
         </div>
     </div>
-    <div style="display: none">
-        <textarea id="summer"></textarea>
-        <button id="clickbutton">click</button>
-    </div>
-    <div id="res"></div>
 </div>

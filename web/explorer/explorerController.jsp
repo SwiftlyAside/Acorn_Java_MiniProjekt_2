@@ -64,27 +64,33 @@
         String group = request.getParameter("group");
         String orderBy = request.getParameter("orderBy");
         String desc = request.getParameter("desc") != null ? "desc " : "";
+        String conditional;
         List<MediaDTO> mediaDTOList;
         List<RecordsDTO> diaryList;
         List<RecordsDTO> recordsList;
         List<PlansDTO> plansList;
 
         // admin 부분에는 유저 이름을 입력받아야 함
+        String conditional1 = ("date".contentEquals(orderBy) ? ExplorerService.ORDER_RECORD_DATE : ExplorerService.ORDER_RECORD_TITLE) + desc;
         switch (target) {
             case "media":
-                mediaDTOList = service.getAllMedias("admin", "");
+                conditional = conditional1;
+                mediaDTOList = service.getAllMedias("admin", conditional);
                 generateMediaTable(mediaDTOList, out);
                 break;
             case "diary":
-                diaryList = service.getAllDiaries("admin", "");
+                conditional = conditional1;
+                diaryList = service.getAllDiaries("admin", conditional);
                 generateRecordTable(diaryList, out);
                 break;
             case "record":
-                recordsList = service.getAllRecords("admin", "");
+                conditional = conditional1;
+                recordsList = service.getAllRecords("admin", conditional);
                 generateRecordTable(recordsList, out);
                 break;
             case "plan":
-                plansList = service.getAllPlans("admin", "");
+                conditional = ("date".contentEquals(orderBy) ? ExplorerService.ORDER_PLAN_DATE : ExplorerService.ORDER_PLAN_TITLE) + desc;
+                plansList = service.getAllPlans("admin", conditional);
                 generatePlanTable(plansList, out);
                 break;
         }
