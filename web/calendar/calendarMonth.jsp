@@ -54,4 +54,3 @@
 </div>
 
 <script src="${pageContext.request.contextPath}/js/month.js"></script>
-<script>buildCalendar();</script>
