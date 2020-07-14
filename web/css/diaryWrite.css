@@ -1,0 +1,41 @@
+.Dwrite{
+	margin: 50px;
+	width: 750px;
+}
+.Dwrite_title {
+    margin-bottom: 0rem;
+}
+.Dwrite_time{
+	margin-top: 8px;
+	margin-left: 8px;
+}
+.Dwrite_header{
+	border-radius: .25rem;
+	border: 1px solid auto;
+	background-color: #E5F3E7;
+}
+.Dwrite_headerPadding{
+	padding: 10px;
+}
+p.header{ margin:0px; margin-right:5px;}
+.Dwrite_btn{
+	margin-top: 10px;
+	width: 200px;
+}
+.Dwrite_txt_txtarea{ 
+	resize: none;
+	min-height: 300px;
+	background-color: #E5F3E7;
+	}
+.Dwrite_txt_txtarea:focus{ 
+	border: 1px solid #8bc34a;
+    box-shadow: 0 0 0 0.2rem rgba(139, 195, 74, .25);
+}
+.Dwrite_txt_title{ 
+	height: 20%;
+	background-color: #E5F3E7;
+	}
+.Dwrite_txt_title:focus{
+	border: 1px solid #8bc34a;
+    box-shadow: 0 0 0 0.2rem rgba(139, 195, 74, .25);
+}

@@ -7,12 +7,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class UsersDAO {
     private static final UsersDAO usersDAO = new UsersDAO();
-    private final String getUserIdSQL = "SELECT userId, userPass from USERS where userId = ?";
+    private final String getUsersSQL = "select userId from users where userId = ? ";
+    private final String getUserIdSQL = "SELECT count(*) from USERS where userId = ? and userPass = ?";
     private final String insertUserInfoSQL = "INSERT INTO USERS VALUES (?, ?, ?, ?)";
 
     private UsersDAO() {}
@@ -22,33 +21,49 @@ public class UsersDAO {
     }
 
 
-    // 1. login
-    // 2. id check
-    public Map<String, String> getUserId(String userId) throws SQLException {
-        Map<String, String> map = new HashMap<>();
+    // 1. id check
+    public boolean getUsers(String userId) {
+    	Connection conn = DBManager.getConnection();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        boolean b = false;
+        try {
+            pstmt = conn.prepareStatement(getUsersSQL);
+            pstmt.setString(1, userId);
+            rs = pstmt.executeQuery();
+            
+            if (rs.next()) {
+            	b = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBManager.close(conn, pstmt, rs);
+        }
+    	return b;
+    }
+    
+    // 2. login
+    public boolean getUserId(String userId, String userPass) throws SQLException {
         Connection conn = DBManager.getConnection();
         PreparedStatement pstmt = null;
         ResultSet rs = null;
+        boolean b = false;
         try {
             pstmt = conn.prepareStatement(getUserIdSQL);
             pstmt.setString(1, userId);
-
+            pstmt.setString(2, userPass);
             rs = pstmt.executeQuery();
             if (rs.next()) {
-                map.put("id", rs.getString(1));
-                map.put("pass", rs.getString(2));
-                return map;
+                b = true;
             }
-
 
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             DBManager.close(conn, pstmt, rs);
         }
-
-
-        return null;
+        return b;
     }
 
     // 1. join member

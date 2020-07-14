@@ -10,8 +10,8 @@ $(() => {
       $mainContainer.load('/explorer/explorer.jsp');
     } else if (item === 'calendar') {
       $mainContainer.load('/calendar/calendar.jsp');
-    } else if (item === 'reader') {
-      $mainContainer.load('/calendar/calendar.jsp');
+    } else if (item === 'diaryWrite') {
+        $mainContainer.load('/diary/diaryWrite.jsp');
     }
   });
 
