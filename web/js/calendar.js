@@ -1,17 +1,17 @@
 // datepicker init
 $('#sd1').datepicker({
   autoclose: true,
-  format: 'yy/mm/dd'
+  format: 'yyyy/m/dd'
 });
 
 $('#sd2').datepicker({
   autoclose: true,
-  format: 'yy/mm/dd'
+  format: 'yyyy/m/dd'
 });
 
 $('#sd3').datepicker({
   autoclose: true,
-  format: 'yy/mm/dd'
+  format: 'yyyy/m/dd'
 });
 
 // calendar 기본 화면 및 월/주 변경 처리
@@ -70,4 +70,13 @@ $('#taskClose').click(function () {
   $('#taskTitle').val('');
   timer.destroy();
   timer = $('.timer').TimeCircles({start: false});
+});
+
+// plan, task 저장 임시 logic
+$('#makePlanDiv > button').click(() => {
+  $('#monthBody tr div[id]').append('<li>plan</li>');
+});
+
+$('#makeTaskDiv > button').click(() => {
+  $('#monthBody tr div[id]').append('<li>task</li>');
 });

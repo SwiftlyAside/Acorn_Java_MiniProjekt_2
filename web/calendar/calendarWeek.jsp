@@ -560,4 +560,5 @@
             </div>
         </div>
     </div>
-    <%--    <script src="${pageContext.request.contextPath}/js/week.js"></script>--%>
+</div>
+<script src="${pageContext.request.contextPath}/js/week.js"></script>
