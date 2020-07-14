@@ -4,7 +4,7 @@
 <span class="light-green-text flex-center"
       style="font-family: 'Julius Sans One', sans-serif; font-size: 22pt">Time Line</span>
 </div>
-<div id="scroll" class="overflow-auto" style="max-height: 43vh">
+<div id="scroll" class="overflow-auto myScroll" style="max-height: 43vh">
     <div class="list-group list-group-flush">
         <div id="0" class="list-group-item list-group-item-action waves-effect">
             <span>날짜</span><br>
