@@ -91,19 +91,18 @@ $(document).ready(function () {
     // cntroller 에 전달
 
     let data = {};
+    data.userId = 'admin'; /*get from session..*/
     data.title = $('#planTitle').val();
     data.content = $('#planContent').val();
-    data.starDate = $('#planStartDate').val();
-    data.endDate = $('#planEndDate').val();
-    data.startTime = $('#starTime').val();
-    data.endTime = $('#endTime').val();
+    data.starDate = $('#planStartDate').val() + $('#starTime').val();
+    data.endDate = $('#planEndDate').val() + $('#endTime').val();
 
     let jsonData = JSON.stringify(data);
     console.log(jsonData);
 
     $.ajax({
       type: 'POST',
-      url: '/calendar/calendarController.jsp',
+      url: '/calendar/calendarController.jsp?target=plan',
       data: {
         jsonData: jsonData
       },
