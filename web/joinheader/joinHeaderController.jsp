@@ -5,6 +5,7 @@
 	String url = "";
 	if("loginForm".contentEquals(target))	url = "/joinheader/loginForm.jsp";
 	if("membershipForm".contentEquals(target))	url = "/joinheader/membershipForm.jsp";
+	if("findForm".contentEquals(target))	url = "/joinheader/findForm.jsp";
 %>
 <jsp:forward page="<%=url %>"></jsp:forward>
 <%-- <jsp:forward page="/joinheader/loginForm.jsp"></jsp:forward> --%>

@@ -7,7 +7,7 @@ public class MediaDTO {
     private String recordNo;
     // 미디어
     private String media;
-    // 날짜
+    // 날짜 (Record 테이블과의 조인 데이터)
     private Date date;
 
     public MediaDTO(String recordNo, String media, Date date) {
