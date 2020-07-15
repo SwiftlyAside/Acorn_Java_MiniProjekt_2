@@ -6,6 +6,7 @@
 	<form class="form-horizontal frm_membership">
 		<div class='form-group'>
 			<input type='text' name='joinName' class='form-control col-md-auto stxt' id='txt_joinName' placeholder='이름 입력' />
+			<label id='lbl_joinNameAlert'></label>
 		</div>
 		<div class='form-group'>
 			<input type='text' name='joinId' class='form-control col-md-auto stxt' id='txt_joinId' placeholder='ID 입력' />

@@ -30,7 +30,7 @@ public class ExplorerService implements IExplorerService {
     private ExplorerService() {
         this.mediaDAO = MediaDAO.getInstance();
         this.plansDAO = PlansDAO.getInstance();
-        this.recordsDAO = new RecordsDAO();
+        this.recordsDAO = RecordsDAO.getInstance();
     }
 
     public static ExplorerService getInstance() {
@@ -49,7 +49,7 @@ public class ExplorerService implements IExplorerService {
 
     @Override
     public List<RecordsDTO> getAllRecords(String userId, String condition) {
-        return recordsDAO.getRecords(userId, condition);
+        return recordsDAO.getRecord(userId, condition);
     }
 
     @Override
