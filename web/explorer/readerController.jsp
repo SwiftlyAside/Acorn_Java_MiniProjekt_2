@@ -22,7 +22,12 @@
 <%
     // 처리
     IExplorerService service = ExplorerService.getInstance();
-    List<RecordsDTO> diaries = service.getAllDiaries("admin", "");
+    List<RecordsDTO> diaries = service.getAllDiaries("admin", ExplorerService.ORDER_RECORD_DATE);
+    System.out.println("[START]");
+    for (RecordsDTO diary : diaries) {
+        System.out.println(diary);
+    }
+    System.out.println("[END]");
     int index = -2;
     String move = request.getParameter("move");
     boolean error = false;
@@ -42,8 +47,9 @@
         }
     }
 
-    if (index == -2)
-        index = diaries.size() - 1;
+    if (index == -2) {
+        index = (diaries.size() - 1) % 2 == 0 ? diaries.size() - 1 : diaries.size() - 2;
+    }
     if (error) {
         out.print("OUTOFINDEX");
     } else {
