@@ -1,7 +1,9 @@
 $(document).ready(function () {
 
+  $('#todayButton').unbind('click');
   $('#right').unbind('click');
   $('#left').unbind('click');
+  $('#sd1 > input').unbind('change');
 
 // overflow 적용 func
   var overFn = function () {
@@ -42,13 +44,13 @@ $(document).ready(function () {
   }
 
 //현재 달 달력 만들기
-  function buildCalendar(){
-    var doMonth = new Date(today.getFullYear(),today.getMonth(),1);
+  function buildCalendar() {
+    var doMonth = new Date(today.getFullYear(), today.getMonth(), 1);
     //이번 달의 첫째 날,
     //new를 쓰는 이유 : new를 쓰면 이번달의 로컬 월을 정확하게 받아온다.
     //new를 쓰지 않았을때 이번달을 받아오려면 +1을 해줘야한다.
     //왜냐면 getMonth()는 0~11을 반환하기 때문
-    var lastDate = new Date(today.getFullYear(),today.getMonth()+1,0);
+    var lastDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
     //이번 달의 마지막 날
     //new를 써주면 정확한 월을 가져옴, getMonth()+1을 해주면 다음달로 넘어가는데
     //day를 1부터 시작하는게 아니라 0부터 시작하기 때문에
@@ -65,7 +67,7 @@ $(document).ready(function () {
     while (tbCalendar.rows.length > 2) {
       //열을 지워줌
       //기본 열 크기는 body 부분에서 2로 고정되어 있다.
-      tbCalendar.deleteRow(tbCalendar.rows.length-1);
+      tbCalendar.deleteRow(tbCalendar.rows.length - 1);
       //테이블의 tr 갯수 만큼의 열 묶음은 -1칸 해줘야지
       //30일 이후로 담을달에 순서대로 열이 계속 이어진다.
     }
@@ -74,26 +76,26 @@ $(document).ready(function () {
     //테이블에 새로운 열 삽입//즉, 초기화
     var cnt = 0;// count, 셀의 갯수를 세어주는 역할
     // 1일이 시작되는 칸을 맞추어 줌
-    for (let i=0; i<doMonth.getDay(); i++) {
+    for (let i = 0; i < doMonth.getDay(); i++) {
       /*이번달의 day만큼 돌림*/
       row.insertCell();//열 한칸한칸 계속 만들어주는 역할
       cnt = cnt + 1;//열의 갯수를 계속 다음으로 위치하게 해주는 역할
     }
     /*달력 출력*/
-    for (let i=1; i<=lastDate.getDate(); i++) {
+    for (let i = 1; i <= lastDate.getDate(); i++) {
       //1일부터 마지막 일까지 돌림
       let cell = row.insertCell();//열 한칸한칸 계속 만들어주는 역할
-      cell.innerHTML = '<div>'+i+'</div>' + '<div id=' +i + '>' + '</div>';//셀을 1부터 마지막 day까지 HTML 문법에 넣어줌
+      cell.innerHTML = '<div>' + i + '</div>' + '<div id=' + i + '>' + '</div>';//셀을 1부터 마지막 day까지 HTML 문법에 넣어줌
       cnt = cnt + 1;//열의 갯수를 계속 다음으로 위치하게 해주는 역할
       if (cnt % 7 == 1) {/*일요일 계산*/
         //1주일이 7일 이므로 일요일 구하기
         //월화수목금토일을 7로 나눴을때 나머지가 1이면 cnt가 1번째에 위치함을 의미한다
-        cell.innerHTML = '<div>' + "<font color=#F79DC2>" + i +'</font></div>' +  '<div id=' +i + '>' + '</div>';
+        cell.innerHTML = '<div>' + "<font color=#F79DC2>" + i + '</font></div>' + '<div id=' + i + '>' + '</div>';
         //1번째의 cell에만 색칠
       }
-      if (cnt%7 == 0){/* 1주일이 7일 이므로 토요일 구하기*/
+      if (cnt % 7 == 0) {/* 1주일이 7일 이므로 토요일 구하기*/
         //월화수목금토일을 7로 나눴을때 나머지가 0이면 cnt가 7번째에 위치함을 의미한다
-        cell.innerHTML = '<div>' + "<font color=skyblue>" + i + '</font></div>' +  '<div id=' +i + '>' + '</div>';
+        cell.innerHTML = '<div>' + "<font color=skyblue>" + i + '</font></div>' + '<div id=' + i + '>' + '</div>';
         //7번째의 cell에만 색칠
         row = tbCalendar.insertRow();
         //토요일 다음에 올 셀을 추가
@@ -110,17 +112,17 @@ $(document).ready(function () {
   }
 
 // monthly calendar button
-  $('#todayButton').click(()=>{
+  $('#todayButton').click(() => {
     $('#monthBody tr').remove();
     today = new Date();
     buildCalendar();
   })
-  $('#right').click(()=>{
+  $('#right').click(() => {
     $('#monthBody tr').remove();
     nextCalendar();
     $('#sd1').datepicker('update', today);
   })
-  $('#left').click(()=>{
+  $('#left').click(() => {
     $('#monthBody tr').remove();
     prevCalendar();
     $('#sd1').datepicker('update', today);
@@ -129,7 +131,7 @@ $(document).ready(function () {
   $('#sd1 > input').change(function () {
     $('#monthBody tr').remove();
     let date = $(this).val().split('/');
-    today = new Date(date[0], date[1]-1, date[2]);
+    today = new Date(date[0], date[1] - 1, date[2]);
     buildCalendar();
   })
 
