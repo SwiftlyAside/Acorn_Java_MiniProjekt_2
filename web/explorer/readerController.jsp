@@ -1,4 +1,4 @@
-<%@ page import="DTO.RecordsDTO, Service.ExplorerService, Service.IExplorerService, java.util.List" %><%--
+<%@ page import="DTO.RecordsDTO, Service.ExplorerService, Service.IExplorerService, java.util.List, java.sql.Date" %><%--
   User: iveci
   Date: 2020-07-15
   Time: 10:10
@@ -22,14 +22,26 @@
 <%
     // 처리
     IExplorerService service = ExplorerService.getInstance();
-    List<RecordsDTO> diaries = service.getAllDiaries("admin", ExplorerService.ORDER_RECORD_DATE);
-    System.out.println("[START]");
-    for (RecordsDTO diary : diaries) {
-        System.out.println(diary);
-    }
-    System.out.println("[END]");
-    int index = -2;
     String move = request.getParameter("move");
+    String timeFrom = request.getParameter("timeFrom");
+    String timeTo = request.getParameter("timeTo");
+    StringBuffer conditional = new StringBuffer();
+    if (timeFrom != null)
+        // 조건문에 첫번째 날짜 이전의 모든 일기 요청 추가
+    {
+        System.out.println("RECEIVED TIME FROM: " + new Date(Long.parseLong(timeFrom)));
+        conditional.append(String.format("AND RECORDDATE >= '%s' ", new Date(Long.parseLong(timeFrom))));
+    }
+    if (timeTo != null)
+        // 조건문에 두번째 날짜 이후의 모든 일기 요청 추가
+    {
+        System.out.println("RECEIVED TIME TO: " + new Date(Long.parseLong(timeTo)));
+        conditional.append(String.format("AND RECORDDATE <= '%s' ", new Date(Long.parseLong(timeTo))));
+    }
+    conditional.append(ExplorerService.ORDER_RECORD_DATE);
+    System.out.println(conditional);
+    List<RecordsDTO> diaries = service.getAllDiaries("admin", conditional.toString());
+    int index = -2;
     boolean error = false;
     if (move != null) {
         index = (int) session.getAttribute("index");
@@ -50,7 +62,7 @@
     if (index == -2) {
         index = (diaries.size() - 1) % 2 == 0 ? diaries.size() - 1 : diaries.size() - 2;
     }
-    if (error) {
+    if (error || diaries.size() == 0) {
         out.print("OUTOFINDEX");
     } else {
         session.setAttribute("index", index);

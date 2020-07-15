@@ -10,24 +10,17 @@
 <%--모아보기 네비게이션 바--%>
 <div class="modal-header flex-1">
     <div class="btn-toolbar py-2" role="toolbar" aria-label="Toolbar with button groups">
-        <div class="col-2 my-auto">
-            <input type="text" data-provide="datepicker" class="form-control">
-        </div>
-        <div class="col-1 my-auto">
-            부터
-        </div>
-        <div class="col-2 my-auto">
-            <input type="text" data-provide="datepicker" class="form-control">
-        </div>
-        <div class="col-1 my-auto">
-            까지
+        <div class="input-daterange input-group my-auto ex-btn-order" id="dateRangePicker">
+            <input type="text" class="input-sm form-control " name="start" id="start"/>
+            <span class="input-group-addon my-auto">&nbsp;to&nbsp;</span>
+            <input type="text" class="input-sm form-control" name="end" id="end"/>
         </div>
         <div class="btn-group btn-group-toggle my-auto" data-toggle="buttons" id="orderTypeGroup">
-            <label class="btn btn-secondary btn-blue-grey ex-btn-order active">
-                <input type="radio" name="options" id="byWeekButton" checked>1주일
+            <label class="btn btn-secondary btn-blue-grey ex-btn-order my-auto active">
+                <input type="radio" name="options" id="WeekButton" value="week" checked>1주일
             </label>
-            <label class="btn btn-secondary btn-blue-grey ex-btn-order">
-                <input type="radio" name="options" id="byMonthButton">1개월
+            <label class="btn btn-secondary btn-blue-grey ex-btn-order my-auto">
+                <input type="radio" name="options" id="MonthButton" value="month">1개월
             </label>
         </div>
     </div>
