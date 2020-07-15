@@ -141,7 +141,7 @@
                 conditional = conditional1;
                 mediaDTOList = service.getAllMedias("admin", conditional);
                 if (!"all".contentEquals(group))
-                    generateGroupedMediaTable(service.getGroupedMedias(mediaDTOList, group, orderBy), group, out);
+                    generateGroupedMediaTable(service.getGroupedMedias(mediaDTOList, group), group, out);
                 else
                     generateMediaTable(mediaDTOList, out);
                 break;
@@ -149,7 +149,7 @@
                 conditional = conditional1;
                 diaryList = service.getAllDiaries("admin", conditional);
                 if (!"all".contentEquals(group))
-                    generateGroupedRecordTable(service.getGroupedRecords(diaryList, group, orderBy), group, out);
+                    generateGroupedRecordTable(service.getGroupedRecords(diaryList, group), group, out);
                 else
                     generateRecordTable(diaryList, out);
                 break;
@@ -157,7 +157,7 @@
                 conditional = conditional1;
                 recordsList = service.getAllRecords("admin", conditional);
                 if (!"all".contentEquals(group))
-                    generateGroupedRecordTable(service.getGroupedRecords(recordsList, group, orderBy), group, out);
+                    generateGroupedRecordTable(service.getGroupedRecords(recordsList, group), group, out);
                 else
                     generateRecordTable(recordsList, out);
                 break;
@@ -165,7 +165,7 @@
                 conditional = ("date".contentEquals(orderBy) ? ExplorerService.ORDER_PLAN_DATE : ExplorerService.ORDER_PLAN_TITLE) + desc;
                 plansList = service.getAllPlans("admin", conditional);
                 if (!"all".contentEquals(group))
-                    generateGroupedPlanTable(service.getGroupedPlans(plansList, group, orderBy), group, out);
+                    generateGroupedPlanTable(service.getGroupedPlans(plansList, group), group, out);
                 else
                     generatePlanTable(plansList, out);
                 break;

@@ -50,10 +50,12 @@ public interface IExplorerService {
      *
      * @param mediaDTOList 그룹화 되지 않은 배열
      * @param group        그룹화 기준
-     * @param orderBy
      * @return Date로 그룹화된 맵
      */
-    Map<LocalDate, List<MediaDTO>> getGroupedMedias(List<MediaDTO> mediaDTOList, String group, String orderBy);
+    Map<LocalDate, List<MediaDTO>> getGroupedMedias(List<MediaDTO> mediaDTOList, String group);
 
 
+    Map<LocalDate, List<RecordsDTO>> getGroupedRecords(List<RecordsDTO> recordsDTOList, String group);
+
+    Map<LocalDate, List<PlansDTO>> getGroupedPlans(List<PlansDTO> plansDTOList, String group);
 }

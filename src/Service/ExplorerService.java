@@ -9,7 +9,6 @@ import DTO.RecordsDTO;
 
 import java.time.LocalDate;
 import java.time.temporal.TemporalAdjuster;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -59,7 +58,7 @@ public class ExplorerService implements IExplorerService {
     }
 
     @Override
-    public Map<LocalDate, List<MediaDTO>> getGroupedMedias(List<MediaDTO> mediaDTOList, String group, String orderBy) {
+    public Map<LocalDate, List<MediaDTO>> getGroupedMedias(List<MediaDTO> mediaDTOList, String group) {
         switch (group) {
             case "year":
                 return mediaDTOList.stream().collect(Collectors.groupingBy(mediaDTO -> mediaDTO.getDate().toLocalDate().withMonth(1).withDayOfMonth(1)));
@@ -71,7 +70,8 @@ public class ExplorerService implements IExplorerService {
         return null;
     }
 
-    public Map<LocalDate, List<RecordsDTO>> getGroupedRecords(List<RecordsDTO> recordsDTOList, String group, String orderBy) {
+    @Override
+    public Map<LocalDate, List<RecordsDTO>> getGroupedRecords(List<RecordsDTO> recordsDTOList, String group) {
         switch (group) {
             case "year":
                 return recordsDTOList.stream().collect(Collectors.groupingBy(recordsDTO -> recordsDTO.getRecordDate().toLocalDate().withMonth(1).withDayOfMonth(1)));
@@ -83,7 +83,8 @@ public class ExplorerService implements IExplorerService {
         return null;
     }
 
-    public Map<LocalDate, List<PlansDTO>> getGroupedPlans(List<PlansDTO> plansDTOList, String group, String orderBy) {
+    @Override
+    public Map<LocalDate, List<PlansDTO>> getGroupedPlans(List<PlansDTO> plansDTOList, String group) {
         switch (group) {
             case "year":
                 return plansDTOList.stream().collect(Collectors.groupingBy(plansDTO -> plansDTO.getStartDate().toLocalDate().withMonth(1).withDayOfMonth(1)));
