@@ -24,14 +24,30 @@
     IExplorerService service = ExplorerService.getInstance();
     List<RecordsDTO> diaries = service.getAllDiaries("admin", "");
     int index = -2;
-    if (request.getParameter("readerIndex") != null)
-        index = Integer.parseInt(request.getParameter("readerIndex"));
+    String move = request.getParameter("move");
+    boolean error = false;
+    if (move != null) {
+        index = (int) session.getAttribute("index");
+        switch (move) {
+            case "left":
+                if (index - 2 < 0)
+                    error = true;
+                else index -= 2;
+                break;
+            case "right":
+                if (index + 2 >= diaries.size())
+                    error = true;
+                else index += 2;
+                break;
+        }
+    }
 
     if (index == -2)
         index = diaries.size() - 1;
-    if (index < 0 || index >= diaries.size())
-        out.print(-1);
-    else {
+    if (error) {
+        out.print("OUTOFINDEX");
+    } else {
+        session.setAttribute("index", index);
 %>
 <%--일기장 좌측 --%>
 <div class="col readerElement">

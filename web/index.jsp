@@ -58,7 +58,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/index.js"></script>
-    <link href="${pageContext.request.contextPath}/css/style.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/style.min.css?v=<%=Math.random()%>" rel="stylesheet">
 </head>
 <body class="light-green lighten-5">
 <!--Main Navigation-->
@@ -88,14 +88,6 @@
             <a class="list-group-item list-group-item-action waves-effect" id="readerAnchor" data-toggle="modal"
                data-target=".bd-example-modal-xl" href="#">
                 <i class="fas fa-book-reader mr-3"></i>모아보기</a>
-            <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog"
-                 aria-labelledby="myExtraLargeModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog modal-xl modal-custom">
-                    <div class="modal-content modal-custom-content" id="reader">
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div id="timeLineDiv"></div>
@@ -118,6 +110,14 @@
 
         </div>
         <!-- Heading -->
+    </div>
+    <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog"
+         aria-labelledby="myExtraLargeModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-custom">
+            <div class="modal-content modal-custom-content" id="reader">
+            </div>
+        </div>
     </div>
 </main>
 <!--Main layout-->
