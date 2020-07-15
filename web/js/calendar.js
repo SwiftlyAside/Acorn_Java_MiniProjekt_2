@@ -72,13 +72,4 @@ $(document).ready(function () {
     timer.destroy();
     timer = $('.timer').TimeCircles({start: false});
   });
-
-// plan, task 저장 임시 logic
-  $('#makePlanDiv > button').click(() => {
-    $('#monthBody tr div[id]').append('<li>plan</li>');
-  });
-
-  $('#makeTaskDiv > button').click(() => {
-    $('#monthBody tr div[id]').append('<li>task</li>');
-  });
 })

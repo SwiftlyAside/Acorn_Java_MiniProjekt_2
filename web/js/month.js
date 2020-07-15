@@ -4,6 +4,8 @@ $(document).ready(function () {
   $('#right').unbind('click');
   $('#left').unbind('click');
   $('#sd1 > input').unbind('change');
+  $('#makePlanDiv > button').unbind('click');
+  $('#makeTaskDiv > button').unbind('click');
 
 // overflow 적용 func
   var overFn = function () {
@@ -134,7 +136,15 @@ $(document).ready(function () {
     today = new Date(date[0], date[1] - 1, date[2]);
     buildCalendar();
   })
+// plan, task 저장 임시 logic
+  $('#makePlanDiv > button').click(() => {
+    $('#monthBody tr div[id]').append('<li>plan</li>');
+  });
 
+  $('#makeTaskDiv > button').click(() => {
+    $('#monthBody tr div[id]').append('<li>task</li>');
+  });
 
   buildCalendar();
 })
+

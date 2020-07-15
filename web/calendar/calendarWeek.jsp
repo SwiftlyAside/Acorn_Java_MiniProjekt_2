@@ -66,25 +66,25 @@
         <div class="col col-md-auto"></div>
         <div class="col col-md-auto"></div>
 
-        <div class="col">종일 일정 줄</div>
+        <div id="allDay1" class="col">종일 일정 줄</div>
         <div class="col col-md-auto"></div>
 
-        <div class="col"></div>
+        <div id="allDay2" class="col"></div>
         <div class="col col-md-auto"></div>
 
-        <div class="col"></div>
+        <div id="allDay3" class="col"></div>
         <div class="col col-md-auto"></div>
 
-        <div class="col"></div>
+        <div id="allDay4" class="col"></div>
         <div class="col col-md-auto"></div>
 
-        <div class="col"></div>
+        <div id="allDay5" class="col"></div>
         <div class="col col-md-auto"></div>
 
-        <div class="col"></div>
+        <div id="allDay6" class="col"></div>
         <div class="col col-md-auto"></div>
 
-        <div class="col"></div>
+        <div id="allDay7" class="col"></div>
         <div class="col col-md-auto"></div>
     </div>
     <div class="overflow-auto" style="max-height: 70vh">
@@ -168,25 +168,20 @@
                 <div id="blankDiv2" class="col"></div>
             </div>
             <div id="dayBlockDiv" class="col">
-                <div id="1" class="row">
-                    <div class="col">
-                        <div class="row">
-                            <%-- 독립적인 div가 되려면 id부여 후 관리해야함..--%>
-                            <div class="col task">타이틀은 id로 컨트롤</div>
-                            <div class="col task">타이틀이 길어지면 어떡하죠?</div>
-                        </div>
+                <div id="day0h" class="row">
+                    <div id="day0h_1" class="col">
                     </div>
-                    <div class="col">
+                    <div id="day0h_2" class="col">
                     </div>
-                    <div class="col">
+                    <div id="day0h_3" class="col">
                     </div>
-                    <div class="col">
+                    <div id="day0h_4" class="col">
                     </div>
-                    <div class="col">
+                    <div id="day0h_5" class="col">
                     </div>
-                    <div class="col">
+                    <div id="day0h_6" class="col">
                     </div>
-                    <div class="col">
+                    <div id="day0h_7" class="col">
                     </div>
                 </div>
                 <div class="row">
