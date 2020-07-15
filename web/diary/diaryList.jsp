@@ -25,7 +25,7 @@
 		
 	<!-- Card -->
 	<%
-		String userId = "sglee";
+		String userId = "admin";
 		//String userId = (String)session.getAttribute("userId");
 	
 		RecordsDAO recordsdao = RecordsDAO.getInstance();
