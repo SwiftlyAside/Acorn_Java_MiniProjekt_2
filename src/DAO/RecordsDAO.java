@@ -11,6 +11,15 @@ import DBCP.DBManager;
 import DTO.RecordsDTO;
 
 public class RecordsDAO {
+	private static final RecordsDAO instance = new RecordsDAO();
+
+    private RecordsDAO() {
+    }
+
+    public static RecordsDAO getInstance() {
+        return instance;
+    }
+    
 	public List<RecordsDTO> getDiary(String userId, String condition){
 		List<RecordsDTO> list = new ArrayList<RecordsDTO>();
 		
@@ -31,7 +40,7 @@ public class RecordsDAO {
 				recordsdto.setRecordDate(rs.getDate("recordDate"));
 				recordsdto.setTitle(rs.getString("title"));
 				recordsdto.setContent(rs.getString("content"));
-				recordsdto.setGeoInfo(rs.getInt("geoInfo"));
+				recordsdto.setGeoInfo(rs.getString("geoInfo"));
 				recordsdto.setWeather(rs.getString("weather"));
 				recordsdto.setCondition(rs.getString("condition"));
 				
@@ -46,7 +55,30 @@ public class RecordsDAO {
 		
 		return list;
 	}
-	public List<RecordsDTO> getRecords(String userId, String condition){
+	public String getDiaryRecordNo(String userId){
+		String getDiaryListSQL = "select recordNo from RECORDS where recordNo like 'D%' and userId = ? order by recordDate desc";
+		
+		Connection conn = DBManager.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String recordNo = null;
+		try {
+			pstmt = conn.prepareStatement(getDiaryListSQL);
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				recordNo = rs.getString("recordNo");
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		
+		return recordNo;
+	}
+	public List<RecordsDTO> getRecord(String userId, String condition){
 		List<RecordsDTO> list = new ArrayList<RecordsDTO>();
 		
 		String getRecordsListSQL = "select * from records where userId = ? and recordNo like 'R%' " + condition;
@@ -65,7 +97,7 @@ public class RecordsDAO {
 				recordsdto.setRecordDate(rs.getDate("recordDate"));
 				recordsdto.setTitle(rs.getString("title"));
 				recordsdto.setContent(rs.getString("content"));
-				recordsdto.setGeoInfo(rs.getInt("geoInfo"));
+				recordsdto.setGeoInfo(rs.getString("geoInfo"));
 				recordsdto.setWeather(rs.getString("weather"));
 				recordsdto.setCondition(rs.getString("condition"));
 				
@@ -78,5 +110,78 @@ public class RecordsDAO {
 		}
 		
 		return list;
+	}
+	public boolean setDiary(RecordsDTO recordsdto) {
+		boolean b = false;
+		String insertDiarySQL = "insert into Records values(?,?,sysdate,?,?,?,?,?) ";
+		
+		Connection conn = DBManager.getConnection();
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement(insertDiarySQL);
+			
+			pstmt.setString(1, recordsdto.getRecordNo());
+			pstmt.setString(2, recordsdto.getUserId());
+			pstmt.setString(3, recordsdto.getTitle());
+			pstmt.setString(4, recordsdto.getContent());
+			pstmt.setString(5, recordsdto.getGeoInfo());
+			pstmt.setString(6, recordsdto.getWeather());
+			pstmt.setString(7, recordsdto.getCondition());
+			pstmt.execute();
+			
+			b = true;
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt);
+		}
+		return b;
+	}
+	public boolean setRecord(RecordsDTO recordsdto) {
+		boolean b = false;
+		String insertRecordsSQL = "insert into Records(recordNo, userId, recordDate, title, content) values(?,?,?,?,?) ";
+		
+		Connection conn = DBManager.getConnection();
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement(insertRecordsSQL);
+			
+			pstmt.setString(1, recordsdto.getRecordNo());
+			pstmt.setString(2, recordsdto.getUserId());
+			pstmt.setDate(3, recordsdto.getRecordDate());
+			pstmt.setString(4, recordsdto.getTitle());
+			pstmt.setString(5, recordsdto.getContent());
+			pstmt.execute();
+			
+			b = true;
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt);
+		}
+		return b;
+	}
+	public boolean delRecords(String recordNo, String userId) {
+		boolean b = false;
+		String deleteDiarySQL = "delete from Records where recordNo = ? and userId = ? ";
+		
+		Connection conn = DBManager.getConnection();
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement(deleteDiarySQL);
+			
+			pstmt.setString(1, recordNo);
+			pstmt.setString(2, userId);
+			pstmt.execute();
+			
+			b = true;
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt);
+		}
+		return b;
 	}
 }

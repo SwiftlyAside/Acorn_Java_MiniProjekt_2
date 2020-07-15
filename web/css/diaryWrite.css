@@ -17,6 +17,12 @@
 .Dwrite_headerPadding{
 	padding: 10px;
 }
+.Dwrite_nonPadding{
+	padding: 0px;
+}
+.Dwrite_nonMargin{
+	margin: 0px;
+}
 p.header{ margin:0px; margin-right:5px;}
 .Dwrite_btn{
 	margin-top: 10px;
@@ -38,4 +44,10 @@ p.header{ margin:0px; margin-right:5px;}
 .Dwrite_txt_title:focus{
 	border: 1px solid #8bc34a;
     box-shadow: 0 0 0 0.2rem rgba(139, 195, 74, .25);
+}
+.Dwrite_weather{
+	background: #B0C8B6;
+}
+.img_weather{
+	width: 60px;
 }

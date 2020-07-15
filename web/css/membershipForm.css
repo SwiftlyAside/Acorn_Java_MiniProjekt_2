@@ -4,3 +4,4 @@
 .frm_membership{text-align: -webkit-right;}
 #txt_joinAuthNum { display: none;}
 .mem_divbtn{ padding: 0px;}
+input#btn_submit{ disabled: disabled;}
