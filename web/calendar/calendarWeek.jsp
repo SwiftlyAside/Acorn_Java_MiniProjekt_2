@@ -170,6 +170,11 @@
             <div id="dayBlockDiv" class="col">
                 <div id="day0h" class="row">
                     <div id="day0h_1" class="col">
+                        <%--<div class="row">
+                            &lt;%&ndash; 독립적인 div가 되려면 id부여 후 관리해야함..&ndash;%&gt;
+                            <div class="col task">타이틀은 id로 컨트롤</div>
+                            <div class="col task">타이틀이 길어지면 어떡하죠?</div>
+                        </div>--%>
                     </div>
                     <div id="day0h_2" class="col">
                     </div>

@@ -61,26 +61,34 @@
                     <textarea id="planContent" placeholder="내용" style="width: 436px; height: 320px"></textarea>
                 </div>
                 <div class="table">
-                    <div class="row" style="height: 80px">
+                    <div class="row" style="height: 120px">
                         <div class="col md-form mb-5">
-                            <div id="sd2" class="input-group date col my-auto" style="padding-top: 7px">
+                            <div id="sd2" class="input-group date col my-auto" style="padding-top: 7px; padding-left: 0px; height: 70px">
                                 <input type="text" id="planStartDate" class="form-control validate"><span
                                     class="input-group-addon"><h2><i class="fas fa-calendar-alt"></i></h2></span>
                                 <label data-error="wrong" data-success="right" for="planStartDate">시작</label>
                             </div>
+                            <div class="input-group date col my-auto" style="padding-top: 7px; padding-left: 0px; margin-top: -7px">
+                                <input type="text" id="starTime" class="form-control validate">
+                                <label data-error="wrong" for="starTime">시작시간</label>
+                            </div>
                         </div>
                         <div class="col md-form mb-5">
-                            <div id="sd3" class="input-group date col my-auto" style="padding-top: 7px">
+                            <div id="sd3" class="input-group date col my-auto" style="padding-top: 7px; padding-left: 0px; height: 70px">
                                 <input type="text" id="planEndDate" class="form-control validate"><span
                                     class="input-group-addon"><h2><i class="fas fa-calendar-alt"></i></h2></span>
                                 <label data-error="wrong" data-success="right" for="planEndDate">종료</label>
+                            </div>
+                            <div class="input-group date col my-auto" style="padding-top: 7px; padding-left: 0px; margin-top: -7px">
+                                <input type="text" id="endTime" class="form-control validate">
+                                <label data-error="wrong" for="endTime">종료시간</label>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer flex-center">
-                <button type="button" id="planWrite" class="btn btn-primary btn-sm">저장</button>
+                <button type="button" id="planWrite" class="btn btn-primary btn-sm" data-dismiss="modal">저장</button>
                 <button type="button" id="planClose" class="btn btn-secondary btn-sm" data-dismiss="modal">닫기</button>
             </div>
         </div>

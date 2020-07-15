@@ -99,15 +99,5 @@ $(document).ready(function () {
     todayWeek(showDateArr(startDate));
   })
 
-  // plan, task 저장 임시 logic
-  $('#makePlanDiv > button').click(() => {
-    $('#dayBlockDiv .col').append('<li>plan</li>');
-  });
-
-  $('#makeTaskDiv > button').click(() => {
-    $('#dayBlockDiv .col').append('<li>task</li>');
-  });
-
-
   todayWeek(showDateArr(startDate));
 })

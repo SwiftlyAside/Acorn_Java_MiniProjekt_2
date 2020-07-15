@@ -53,18 +53,21 @@ $(document).ready(function () {
     timer = $('.timer').TimeCircles({start: false});
   });
 
-  $('#planClose').click(function () {
+  function planModalClear() {
     $('#planTitle').val('');
     $('#planContent').val('');
     $('#planStartDate').val('');
     $('#planEndDate').val('');
+    $('#starTime').val('');
+    $('#endTime').val('');
+  }
+
+  $('#planClose').click(function () {
+    planModalClear();
   });
 
   $('#planCloseIcon').click(function () {
-    $('#planTitle').val('');
-    $('#planContent').val('');
-    $('#planStartDate').val('');
-    $('#planEndDate').val('');
+    planModalClear();
   });
 
   $('#taskClose').click(function () {
@@ -72,4 +75,46 @@ $(document).ready(function () {
     timer.destroy();
     timer = $('.timer').TimeCircles({start: false});
   });
+
+  // plan, task 저장 임시 logic
+  $('#makePlanDiv > button').click(() => {
+    // $('#monthBody tr div[id]').append('<li>plan</li>');
+  });
+
+  $('#makeTaskDiv > button').click(() => {
+    // $('#monthBody tr div[id]').append('<li>task</li>');
+  });
+
+  $('#planWrite').click(() => {
+    // no -> p 붙이기
+    // 객체에 저장하여 json 형식으로 data 구조화
+    // cntroller 에 전달
+
+    let data = {};
+    data.title = $('#planTitle').val();
+    data.content = $('#planContent').val();
+    data.starDate = $('#planStartDate').val();
+    data.endDate = $('#planEndDate').val();
+    data.startTime = $('#starTime').val();
+    data.endTime = $('#endTime').val();
+
+    let jsonData = JSON.stringify(data);
+    console.log(jsonData);
+
+    $.ajax({
+      type: 'POST',
+      url: '/calendar/calendarController.jsp',
+      data: {
+        jsonData: jsonData
+      },
+      success: function (html) {
+        alert(html);
+      },
+      dataType: 'html' /*success시 여기서 지정한 형식으로 parsing되어 들어온다*/
+
+    })
+
+    planModalClear();
+  })
+
 })
