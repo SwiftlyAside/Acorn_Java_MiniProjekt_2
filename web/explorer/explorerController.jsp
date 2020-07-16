@@ -3,15 +3,19 @@
         import="DTO.MediaDTO, DTO.PlansDTO, DTO.RecordsDTO, Service.ExplorerService, java.io.IOException, java.time.LocalDate, java.util.List, java.util.Map" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%!
+    private final String divRow = "<div class='row'>";
+    private final String divClose = "</div>";
+
     public void generateMediaTable(List<MediaDTO> list, JspWriter out) {
         for (int i = 0; i < list.size(); i++) {
             try {
                 if (i % 3 == 0)
-                    out.print("<div class='row'>");
+                    out.print(divRow);
                 out.print("<div class='col-3 border-lightgreen rounded m-2'>");
-                out.print("<a class='view overlay zoom' href='#'>" + list.get(i).getMedia() + "</a></div>");
+                out.print("<a class='view overlay zoom' href='/index.jsp?open=diary&record=" +
+                        list.get(i).getRecordNo() + "'>" + list.get(i).getMedia() + "</a></div>");
                 if (i % 3 == 2 || i == list.size() - 1)
-                    out.print("</div>");
+                    out.print(divClose);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -44,12 +48,13 @@
         for (int i = 0; i < list.size(); i++) {
             try {
                 if (i % 3 == 0)
-                    out.print("<div class='row'>");
+                    out.print(divRow);
                 out.print("<div class='col-3 border-lightgreen rounded m-2'>");
-                out.print("<div class='row-1 font-weight-bold light-green-text'>" + list.get(i).getRecordDate() + "</div>");
-                out.print("<div class='row-1'><a class='view overlay zoom' href='#'>" + list.get(i).getTitle() + "</a></div></div>");
+                out.print("<div class='row-1 font-weight-bold pale-text'>" + list.get(i).getRecordDate() + "</div>");
+                out.print("<div class='row-1'><a class='view overlay zoom' href='/index.jsp?open=diary&record=" +
+                        list.get(i).getRecordNo() + "'>" + list.get(i).getTitle() + "</a></div></div>");
                 if (i % 3 == 2 || i == list.size() - 1)
-                    out.print("</div>");
+                    out.print(divClose);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -82,11 +87,12 @@
         for (int i = 0; i < list.size(); i++) {
             try {
                 if (i % 3 == 0)
-                    out.print("<div class='row'>");
+                    out.print(divRow);
                 out.print("<div class='col-3 border-lightgreen rounded m-2'>");
-                out.print("<a class='view overlay zoom' href='#'>" + list.get(i).getPlanTitle() + "</a></div>");
+                out.print("<a class='view overlay zoom' href='/index.jsp?open=calendar&plan=" +
+                        list.get(i).getPlanNo() + "'>" + list.get(i).getPlanTitle() + "</a></div>");
                 if (i % 3 == 2 || i == list.size() - 1)
-                    out.print("</div>");
+                    out.print(divClose);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -135,11 +141,6 @@
         List<RecordsDTO> recordsList;
         List<PlansDTO> plansList;
 
-
-        // admin 부분에는 유저 이름을 입력받아야 함
-/*        if ("date".contentEquals(orderBy)) conditionalRecord.append(ExplorerService.ORDER_RECORD_DATE);
-        else conditionalRecord.append(ExplorerService.ORDER_RECORD_TITLE);
-        conditionalRecord.append(desc);*/
         switch (target) {
             case "media":
                 if (search != null)

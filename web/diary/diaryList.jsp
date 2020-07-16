@@ -25,6 +25,7 @@
 		
 	<!-- Card -->
 	<%
+		System.out.println(request.getParameter("record"));
 		String userId = "admin";
 		//String userId = (String)session.getAttribute("userId");
 	
