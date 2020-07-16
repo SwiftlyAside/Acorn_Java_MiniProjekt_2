@@ -14,23 +14,42 @@ $(function () {
 	$('.panel-group').on('hidden.bs.collapse', toggleClose);
 	$('.panel-group').on('shown.bs.collapse', toggleOpen);
 	
-	navigator.geolocation.getCurrentPosition((position) => {
-		var lat = position.coords.latitude;
-		var lon = position.coords.longitude;
-		var weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=dd584ccaea0405b403b4ade0ef7e5e9c';
-		
-		/* data.weather[0]
-		 * .main -> 날씨
-		 * .icon -> 아이콘
-		 * */
-		$.ajax({
-			type : 'POST',
-			url : weatherUrl,
-			dataType : 'json',
-			success : function(data, status){
-				$('.Dlist_weather').append(data.weather[0].main + "<img class='img_weather' src='http://openweathermap.org/img/wn/" 
-						+ data.weather[0].icon + "@2x.png'>");
+	$.ajax({
+		type : 'POST',
+		url : '/diary/diaryListProc.jsp',
+		dataType : 'json',
+		success : function(data){
+			console.log(data);
+			for(var i=0;i<data.length;i++){
+			
+				console.log('data[i].weather : ' + data[i].weather);
+				$('.Dlist_title'+i).append(data[i].recordDate + '&nbsp&nbsp&nbsp<b>' + data[i].title + '</b>');
+				$('.Dlist_content'+i).append(data[i].content);
+				$('.Dlist_weather'+i).append(data[i].weather);
+				$('.Dlist_condition'+i).append(data[i].condition);
+				$('.Dlist_geoInfo'+i).append(data[i].geoInfo);
 			}
-		})
-	});
+			
+			for(var i=0;i<data.length;i++){
+				console.log('data[i].recordNo : ' + data[i].recordNo);
+				$('.Dlist_delbtn'+i).on('click', function(){
+					
+					var durl = '/diary/diaryDeleteProc.jsp?recordNo=' + data[i].recordNo;
+					$.ajax({
+						type : 'POST',
+						url : durl,
+						success : function(){
+							
+							$(location).attr('href', '/index.jsp?open=diary');
+						}
+					})
+				})
+			}
+		},
+		error : function(xhr, status, error){
+			console.log(status);
+		}
+	})
+	
+	
 });

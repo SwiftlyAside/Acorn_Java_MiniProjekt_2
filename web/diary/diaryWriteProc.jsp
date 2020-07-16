@@ -6,8 +6,8 @@
 <jsp:useBean id="records" class="DTO.RecordsDTO"/>
 <%
     IRecordsService recordserv = new RecordsService();
-    //String userId = (String)session.getAttribute("userId");
-    String userId = "admin";
+    String userId = (String)session.getAttribute("userId");
+    
     Date recordDate = Date.valueOf(request.getParameter("recordDate"));
     System.out.println("recordDate : " + recordDate);
     String title = request.getParameter("title");
