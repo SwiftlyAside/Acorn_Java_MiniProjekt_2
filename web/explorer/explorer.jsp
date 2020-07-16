@@ -77,7 +77,7 @@
             RecordsDAO에 의해 정렬된 값 표시
             --%>
         </div>
-        <div class="tab-pane fade" id="record" role="tabpanel" aria-labelledby="record-tab">
+        <div class="tab-pane fade " id="record" role="tabpanel" aria-labelledby="record-tab">
             <%--
             네비게이터 (날짜, 이름) (년도, 월, 일, 전체 (ASC, DESC))
             RecordsDAO에 의해 정렬된 값 표시

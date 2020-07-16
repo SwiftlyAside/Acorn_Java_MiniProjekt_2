@@ -3,15 +3,19 @@
         import="DTO.MediaDTO, DTO.PlansDTO, DTO.RecordsDTO, Service.ExplorerService, java.io.IOException, java.time.LocalDate, java.util.List, java.util.Map" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%!
+    private final String divRow = "<div class='row'>";
+    private final String divClose = "</div>";
+
     public void generateMediaTable(List<MediaDTO> list, JspWriter out) {
         for (int i = 0; i < list.size(); i++) {
             try {
                 if (i % 3 == 0)
-                    out.print("<div class='row'>");
-                out.print("<div class='col-3 border-lightgreen rounded'>");
-                out.print("<a class='view overlay zoom' href='#'>" + list.get(i).getMedia() + "</a></div>");
+                    out.print(divRow);
+                out.print("<div class='col-3 border-lightgreen rounded m-2'>");
+                out.print("<a class='view overlay zoom' href='/index.jsp?open=diary&record=" +
+                        list.get(i).getRecordNo() + "'>" + list.get(i).getMedia() + "</a></div>");
                 if (i % 3 == 2 || i == list.size() - 1)
-                    out.print("</div>");
+                    out.print(divClose);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -24,13 +28,13 @@
             try {
                 switch (group) {
                     case "year":
-                        out.print("<h2>" + entry.getKey().getYear() + "</h2>");
+                        out.print("<h2 class='my-2'>" + entry.getKey().getYear() + "</h2>");
                         break;
                     case "month":
-                        out.print("<h2>" + entry.getKey().getYear() + "&nbsp;" + entry.getKey().getMonth() + "</h2>");
+                        out.print("<h2 class='my-2'>" + entry.getKey().getYear() + "&nbsp;" + entry.getKey().getMonth() + "</h2>");
                         break;
                     case "day":
-                        out.print("<h2>" + entry.getKey() + "</h2>");
+                        out.print("<h2 class='my-2'>" + entry.getKey() + "</h2>");
                         break;
                 }
                 generateMediaTable(entry.getValue(), out);
@@ -44,11 +48,13 @@
         for (int i = 0; i < list.size(); i++) {
             try {
                 if (i % 3 == 0)
-                    out.print("<div class='row'>");
-                out.print("<div class='col-3 border-lightgreen rounded'>");
-                out.print("<a class='view overlay zoom' href='#'>" + list.get(i).getTitle() + "</a></div>");
+                    out.print(divRow);
+                out.print("<div class='col-3 border-lightgreen rounded m-2'>");
+                out.print("<div class='row-1 font-weight-bold pale-text'>" + list.get(i).getRecordDate() + "</div>");
+                out.print("<div class='row-1'><a class='view overlay zoom' href='/index.jsp?open=diary&record=" +
+                        list.get(i).getRecordNo() + "'>" + list.get(i).getTitle() + "</a></div></div>");
                 if (i % 3 == 2 || i == list.size() - 1)
-                    out.print("</div>");
+                    out.print(divClose);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -61,13 +67,13 @@
             try {
                 switch (group) {
                     case "year":
-                        out.print("<h2>" + entry.getKey().getYear() + "</h2>");
+                        out.print("<h2 class='my-2'>" + entry.getKey().getYear() + "</h2>");
                         break;
                     case "month":
-                        out.print("<h2>" + entry.getKey().getYear() + "&nbsp;" + entry.getKey().getMonth() + "</h2>");
+                        out.print("<h2 class='my-2'>" + entry.getKey().getYear() + "&nbsp;" + entry.getKey().getMonth() + "</h2>");
                         break;
                     case "day":
-                        out.print("<h2>" + entry.getKey() + "</h2>");
+                        out.print("<h2 class='my-2'>" + entry.getKey() + "</h2>");
                         break;
                 }
                 generateRecordTable(entry.getValue(), out);
@@ -81,11 +87,12 @@
         for (int i = 0; i < list.size(); i++) {
             try {
                 if (i % 3 == 0)
-                    out.print("<div class='row'>");
-                out.print("<div class='col-3 border-lightgreen rounded'>");
-                out.print("<a class='view overlay zoom' href='#'>" + list.get(i).getPlanTitle() + "</a></div>");
+                    out.print(divRow);
+                out.print("<div class='col-3 border-lightgreen rounded m-2'>");
+                out.print("<a class='view overlay zoom' href='/index.jsp?open=calendar&plan=" +
+                        list.get(i).getPlanNo() + "'>" + list.get(i).getPlanTitle() + "</a></div>");
                 if (i % 3 == 2 || i == list.size() - 1)
-                    out.print("</div>");
+                    out.print(divClose);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -98,13 +105,13 @@
             try {
                 switch (group) {
                     case "year":
-                        out.print("<h2>" + entry.getKey().getYear() + "</h2>");
+                        out.print("<h2 class='my-2'>" + entry.getKey().getYear() + "</h2>");
                         break;
                     case "month":
-                        out.print("<h2>" + entry.getKey().getYear() + "&nbsp;" + entry.getKey().getMonth() + "</h2>");
+                        out.print("<h2 class='my-2'>" + entry.getKey().getYear() + "&nbsp;" + entry.getKey().getMonth() + "</h2>");
                         break;
                     case "day":
-                        out.print("<h2>" + entry.getKey() + "</h2>");
+                        out.print("<h2 class='my-2'>" + entry.getKey() + "</h2>");
                         break;
                 }
                 generatePlanTable(entry.getValue(), out);
@@ -127,44 +134,59 @@
         String group = request.getParameter("group");
         String orderBy = request.getParameter("orderBy");
         String desc = request.getParameter("desc") != null ? "desc " : "";
-        String conditional;
+        StringBuilder conditionalPlan = new StringBuilder();
+        StringBuilder conditionalRecord = new StringBuilder();
         List<MediaDTO> mediaDTOList;
         List<RecordsDTO> diaryList;
         List<RecordsDTO> recordsList;
         List<PlansDTO> plansList;
 
-        // admin 부분에는 유저 이름을 입력받아야 함
-        String conditional1 = ("date".contentEquals(orderBy) ? ExplorerService.ORDER_RECORD_DATE : ExplorerService.ORDER_RECORD_TITLE) + desc;
         switch (target) {
             case "media":
-                conditional = conditional1;
-                mediaDTOList = service.getAllMedias("admin", conditional);
+                if (search != null)
+                    conditionalRecord.append(String.format("AND R.TITLE LIKE '%%%s%%'", search));
+                if ("date".contentEquals(orderBy)) conditionalRecord.append(ExplorerService.ORDER_RECORD_DATE);
+                else conditionalRecord.append(ExplorerService.ORDER_RECORD_TITLE);
+                conditionalRecord.append(desc);
+                mediaDTOList = service.getAllMedias("admin", conditionalRecord.toString());
                 if (!"all".contentEquals(group))
-                    generateGroupedMediaTable(service.getGroupedMedias(mediaDTOList, group, orderBy), group, out);
+                    generateGroupedMediaTable(service.getGroupedMedias(mediaDTOList, group), group, out);
                 else
                     generateMediaTable(mediaDTOList, out);
                 break;
             case "diary":
-                conditional = conditional1;
-                diaryList = service.getAllDiaries("admin", conditional);
+                if (search != null)
+                    conditionalRecord.append(String.format("AND TITLE LIKE '%%%s%%'", search));
+                if ("date".contentEquals(orderBy)) conditionalRecord.append(ExplorerService.ORDER_RECORD_DATE);
+                else conditionalRecord.append(ExplorerService.ORDER_RECORD_TITLE);
+                conditionalRecord.append(desc);
+                diaryList = service.getAllDiaries("admin", conditionalRecord.toString());
                 if (!"all".contentEquals(group))
-                    generateGroupedRecordTable(service.getGroupedRecords(diaryList, group, orderBy), group, out);
+                    generateGroupedRecordTable(service.getGroupedRecords(diaryList, group), group, out);
                 else
                     generateRecordTable(diaryList, out);
                 break;
             case "record":
-                conditional = conditional1;
-                recordsList = service.getAllRecords("admin", conditional);
+                if (search != null)
+                    conditionalRecord.append(String.format("AND TITLE LIKE '%%%s%%'", search));
+                if ("date".contentEquals(orderBy)) conditionalRecord.append(ExplorerService.ORDER_RECORD_DATE);
+                else conditionalRecord.append(ExplorerService.ORDER_RECORD_TITLE);
+                conditionalRecord.append(desc);
+                recordsList = service.getAllRecords("admin", conditionalRecord.toString());
                 if (!"all".contentEquals(group))
-                    generateGroupedRecordTable(service.getGroupedRecords(recordsList, group, orderBy), group, out);
+                    generateGroupedRecordTable(service.getGroupedRecords(recordsList, group), group, out);
                 else
                     generateRecordTable(recordsList, out);
                 break;
             case "plan":
-                conditional = ("date".contentEquals(orderBy) ? ExplorerService.ORDER_PLAN_DATE : ExplorerService.ORDER_PLAN_TITLE) + desc;
-                plansList = service.getAllPlans("admin", conditional);
+                if (search != null)
+                    conditionalPlan.append(String.format("AND PLANTITLE LIKE '%%%s%%'", search));
+                if ("date".contentEquals(orderBy)) conditionalPlan.append(ExplorerService.ORDER_PLAN_DATE);
+                else conditionalPlan.append(ExplorerService.ORDER_PLAN_TITLE);
+                conditionalPlan.append(desc);
+                plansList = service.getAllPlans("admin", conditionalPlan.toString());
                 if (!"all".contentEquals(group))
-                    generateGroupedPlanTable(service.getGroupedPlans(plansList, group, orderBy), group, out);
+                    generateGroupedPlanTable(service.getGroupedPlans(plansList, group), group, out);
                 else
                     generatePlanTable(plansList, out);
                 break;

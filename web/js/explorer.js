@@ -6,7 +6,10 @@ $(() => {
   const searchParam = $('#searchValue').val();
 
   function loadPage(targetId) {
-    $(`#${targetId}`).load(`/explorer/explorerController.jsp?target=${targetId}&search=${searchParam}&group=${group}&orderBy=${orderBy}${desc}`);
+    $(`#${targetId}`).load(`/explorer/explorerController.jsp?target=${targetId}&search=${searchParam}&group=${group}&orderBy=${orderBy}${desc}`, () => {
+      $('img').width('320px');
+      $('img').height('240px');
+    });
   }
 
   loadPage('media');
@@ -14,9 +17,6 @@ $(() => {
   $('a[data-toggle="tab"]').on('shown.bs.tab', (e) => {
     target = e.target.getAttribute('aria-controls');
     loadPage(target);
-    navigator.geolocation.getCurrentPosition((ev) => {
-      console.log(`${ev.coords.latitude}  AND  ${ev.coords.longitude}`);
-    });
   });
 
   // 날짜, 이름 선택시

@@ -1,8 +1,21 @@
+card mb-4 wow fadeIn diary{ height: auto;}
 .material-icons {
 	vertical-align: middle;
 	margin-right: 1em;
 	}
-.btn{padding: 0px;}
 .card-body{ min-height: 300px;}
-div.container{padding: 0px;}
+.card-header{ margin-top: 5px;}
+.card-footer{ background-color: #D6E8C8;}
 #a_writePage{padding:5px;}
+.nonPadding{ padding: 0px;}
+.nonMargin{ margin: 0px;}
+.Dlist{
+	overflow:auto; 
+}
+.Dlist_bg{
+	background: #B0C8B6;
+	padding: 5px;
+}
+.img_weather{
+	width: 50px;
+}

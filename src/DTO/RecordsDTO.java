@@ -19,7 +19,7 @@ public class RecordsDTO {
     private String content;
 
     // 위치
-    private Integer geoInfo;
+    private String geoInfo;
 
     // 날씨
     private String weather;
@@ -67,11 +67,11 @@ public class RecordsDTO {
         this.content = content;
     }
 
-    public Integer getGeoInfo() {
+    public String getGeoInfo() {
         return geoInfo;
     }
 
-    public void setGeoInfo(Integer geoInfo) {
+    public void setGeoInfo(String geoInfo) {
         this.geoInfo = geoInfo;
     }
 

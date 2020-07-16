@@ -10,7 +10,21 @@
 }
 
 .border-lightgreen {
-  border: 1px solid #dff6e5 !important;
+  border: 2px solid #dff6e5 !important;
+  min-height: 80px;
+}
+
+a {
+  color: #3f4641;
+}
+
+.pale-text {
+  color: #9fa1a4 !important;
+}
+
+.border-lightgreen a {
+  cursor: pointer !important;
+  font-weight: bold;
 }
 
 .modal-custom-content {
@@ -24,7 +38,7 @@
   height: 100vh;
   padding: 0 1.5rem 1.5rem;
   width: 270px;
-  z-index: 1050;
+  z-index: 10;
 }
 
 .sidebar-fixed .list-group .active {
