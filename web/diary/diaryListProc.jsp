@@ -1,11 +1,12 @@
 <%@page import="DAO.RecordsDAO" %>
 <%@page import="DTO.RecordsDTO" %>
+<%@page import="java.util.ArrayList" %>
 <%@page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%!
     public String strParsing(String str) {
-        return str.replaceAll("\"", "'");
+		return str.replaceAll("\"", "'");
     }
 %>
 <%
@@ -17,7 +18,8 @@
     recordList = recordsdao.getDiary(userId, "order by recordDate desc");
     StringBuffer sb = new StringBuffer();
     sb.append("[");
-    for (RecordsDTO recordsdto : recordList) {
+    for (int i = 0; i < recordList.size(); i++) {
+        RecordsDTO recordsdto = recordList.get(i);
         sb.append(String.format(
                 "{\"recordNo\":\"%s\","
                         + "\"recordDate\":\"%s\","
@@ -37,6 +39,7 @@
     }
     String str = sb.toString();
     int pos = str.lastIndexOf(",");
+    if (pos < 0) pos = 0;
     str = str.substring(0, pos) + "]";
 %>
 <%=str%>

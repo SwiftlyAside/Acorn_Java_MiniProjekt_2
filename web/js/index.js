@@ -1,17 +1,27 @@
 $(() => {
   const $mainContainer = $('#mainContainer');
   const classList = $mainContainer.attr('class').split(/\s+/);
+
+  function getParameter(strParamName) {
+    let arrResult = null;
+    if (strParamName) {
+      arrResult = location.search.match(new RegExp(`[&?]${strParamName}=(.*?)(&|$)`));
+      return arrResult && arrResult[1] ? arrResult[1] : null;
+    }
+    return null;
+  }
+
   $.each(classList, (index, item) => {
     if (item === 'login') {
       $mainContainer.load('/joinheader/joinHeader.jsp');
     } else if (item === 'diary') {
-      $mainContainer.load('/diary/diaryList.jsp');
+      $mainContainer.load(`/diary/diaryList.jsp?record=${getParameter('record')}`);
     } else if (item === 'explorer') {
       $mainContainer.load('/explorer/explorer.jsp');
     } else if (item === 'calendar') {
-      $mainContainer.load('/calendar/calendar.jsp');
+      $mainContainer.load(`/calendar/calendar.jsp?plan=${getParameter('plan')}`);
     } else if (item === 'diaryWrite') {
-        $mainContainer.load('/diary/diaryWrite.jsp');
+      $mainContainer.load('/diary/diaryWrite.jsp');
     }
   });
 

@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/timeline.css">
 <div id="timeLineBase">
 <span class="light-green-text flex-center"
