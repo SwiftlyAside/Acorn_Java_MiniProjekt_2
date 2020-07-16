@@ -55,8 +55,8 @@ public class RecordsDAO {
 		
 		return list;
 	}
-	public String getDiaryRecordNo(String userId){
-		String getDiaryListSQL = "select recordNo from RECORDS where recordNo like 'D%' and userId = ? order by recordDate desc";
+	public String getDiaryRecordNo(){
+		String getDiaryListSQL = "select recordNo from RECORDS where recordNo like 'D%' order by recordDate desc";
 		
 		Connection conn = DBManager.getConnection();
 		PreparedStatement pstmt = null;
@@ -65,7 +65,6 @@ public class RecordsDAO {
 		String recordNo = null;
 		try {
 			pstmt = conn.prepareStatement(getDiaryListSQL);
-			pstmt.setString(1, userId);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				recordNo = rs.getString("recordNo");
