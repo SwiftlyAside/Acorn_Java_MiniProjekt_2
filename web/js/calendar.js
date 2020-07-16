@@ -15,13 +15,7 @@ $(document).ready(function () {
     format: 'yyyy/m/dd'
   });
 
-// calendar 기본 화면 및 월/주 변경 처리
-  $(function () {
-    $('#calendarForm').load('/calendar/calendarMonth.jsp');
-    $('#monthCalendar').attr('class', 'btn btn-light-green lighten-1');
-    console.log('페이지가 열렸다');
-  })
-
+  // calendar 기본 화면 및 월/주 변경 처리
   $('#weekCalendar').click(function () {
     $('#calendarForm').load('/calendar/calendarWeek.jsp');
     $('#monthCalendar').attr('class', 'btn');
@@ -85,26 +79,29 @@ $(document).ready(function () {
     // $('#monthBody tr div[id]').append('<li>task</li>');
   });
 
+  // 일정 저장 버튼을 누르면
   $('#planWrite').click(() => {
     // no -> p 붙이기
-    // 객체에 저장하여 json 형식으로 data 구조화
     // cntroller 에 전달
 
     let data = {};
-    data.userId = 'admin'; /*get from session..*/
+    data.userId = 'admin'; /*temp, get from session..*/
     data.title = $('#planTitle').val();
     data.content = $('#planContent').val();
-    data.starDate = $('#planStartDate').val() + $('#starTime').val();
-    data.endDate = $('#planEndDate').val() + $('#endTime').val();
+    data.startDate = $('#sd2').datepicker('getDate'); //time ....?
+    data.endDate = $('#sd3').datepicker('getDate');
 
-    let jsonData = JSON.stringify(data);
-    console.log(jsonData);
+    // console.log(data);
 
     $.ajax({
       type: 'POST',
       url: '/calendar/calendarController.jsp?target=plan',
       data: {
-        jsonData: jsonData
+        userId: data.userId,
+        title: data.title,
+        content: data.content,
+        startDate: data.startDate.getTime(),
+        endDate: data.endDate.getTime()
       },
       success: function (html) {
         alert(html);
@@ -116,4 +113,10 @@ $(document).ready(function () {
     planModalClear();
   })
 
+  // 로드시 월 달력 화면 출력
+  $(function () {
+    $('#calendarForm').load('/calendar/calendarMonth.jsp');
+    $('#monthCalendar').attr('class', 'btn btn-light-green lighten-1');
+    console.log('페이지가 열렸다');
+  })
 })

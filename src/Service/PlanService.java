@@ -2,24 +2,30 @@ package Service;
 
 import DAO.PlansDAO;
 import DTO.PlansDTO;
-import org.json.JSONObject;
+
+import java.sql.Date;
+import java.util.Map;
+import java.util.Random;
 
 public class PlanService implements IPlanService {
-    private PlansDTO plansDTO;
-    private final PlansDAO plansDAO = PlansDAO.getInstance();
+    private PlansDTO planDTO;
+    private final PlansDAO planDAO = PlansDAO.getInstance();
 
     public PlanService () {
-        this.plansDTO = new PlansDTO();
+        this.planDTO = new PlansDTO();
     }
 
     @Override
-    public String storePlan(String jsonData) {
-        JSONObject receivedJson = null;
-//        receivedJson.
-//        try {
-//            receivedJson = jsonData.to
-//        }
-        System.out.println(jsonData);
-        return null;
+    public String storePlan(Map<String, String> data) {
+        planDTO.setPlanNo("P" + new Random().nextInt(1000)); // 임시 번호
+        planDTO.setUserId(data.get("userId"));
+        planDTO.setPlanTitle(data.get("title"));
+        planDTO.setPlanContent(data.get("content"));
+        planDTO.setStartDate(new Date(Long.parseLong(data.get("startDate"))));
+        planDTO.setEndDate(new Date(Long.parseLong(data.get("endDate"))));
+
+        if (planDAO.insertPlan(planDTO))
+            return "SUCCESS";
+        return "May be Failed";
     }
 }
