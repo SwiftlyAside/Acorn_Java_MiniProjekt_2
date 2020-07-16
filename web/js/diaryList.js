@@ -28,13 +28,12 @@ $(function () {
 				$('.Dlist_weather'+i).append(data[i].weather);
 				$('.Dlist_condition'+i).append(data[i].condition);
 				$('.Dlist_geoInfo'+i).append(data[i].geoInfo);
+				$('.Dlist_delbtn'+i).attr('id', data[i].recordNo);
 			}
 			
 			for(var i=0;i<data.length;i++){
-				console.log('data[i].recordNo : ' + data[i].recordNo);
-				$('.Dlist_delbtn'+i).on('click', function(){
-					
-					var durl = '/diary/diaryDeleteProc.jsp?recordNo=' + data[i].recordNo;
+				$('.Dlist_delbtn'+i).on('click', function(e){
+					var durl = '/diary/diaryDeleteProc.jsp?recordNo=' + $(this).attr('id');
 					$.ajax({
 						type : 'POST',
 						url : durl,

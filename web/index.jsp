@@ -3,6 +3,8 @@
     String open = request.getParameter("open");
     if (open == null) open = "";
     String jsClass = open;
+    
+    session.setAttribute("userId", "sglee");
 %>
 <!DOCTYPE html>
 <html>
