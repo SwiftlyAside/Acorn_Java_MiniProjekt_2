@@ -4,7 +4,7 @@
     if (open == null) open = "";
     String jsClass = open;
     
-    session.setAttribute("userId", "sglee");
+    session.setAttribute("userId", "admin");
 %>
 <!DOCTYPE html>
 <html>

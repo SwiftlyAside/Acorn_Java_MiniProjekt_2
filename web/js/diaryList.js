@@ -33,7 +33,7 @@ $(function () {
 			
 			for(var i=0;i<data.length;i++){
 				$('.Dlist_delbtn'+i).on('click', function(e){
-					var durl = '/diary/diaryDeleteProc.jsp?recordNo=' + $(this).attr('id');
+					var durl = '/diary/diaryDeleteProc.jsp?recordNo=' + $(e.target).attr('id');
 					$.ajax({
 						type : 'POST',
 						url : durl,
