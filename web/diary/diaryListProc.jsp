@@ -5,8 +5,7 @@
          pageEncoding="UTF-8" %>
 <%!
     public String strParsing(String str) {
-        String temp = str.replaceAll("\"", "'");
-        return temp;
+        return str.replaceAll("\"", "'");
     }
 %>
 <%
@@ -29,11 +28,11 @@
                         + "\"condition\":\"%s\"},",
                 recordsdto.getRecordNo(),
                 recordsdto.getRecordDate(),
-                strParsing(recordsdto.getTitle()),
-                strParsing(recordsdto.getContent()),
-                strParsing(recordsdto.getGeoInfo()),
-                strParsing(recordsdto.getWeather()),
-                recordsdto.getCondition()
+                strParsing(recordsdto.getTitle() != null ? recordsdto.getTitle() : ""),
+                strParsing(recordsdto.getContent() != null ? recordsdto.getContent() : ""),
+                strParsing(recordsdto.getGeoInfo() != null ? recordsdto.getGeoInfo() : ""),
+                strParsing(recordsdto.getWeather() != null ? recordsdto.getWeather() : ""),
+                recordsdto.getCondition() != null ? recordsdto.getCondition() : ""
         ));
     }
     String str = sb.toString();
