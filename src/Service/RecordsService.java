@@ -26,6 +26,26 @@ public class RecordsService implements IRecordsService {
 		recordNo += String.format("%04d", no);
 		return	recordNo;
 	}
+	@Override
+	public void setMemeDAO(RecordsDTO dto) {
+		RecordsDAO dao = RecordsDAO.getInstance();
+		String RecordNo = settingMemoRecordNo(dao);
+		dto.setRecordNo(RecordNo);
+		if(!dao.setRecord(dto))	System.out.println("실패");;
+	}
+	private String settingMemoRecordNo(RecordsDAO dao) {
+		String preRecordNo = dao.getMemoRecordNo();
+		int no = 0;
+		if(preRecordNo == null) {
+			preRecordNo = "R0000";
+		}
+		
+		no = Integer.parseInt(preRecordNo.substring(1, preRecordNo.length()))+1;
+		
+		String recordNo = preRecordNo.substring(0, 1);
+		recordNo += String.format("%04d", no);
+		return	recordNo;
+	}
 	private void setMediaDAO(String recordNo, String content) {
 		MediaDAO dao = MediaDAO.getInstance();
 		String preContent = content;

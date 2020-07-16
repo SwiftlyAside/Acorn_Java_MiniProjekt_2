@@ -1,0 +1,53 @@
+.Rwrite{
+	margin: 50px;
+	width: 750px;
+}
+.Rwrite_title {
+    margin-bottom: 0rem;
+}
+.Rwrite_time{
+	margin-top: 8px;
+	margin-left: 8px;
+}
+.Rwrite_header{
+	border-radius: .25rem;
+	border: 1px solid auto;
+	background-color: #E5F3E7;
+}
+.Rwrite_headerPadding{
+	padding: 10px;
+}
+.Rwrite_nonPadding{
+	padding: 0px;
+}
+.Rwrite_nonMargin{
+	margin: 0px;
+}
+p.header{ margin:0px; margin-right:5px;}
+.Rwrite_btn{
+	margin-top: 10px;
+	width: 200px;
+}
+.Rwrite_txt_txtarea{ 
+	resize: none;
+	min-height: 300px;
+	background-color: #E5F3E7;
+	}
+.Rwrite_txt_txtarea:focus{ 
+	border: 1px solid #8bc34a;
+    box-shadow: 0 0 0 0.2rem rgba(139, 195, 74, .25);
+}
+.Rwrite_txt_title{ 
+	height: 20%;
+	background-color: #E5F3E7;
+	}
+.Rwrite_txt_title:focus{
+	border: 1px solid #8bc34a;
+    box-shadow: 0 0 0 0.2rem rgba(139, 195, 74, .25);
+}
+.Rwrite_weather{
+	background: #B0C8B6;
+}
+.img_weather{
+	width: 60px;
+}

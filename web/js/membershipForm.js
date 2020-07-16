@@ -57,9 +57,10 @@ $(document).ready(function(){
 			name.focus();
 			return;
 		}	
+		//아이디중복확인
 		$.ajax({
 			type : 'POST',
-			url : 'joinheader/jsonIds.jsp?userId=' + id.val(),
+			url : '/joinheader/jsonIds.jsp?userId=' + id.val(),
 			dataType : 'json',
 			success : function(data, status){
 				//console.log(data.boolean);
@@ -79,9 +80,22 @@ $(document).ready(function(){
 		}
 		if(auth.val() == ''){
 			alert('인증번호 미입력!');
-			return
+			return;
 		}
-		
+		var params = $('.frm_membership').serialize();
+		$.ajax({
+			type : 'POST',
+			url : '/joinheader/membershipProc.jsp',
+			data : params,
+			success : function(){
+				alert('회원가입을 축하합니다.');
+			},
+			error : function(){
+				console.log('회원가입 실패');
+			}
+		}).done(function(data) {
+			$(location).attr('href', '/index.jsp');
+		});
 	})
 })
 function CheckName(name){
@@ -95,7 +109,7 @@ function CheckName(name){
 	return true;
 }
 function CheckId(id, data){
-	var idReg = /^[a-z]+[a-z0-9]{5,19}$/g;
+	var idReg = /^[a-z]+[a-z0-9]{4,19}$/g;
 	if(!idReg.test(id)){
 		AlertLabel('#lbl_joinIdAlert', '아이디 형식은 영문자 조합!', 'red');
 		return false;

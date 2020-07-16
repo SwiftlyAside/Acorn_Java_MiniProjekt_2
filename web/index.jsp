@@ -3,8 +3,8 @@
     String open = request.getParameter("open");
     if (open == null) open = "";
     String jsClass = open;
-
-    session.setAttribute("userId", "admin");
+    
+    String userId = (String)session.getAttribute("userId");
 %>
 <!DOCTYPE html>
 <html>
@@ -78,10 +78,17 @@
                     <i class="fas fa-search"></i>
                 </button>
             </form>
-            <a class="list-group-item list-group-item-action waves-effect" href="?open=login">
+            <% if(userId == null){ %>
+	        <a class="list-group-item list-group-item-action waves-effect" href="?open=login">
                 <i class="fas fa-sign-in-alt mr-3"></i>로그인</a>
+            <% }else{ %>
+            <a class="list-group-item list-group-item-action waves-effect" href="?open=logout">
+                <i class="fas fa-sign-in-alt mr-3"></i>로그아웃</a>
+            <% } %>
             <a class="list-group-item list-group-item-action waves-effect" href="?open=diary">
                 <i class="fas fa-book mr-3"></i>다이어리</a>
+            <a class="list-group-item list-group-item-action waves-effect" href="?open=memo">
+                <i class="fas fa-book mr-3"></i>메모</a>
             <a class="list-group-item list-group-item-action waves-effect" href="?open=explorer">
                 <i class="fab fa-wpexplorer mr-3"></i>탐색기</a>
             <a class="list-group-item list-group-item-action waves-effect"

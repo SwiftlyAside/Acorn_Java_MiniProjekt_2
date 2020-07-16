@@ -8,22 +8,15 @@
     IRecordsService recordserv = new RecordsService();
     String userId = (String)session.getAttribute("userId");
     
-    Date recordDate = Date.valueOf(request.getParameter("recordDate"));
-    //System.out.println("recordDate : " + recordDate);
     String title = request.getParameter("title");
     String content = request.getParameter("content");
-    String geoInfo = request.getParameter("geoInfo");
-    String weather = request.getParameter("weather");
 
     String condition = (String)session.getAttribute("condition");
 
     records.setUserId(userId);
-    records.setRecordDate(recordDate);
     records.setTitle(title);
     records.setContent(content);
-    records.setGeoInfo(geoInfo);
-    records.setWeather(weather);
     records.setCondition(condition);
 
-    recordserv.setDiaryDAO(records);
+    recordserv.setMemeDAO(records);
 %>
