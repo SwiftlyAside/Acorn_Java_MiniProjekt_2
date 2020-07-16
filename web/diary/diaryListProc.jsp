@@ -12,8 +12,7 @@
 }
 %>
 <%
-	//String userId = (String)session.getAttribute("userId");
-	String userId = "sglee";
+	String userId = (String)session.getAttribute("userId");
 	RecordsDAO recordsdao = RecordsDAO.getInstance();
 	
 	List<RecordsDTO> recordList = new ArrayList<RecordsDTO>();
@@ -33,15 +32,16 @@
 	        + "\"condition\":\"%s\"},", 
 		    recordsdto.getRecordNo(),
 		    recordsdto.getRecordDate(),
-		    strParsing(recordsdto.getTitle()),
-		    strParsing(recordsdto.getContent()),
-		    strParsing(recordsdto.getGeoInfo()),
-		    strParsing(recordsdto.getWeather()),
-		    recordsdto.getCondition()
+		    strParsing(recordsdto.getTitle() != null? recordsdto.getTitle(): ""),
+		    strParsing(recordsdto.getContent() != null? recordsdto.getContent(): ""),
+		    strParsing(recordsdto.getGeoInfo() != null? recordsdto.getGeoInfo(): ""),
+		    strParsing(recordsdto.getWeather() != null? recordsdto.getWeather(): ""),
+		    recordsdto.getCondition() != null? recordsdto.getCondition(): ""
 		));
 	}
 	String str = sb.toString();
 	int pos = str.lastIndexOf(",");
+	if(pos < 0)	pos = 0;
 	str = str.substring(0, pos) + "]";
 %>
 <%=str%>
