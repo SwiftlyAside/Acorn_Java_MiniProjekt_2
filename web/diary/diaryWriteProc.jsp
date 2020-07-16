@@ -15,8 +15,7 @@
     String geoInfo = request.getParameter("geoInfo");
     String weather = request.getParameter("weather");
 
-    //String condition = (String)session.getAttribute("condition");
-    String condition = "fine";
+    String condition = (String)session.getAttribute("condition");
 
     records.setUserId(userId);
     records.setRecordDate(recordDate);
