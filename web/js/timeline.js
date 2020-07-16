@@ -5,6 +5,10 @@
 // tooltip setting
 $(() => {
   $('#scroll').tooltip({ /* boundary: 'window' */});
+
+  $.post('/timeline/timelineController.jsp', (html) => {
+    $('#timeLineArea').html(html);
+  });
 });
 $('#scroll').attr('data-placement', 'right');
 

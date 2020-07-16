@@ -20,7 +20,7 @@ $(() => {
     });
   });
 
-  $('#start').datepicker('setDate', new Date('1999-12-31'));
+  $('#start').datepicker('setDate', new Date('2000-01-01'));
   $('#end').datepicker('setDate', new Date());
 
   $('[data-toggle="tooltip"]').tooltip();
