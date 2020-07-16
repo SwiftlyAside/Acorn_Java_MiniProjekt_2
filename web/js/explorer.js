@@ -17,9 +17,6 @@ $(() => {
   $('a[data-toggle="tab"]').on('shown.bs.tab', (e) => {
     target = e.target.getAttribute('aria-controls');
     loadPage(target);
-    navigator.geolocation.getCurrentPosition((ev) => {
-      console.log(`${ev.coords.latitude}  AND  ${ev.coords.longitude}`);
-    });
   });
 
   // 날짜, 이름 선택시

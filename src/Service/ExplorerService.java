@@ -8,21 +8,16 @@ import DTO.PlansDTO;
 import DTO.RecordsDTO;
 
 import java.time.LocalDate;
-import java.time.temporal.TemporalAdjuster;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ExplorerService implements IExplorerService {
-    private static final ExplorerService instance = new ExplorerService();
     public static final String ORDER_RECORD_DATE = "ORDER BY RECORDDATE ";
     public static final String ORDER_RECORD_TITLE = "ORDER BY TITLE ";
     public static final String ORDER_PLAN_DATE = "ORDER BY STARTDATE ";
     public static final String ORDER_PLAN_TITLE = "ORDER BY PLANTITLE ";
-
-    static final Map<String, TemporalAdjuster> adjusterMap = new HashMap<>();
-
+    private static final ExplorerService instance = new ExplorerService();
     private final MediaDAO mediaDAO;
     private final PlansDAO plansDAO;
     private final RecordsDAO recordsDAO;

@@ -5,7 +5,7 @@ $(document).ready(function(){
 	navigator.geolocation.getCurrentPosition((position) => {
 		var lat = position.coords.latitude;
 		var lon = position.coords.longitude;
-		$('.frm_Dwrite').append("<input type='hidden' name='geoInfo' value='" + position.coords + "' />");	//전달값
+
 		var weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=dd584ccaea0405b403b4ade0ef7e5e9c';
 		
 		/* data.weather[0]
@@ -19,7 +19,9 @@ $(document).ready(function(){
 			success : function(data, status){
 				$('.Dwrite_weather').html(data.weather[0].main + "<img class='img_weather' src='http://openweathermap.org/img/wn/" 
 						+ data.weather[0].icon + "@2x.png'>");
-				$('.frm_Dwrite').append("<input type='hidden' name='weather' value='" + data.weather[0] + "' />");	//전달값
+				$('.frm_Dwrite').append("<input type='hidden' name='weather' value='" + data.weather[0].main + "' />");	//전달값
+				$('.frm_Dwrite').append("<input type='hidden' name='geoInfo' value='" + data.name + "' />");	//전달값
+			
 			}
 		})
 	});

@@ -8,13 +8,13 @@ public class RecordsService implements IRecordsService {
 	@Override
 	public void setDiaryDAO(RecordsDTO dto) {
 		RecordsDAO dao = RecordsDAO.getInstance();
-		String RecordNo = settingRecordNo(dto.getUserId(), dao);
+		String RecordNo = settingRecordNo(dao);
 		dto.setRecordNo(RecordNo);
-		setMediaDAO(RecordNo, dto.getContent());
+		//setMediaDAO(RecordNo, dto.getContent());
 		if(!dao.setDiary(dto))	System.out.println("실패");;
 	}
-	private String settingRecordNo(String userId, RecordsDAO dao) {
-		String preRecordNo = dao.getDiaryRecordNo(userId);
+	private String settingRecordNo(RecordsDAO dao) {
+		String preRecordNo = dao.getDiaryRecordNo();
 		int no = 0;
 		if(preRecordNo == null) {
 			preRecordNo = "D0000";
@@ -36,5 +36,10 @@ public class RecordsService implements IRecordsService {
 		int pos2 = preContent.indexOf(">")+1;
 		String temp2 = preContent.substring(0, pos2);
 		//if(!dao.insertMedia(recordNo, mediaList))
+	}
+	@Override
+	public void delDiaryDAO(String recordNo, String userId) {
+		RecordsDAO dao = RecordsDAO.getInstance();
+		if(dao.delRecords(recordNo, userId));
 	}
 }
