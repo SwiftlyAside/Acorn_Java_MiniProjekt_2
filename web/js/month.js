@@ -7,9 +7,55 @@ $(document).ready(function () {
   $('#makePlanDiv > button').unbind('click');
   $('#makeTaskDiv > button').unbind('click');
 
-// overflow 적용 func
+  // overflow 적용 func
   var overFn = function () {
     $('#monthBody tr div[id]').attr('class', 'overflow-auto');
+  }
+
+  // 오늘 날짜를 포함한 기록, 일정, 작업을 불러온다.
+  let getPlan = function f() {
+    $.ajax({
+      type: 'POST',
+
+      url: '/calendar/calendarController.jsp?target=month',
+
+      data: {
+        currentDate: today.getTime()
+      },
+
+      dataType: 'json',
+
+      success(json) {
+        let data = [];
+        for (let i in json) {
+          if (json[i][2].split('-')[2] < 10)
+            data.push(json[i][2].split('-')[2].substring(1, 2));
+          else
+            data.push(json[i][2].split('-')[2]);
+
+        }
+
+        console.log(data);
+        console.log(json.length);
+
+        let allDate = new Date(today.getFullYear(), today.getMonth()+1, 0).getDate();
+        console.log(allDate);
+        for (let i = 0; i < json.length; i++) {
+          for (let j = 1; j <= allDate; j++) {
+            if (data[i] == j) {
+              $(`#${j}`).append(`<li id="${json[i][0]}">${json[i][1]}</li>`);
+              $(`#${j} > [id=${json[i][0]}]`).click(function () {
+                alert('일단나옴ㅋ  여기서 modal로 부르려면 click안에 ajax하세요');
+              })
+            }
+          }
+        }
+      },
+
+      error(html) {
+        alert('오류가 있습니다ㅠㅠㅠ 관리자에게 문의하세요!');
+      }
+    })
   }
 
 // 오늘 날짜
@@ -111,6 +157,7 @@ $(document).ready(function () {
       }
     }
     overFn();
+    getPlan();
   }
 
 // monthly calendar button

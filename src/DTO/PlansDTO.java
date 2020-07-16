@@ -69,4 +69,16 @@ public class PlansDTO {
         this.endDate = endDate;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[\"");
+        sb.append(this.planNo);
+        sb.append("\",\"");
+        sb.append(this.planTitle);
+        sb.append("\",\"");
+        sb.append(this.startDate);
+        sb.append("\"]");
+        return sb.toString();
+    }
 }

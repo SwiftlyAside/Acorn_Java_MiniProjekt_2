@@ -4,6 +4,7 @@ import DAO.PlansDAO;
 import DTO.PlansDTO;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -27,5 +28,34 @@ public class PlanService implements IPlanService {
         if (planDAO.insertPlan(planDTO))
             return "SUCCESS";
         return "May be Failed";
+    }
+
+    @Override
+    public String getMonthlyPlans(String userId, String currentDate) {
+        Date date = new Date(Long.parseLong(currentDate));
+        String[] currentDateArr = date.toString().split("-");
+
+        int [] dateArr = new int[currentDateArr.length];
+        for (int i=0; i<currentDateArr.length; i++)
+            dateArr[i] = Integer.parseInt(currentDateArr[i]);
+
+        Date firstCondition = new Date(dateArr[0] - 1900, dateArr[1]-1, 1);
+        Date secondCondition = new Date(dateArr[0] - 1900, dateArr[1], 0);
+
+        String conditionStr ="AND STARTDATE >= DATE '" + firstCondition + "' " +
+                "AND STARTDATE <= DATE '" + secondCondition + "'";
+
+        List<PlansDTO> plansDTOList = planDAO.selectAllPlans(userId, conditionStr);
+        // 각 객체에서 no, title, start date만 뽑읍시다
+        StringBuilder sb = new StringBuilder("[");
+        String pre = "";
+        for (PlansDTO obj : plansDTOList) {
+            sb.append(pre);
+            sb.append(obj.toString());
+            pre = ",";
+        }
+        sb.append("]");
+        System.out.println(sb);
+        return sb.toString();
     }
 }
