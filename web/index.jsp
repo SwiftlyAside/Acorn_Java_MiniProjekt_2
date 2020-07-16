@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%
+    String open = request.getParameter("open");
     if (open == null) open = "";
     String jsClass = open;
     
