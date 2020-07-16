@@ -3,9 +3,8 @@
     String open = request.getParameter("open");
     if (open == null) open = "";
     String jsClass = open;
-    
-    session.setAttribute("userId", "sglee");
-    session.setAttribute("condition", "good");
+
+    session.setAttribute("userId", "admin");
 %>
 <!DOCTYPE html>
 <html>

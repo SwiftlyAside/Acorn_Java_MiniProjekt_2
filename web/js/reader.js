@@ -3,12 +3,12 @@ $(() => {
     $(html).insertAfter('#leftButton');
   });
 
-  $('#dateRangePicker').datepicker();
+  const $dateRangePicker = $('#dateRangePicker');
   let startDate = $('#start').datepicker('getDate');
   let endDate = $('#end').datepicker('getDate');
 
-  // eslint-disable-next-line no-unused-vars
-  $('#dateRangePicker').on('changeDate', () => {
+  $dateRangePicker.datepicker();
+  $dateRangePicker.on('changeDate', () => {
     startDate = $('#start').datepicker('getDate');
     endDate = $('#end').datepicker('getDate');
     $.post('/explorer/readerController.jsp', {
@@ -19,6 +19,9 @@ $(() => {
       $(html).insertAfter('#leftButton');
     });
   });
+
+  $('#start').datepicker('setDate', new Date('1999-12-31'));
+  $('#end').datepicker('setDate', new Date());
 
   $('[data-toggle="tooltip"]').tooltip();
 
