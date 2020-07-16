@@ -1,12 +1,12 @@
 <%@ page
-        import="DTO.RecordsDTO, Service.ExplorerService, Service.IExplorerService, java.sql.Date, java.util.*, java.sql.Time, DTO.PlansDTO" %><%--
+        import="DTO.PlansDTO, DTO.RecordsDTO, Service.ExplorerService, Service.IExplorerService, java.sql.Date, java.util.LinkedHashMap, java.util.LinkedList, java.util.List, java.util.Map" %><%--
   User: iveci
   Date: 2020-07-16
   Time: 16:17
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%!
-    public class Timeline {
+    public static class Timeline {
         String no;
         String title;
 
