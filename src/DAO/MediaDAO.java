@@ -74,7 +74,7 @@ public class MediaDAO {
     public List<MediaDTO> getMedia(String userId, String condition) {
         List<MediaDTO> mediaDTOList = new ArrayList<>();
 
-        String sql = "select R.RECORDNO, MEDIA, R.RECORDDATE from RECORDS R, MEDIA M " +
+        String sql = "select R.RECORDNO, R.TITLE, M.MEDIA, R.RECORDDATE from RECORDS R, MEDIA M " +
                 "where R.USERID = ? and R.RECORDNO = M.RECORDNO " + condition;
         try (Connection connection = DBManager.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
