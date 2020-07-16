@@ -68,7 +68,6 @@ public class PlansDAO {
             pstmt.setDate(5, plan.getStartDate());
             pstmt.setDate(6, plan.getEndDate());
 
-            pstmt.execute();
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
