@@ -1,8 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%
-    session.setAttribute("userId", "admin");
-
-    String open = request.getParameter("open");
     if (open == null) open = "";
     String jsClass = open;
     
@@ -126,6 +123,7 @@
     </div>
 </main>
 <!--Main layout-->
+
 <!--footer-->
 <footer class="page-footer font-small">
     <div class="footer-copyright text-center py-3">© 2020 Copyright: An Acorn Academy Project Team</div>
