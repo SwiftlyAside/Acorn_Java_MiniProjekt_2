@@ -121,7 +121,6 @@
     </div>
 </main>
 <!--Main layout-->
-
 <!--footer-->
 <footer class="page-footer font-small">
     <div class="footer-copyright text-center py-3">© 2020 Copyright: An Acorn Academy Project Team</div>
