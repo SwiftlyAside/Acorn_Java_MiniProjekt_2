@@ -74,11 +74,12 @@
     }
 %>
 <%
+    String userId = (String) session.getAttribute("userId");
     IExplorerService service = ExplorerService.getInstance();
 
-    List<RecordsDTO> records = service.getAllRecords("admin", ExplorerService.ORDER_RECORD_DATE + "DESC");
-    List<RecordsDTO> diaries = service.getAllDiaries("admin", ExplorerService.ORDER_RECORD_DATE + "DESC");
-    List<PlansDTO> plans = service.getAllPlans("admin", ExplorerService.ORDER_PLAN_DATE + "DESC");
+    List<RecordsDTO> records = service.getAllRecords(userId, ExplorerService.ORDER_RECORD_DATE + "DESC");
+    List<RecordsDTO> diaries = service.getAllDiaries(userId, ExplorerService.ORDER_RECORD_DATE + "DESC");
+    List<PlansDTO> plans = service.getAllPlans(userId, ExplorerService.ORDER_PLAN_DATE + "DESC");
 
     Map<Date, Timeline> timelineMap = getTimelineElements(records, diaries, plans);
 %>

@@ -16,13 +16,13 @@ $(() => {
       $mainContainer.load('/joinheader/joinHeader.jsp');
     } else if (item === 'logout') {
       $.ajax({
-    	  type : 'POST',
-    	  url : '/joinheader/logout.jsp',
-    	  success : function(){
-    		  alert('로그아웃!');
-    		  $(location).attr('href', '/index.jsp');
-    	  }
-      })
+        type: 'POST',
+        url: '/joinheader/logout.jsp',
+        success() {
+          alert('로그아웃!');
+          $(location).attr('href', '/index.jsp');
+        },
+      });
     } else if (item === 'diary') {
       $mainContainer.load(`/diary/diaryList.jsp?record=${getParameter('record')}`);
     } else if (item === 'memo') {
