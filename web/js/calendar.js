@@ -85,19 +85,15 @@ $(document).ready(function () {
     // cntroller 에 전달
 
     let data = {};
-    data.userId = 'admin'; /*temp, get from session..*/
     data.title = $('#planTitle').val();
     data.content = $('#planContent').val();
     data.startDate = $('#sd2').datepicker('getDate'); //time ....?
     data.endDate = $('#sd3').datepicker('getDate');
 
-    // console.log(data);
-
     $.ajax({
       type: 'POST',
       url: '/calendar/calendarController.jsp?target=plan',
       data: {
-        userId: data.userId,
         title: data.title,
         content: data.content,
         startDate: data.startDate.getTime(),
