@@ -12,7 +12,6 @@ $(document).ready(function () {
     $('#monthBody tr div[id]').attr('class', 'overflow-auto');
   }
 
-  // 오늘 날짜를 포함한 기록, 일정, 작업을 불러온다.
   let getPlan = function f() {
     $.ajax({
       type: 'POST',
@@ -27,29 +26,22 @@ $(document).ready(function () {
 
       success(json) {
         let data = [];
-        for (let i in json) {
-          if (json[i][2].split('-')[2] < 10)
-            data.push(json[i][2].split('-')[2].substring(1, 2));
+        for (let i in json)
+          if ( json[i][3].split('-')[3] < 10)
+            data.push(json[i][3].split('-')[2].substring(1,2));
           else
-            data.push(json[i][2].split('-')[2]);
-
-        }
+            data.push(json[i][3].split('-')[2]);
 
         console.log(data);
-        console.log(json.length);
 
-        let allDate = new Date(today.getFullYear(), today.getMonth()+1, 0).getDate();
-        console.log(allDate);
         for (let i = 0; i < json.length; i++) {
-          for (let j = 1; j <= allDate; j++) {
-            if (data[i] == j) {
-              $(`#${j}`).append(`<li id="${json[i][0]}">${json[i][1]}</li>`);
-              $(`#${j} > [id=${json[i][0]}]`).click(function () {
-                alert('일단나옴ㅋ  여기서 modal로 부르려면 click안에 ajax하세요');
-              })
-            }
-          }
+          console.log(data[i]);
+          $(`#${data[i]}`).append(`<li id="${json[i][0]}">${json[i][1]}</li>`);
+          $(`#${data[i]} > [id=${json[i][0]}]`).click(function () {
+            alert(`내용 : ${json[i][2]}`);
+          });
         }
+
       },
 
       error(html) {
@@ -68,11 +60,6 @@ $(document).ready(function () {
 //이전 달
   function prevCalendar() {
 
-    // 이전 달을 today에 값을 저장하고 달력에 today를 넣어줌
-    // today.getFullYear() 현재 년도
-    // today.getMonth() 월
-    // today.getDate() 일
-    // getMonth()는 현재 달을 받아 오므로 이전달을 출력하려면 -1을 해줘야함
     today = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
     buildCalendar(); //달력 cell 만들어 출력
   }
@@ -80,38 +67,18 @@ $(document).ready(function () {
 //다음 달
   function nextCalendar() {
 
-    // 다음 달을 today에 값을 저장하고 달력에 today 넣어줌
-    //today.getFullYear() 현재 년도
-    // today.getMonth() 월
-    // today.getDate() 일
-    // getMonth()는 현재 달을 받아 오므로 다음달을 출력하려면 +1을 해줘야함
     today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
 
-    //달력 cell 만들어 출력
     buildCalendar();
   }
 
-//현재 달 달력 만들기
   function buildCalendar() {
     var doMonth = new Date(today.getFullYear(), today.getMonth(), 1);
-    //이번 달의 첫째 날,
-    //new를 쓰는 이유 : new를 쓰면 이번달의 로컬 월을 정확하게 받아온다.
-    //new를 쓰지 않았을때 이번달을 받아오려면 +1을 해줘야한다.
-    //왜냐면 getMonth()는 0~11을 반환하기 때문
     var lastDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
-    //이번 달의 마지막 날
-    //new를 써주면 정확한 월을 가져옴, getMonth()+1을 해주면 다음달로 넘어가는데
-    //day를 1부터 시작하는게 아니라 0부터 시작하기 때문에
-    //대로 된 다음달 시작일(1일)은 못가져오고 1 전인 0, 즉 전달 마지막일 을 가져오게 된다
     var tbCalendar = document.getElementById("monthBody");
-    //날짜를 찍을 테이블 변수 만듬, 일 까지 다 찍힘
 
-
-    //innerHTML : js 언어를 HTML의 권장 표준 언어로 바꾼다
-    //new를 찍지 않아서 month는 +1을 더해줘야 한다.
     $('#sd1>input').val(today.getFullYear() + "/" + (today.getMonth() + 1) + "/" + today.getDate());
 
-    /*while은 이번달이 끝나면 다음달로 넘겨주는 역할*/
     while (tbCalendar.rows.length > 2) {
       //열을 지워줌
       //기본 열 크기는 body 부분에서 2로 고정되어 있다.
