@@ -2,7 +2,6 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <%!
     public String checkTarget(String target, Map<String, String> data, String currentDate) {
         if ("plan".contentEquals(target))
@@ -32,7 +31,6 @@
             return "Please check target";
     }
 %>
-
 <%
     String target = request.getParameter("target");
 
@@ -53,6 +51,4 @@
     planData.put("startDate", startDate);
     planData.put("endDate", endDate);
 %>
-
 <%=checkTarget(target, planData, currentDate)%>
-
