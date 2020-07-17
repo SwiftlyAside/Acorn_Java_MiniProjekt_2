@@ -5,10 +5,10 @@
 <div class='container login_container'>
 	<form class="form-horizontal frm_login">
 		<div class='form-group'>
-			<input type='text' id='login_id' name='id' class="form-control col-md-auto txt" placeholder='ID 입력'/>
+			<input type='text' id='login_id' name='userId' class="form-control col-md-auto txt" placeholder='ID 입력'/>
 		</div>
 		<div class='form-group'>
-			<input type='password' id='login_pass' name='pass' class="form-control col-md-auto txt" placeholder='Password 입력' />
+			<input type='password' id='login_pass' name='userPass' class="form-control col-md-auto txt" placeholder='Password 입력' />
 			<input type='button' id='login_findbtn' class='btn btn-link' value='forget password?' />
 		</div>
 		<div class='form-group'>

@@ -10,6 +10,27 @@ $(document).ready(function(){
 			alert('비밀번호를 입력');
 			return;
 		}
+		var params = $('.frm_login').serialize();
+		$.ajax({
+			type : 'POST',
+			url : '/joinheader/loginProc.jsp',
+			data : params,
+			dataType : 'json',
+			success : function(data){
+				if(data.boolean == 'true'){
+					alert(params.userId + '님 환영합니다.')
+					$(location).attr('href', '/index.jsp');
+				}else{
+					alert('로그인 실패입니다.')
+					$(location).attr('href', '/index.jsp?open=login');
+				}
+			},
+			error : function(){
+				console.log('로그인 실패');
+			}
+		}).done(function(data) {
+			
+		});
 	})
 	$('input#login_findbtn').on('click', function(){
 		$('.login_container').load('/joinheader/joinHeaderController.jsp?target=findForm');

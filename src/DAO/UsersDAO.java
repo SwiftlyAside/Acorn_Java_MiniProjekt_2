@@ -55,7 +55,8 @@ public class UsersDAO {
             pstmt.setString(2, userPass);
             rs = pstmt.executeQuery();
             if (rs.next()) {
-                b = true;
+            	if(rs.getInt("count(*)") != 0)
+            		b = true;
             }
 
         } catch (SQLException e) {
