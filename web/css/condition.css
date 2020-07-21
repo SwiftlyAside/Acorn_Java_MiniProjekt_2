@@ -1,0 +1,15 @@
+.con_div{
+		width: 500px;
+		border: 2px solid;
+		padding: 10px;
+		box-sizing: border-box;
+	}
+img{ width: 50px;}
+div.con_title{
+	text-align: center;
+	
+}
+div.con_radio{
+	width: 500px;
+	text-align: center;
+}

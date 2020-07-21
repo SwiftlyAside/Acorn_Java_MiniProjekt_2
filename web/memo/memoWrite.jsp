@@ -10,15 +10,8 @@
                 <div class='col'>
                     <h4>
                         <input class='form-control Rwrite_txt_title' id='Rwrite_txt_title' type='text' name='title'
-                               placeholder="제목"/>
+                               placeholder="메모 내용"/>
                     </h4>
-                </div>
-            </div>
-        </div>
-        <div class='row_Rwrite_content'>
-            <div class='form-group row'>
-                <div class='col'>
-                    <textarea id="summernote" name='content' class='form-control Rwrite_txt_txtarea'></textarea>
                 </div>
             </div>
         </div>

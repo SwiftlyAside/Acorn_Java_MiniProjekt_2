@@ -16,6 +16,7 @@
     String weather = request.getParameter("weather");
 
     String condition = (String)session.getAttribute("condition");
+	System.out.println("condition : " + condition);
 
     records.setUserId(userId);
     records.setRecordDate(recordDate);

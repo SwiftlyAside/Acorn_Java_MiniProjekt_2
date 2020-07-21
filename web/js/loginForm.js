@@ -18,8 +18,8 @@ $(document).ready(function(){
 			dataType : 'json',
 			success : function(data){
 				if(data.boolean == 'true'){
-					alert(params.userId + '님 환영합니다.')
-					$(location).attr('href', '/index.jsp');
+					alert(data.userId + '님 환영합니다!')
+					$(location).attr('href', '/index.jsp?open=condition');
 				}else{
 					alert('로그인 실패입니다.')
 					$(location).attr('href', '/index.jsp?open=login');

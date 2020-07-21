@@ -5,26 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-	div.condition{
-		width: 500px;
-		border: 2px solid;
-		padding: 10px;
-		box-sizing: border-box;
-	}
-	img{ width: 50px;}
-	div.con_title{
-		text-align: center;
-		
-	}
-	div.con_radio{
-		width: 500px;
-		text-align: center;
-	}
-</style>
+<link href="${pageContext.request.contextPath}/css/condition.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath}/js/condition.js"></script>
 </head>
 <body>
-	<div class='container condition'>
+	<div class='container con_div'>
 		<div class='row con_title'>
 			<div class='col'>
 				<h3>환영합니다. 000님</h3>
@@ -33,6 +18,7 @@
 		<div class='row con_qus'>
 			<div class='col'>오늘 기분은 어떤가요?</div>
 		</div><br/>
+		<form class='frm_con'>
 		<div class='row radio con_radio'>
 			<div class='col'>
 				<label>
@@ -75,12 +61,13 @@
 				</label>
 			</div>
 		</div><br/>
+		</form>
 		<div class='row'>
 			<div class='col'>
-				<ins>넘어가겠습니다.</ins>
+				<a href="/index.jsp"><ins>넘어가겠습니다.</ins></a>
 			</div>
 			<div class='col' style="text-align: right;">
-				<input type='button' value='제출' />
+				<input class='btn condition_btn' type='button' value='제출' />
 			</div>
 		</div>
 		
