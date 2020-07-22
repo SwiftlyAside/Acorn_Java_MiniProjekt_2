@@ -123,7 +123,7 @@
                 <button type="button" class="btn btn-primary btn-sm start">시작</button>
                 <button type="button" class="btn btn-danger btn-sm stop">정지</button>
                 <button type="button" class="btn btn-secondary btn-sm restart">다시 시작</button>
-                <button type="button" class="btn btn-light-green btn-sm destroy" data-dismiss="modal">작업 기록</button>
+                <button type="button" id="taskWrite" class="btn btn-light-green btn-sm destroy" data-dismiss="modal">작업 기록</button>
             </div>
         </div>
     </div>

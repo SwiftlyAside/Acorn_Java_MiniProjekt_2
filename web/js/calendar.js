@@ -41,7 +41,29 @@ $(document).ready(function () {
   $('.restart').click(function () {
     timer.restart();
   });
+  // 작업 기록
   $('.destroy').click(function () {
+    let data = {};
+    data.title = $('#taskTitle').val();
+    data.recordTime = timer.getTime();
+    console.log(data.title);
+    console.log(timer.getTime()); // 0초부터 흐른 시간이 (초단위, 음수로) 나옴
+    console.log(new Date().getTime());
+
+    $.ajax({
+      type: 'POST',
+      url: '/calendar/calendarController.jsp?target=task',
+      data: {
+        title: data.title,
+        recordTime: timer.getTime(),
+        startTime: new Date().getTime()
+      },
+      dataType: 'html',
+      success(html) {
+        alert(html);
+      }
+    })
+
     $('#taskTitle').val('');
     timer.destroy();
     timer = $('.timer').TimeCircles({start: false});
@@ -72,11 +94,9 @@ $(document).ready(function () {
 
   // plan, task 저장 임시 logic
   $('#makePlanDiv > button').click(() => {
-    // $('#monthBody tr div[id]').append('<li>plan</li>');
   });
 
   $('#makeTaskDiv > button').click(() => {
-    // $('#monthBody tr div[id]').append('<li>task</li>');
   });
 
   // 일정 저장 버튼을 누르면
