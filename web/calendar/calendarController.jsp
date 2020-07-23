@@ -5,7 +5,6 @@
 <%@ page import="Service.ITaskService" %>
 <%@ page import="Service.TaskService" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <%!
     private final IPlanService planService = new PlanService();
     private final ITaskService taskService = new TaskService();
@@ -44,8 +43,16 @@
     private String getMonthContent(String userId, HttpServletRequest request) {
         String currentDate = request.getParameter("currentDate");
         String monthlyPlan = planService.getMonthlyPlans(userId, currentDate);
+        // diary 도 불러와야함 ㅎ
+        // task 도... ㅎ
 
         return monthlyPlan;
+    }
+
+    private String getWeeklyContent(String userId, HttpServletRequest request) {
+        String currentWeek = request.getParameter("");
+
+        return null;
     }
 %>
 <%
