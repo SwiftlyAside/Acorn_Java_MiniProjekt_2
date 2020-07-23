@@ -4,9 +4,10 @@ import DAO.PlansDAO;
 import DTO.PlansDTO;
 
 import java.sql.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.*;
 
 public class PlanService implements IPlanService {
     private PlansDTO planDTO;
@@ -22,8 +23,16 @@ public class PlanService implements IPlanService {
         planDTO.setUserId(data.get("userId"));
         planDTO.setPlanTitle(data.get("title"));
         planDTO.setPlanContent(data.get("content"));
-        planDTO.setStartDate(new Date(Long.parseLong(data.get("startDate"))));
-        planDTO.setEndDate(new Date(Long.parseLong(data.get("endDate"))));
+
+        long start = Long.parseLong(data.get("startDate"));
+        long end = Long.parseLong(data.get("endDate"));
+
+        Timestamp timestamp = new Timestamp(start);
+        planDTO.setStartDate(new Date(timestamp.getTime()));
+
+        timestamp = new Timestamp(end);
+        planDTO.setEndDate(new Date(timestamp.getTime()));
+
 
         if (planDAO.insertPlan(planDTO))
             return "SUCCESS";
@@ -57,4 +66,22 @@ public class PlanService implements IPlanService {
         System.out.println(sb);
         return sb.toString();
     }
+
+    @Override
+    public String getWeeklyPlans(String userId, String currentWeek) {
+        Calendar calendar = Calendar.getInstance();
+        Date date = new Date(calendar.getTime().getTime());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/");
+        StringBuilder sb = new StringBuilder();
+        sb.append(sdf.format(date));
+        sb.append(currentWeek);
+
+        System.out.println(sb); // yyyy/MM/dd
+        // 이 일로부터 7일을 계산..
+
+
+
+        return null;
+    }
+
 }

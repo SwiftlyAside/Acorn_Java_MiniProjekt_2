@@ -15,8 +15,9 @@
         String content = request.getParameter("content");
         String startDate = request.getParameter("startDate");
         String endDate = request.getParameter("endDate");
-
+        // System.out.println(startDate + " // " + endDate);
         Map<String, String> planData = new HashMap<>();
+
         planData.put("userId", userId);
         planData.put("title", title);
         planData.put("content", content);
@@ -36,7 +37,7 @@
         taskData.put("title", title);
         taskData.put("recordTime", recordTime);
         taskData.put("startTime", startTime);
-        System.out.println("storing task...");
+
         return taskService.storeTask(taskData).contentEquals("SUCCESS");
     }
 
@@ -50,7 +51,8 @@
     }
 
     private String getWeeklyContent(String userId, HttpServletRequest request) {
-        String currentWeek = request.getParameter("");
+        String currentWeek = request.getParameter("currentWeek");
+        String weeklyPlan = planService.getWeeklyPlans(userId, currentWeek);
 
         return null;
     }
@@ -75,11 +77,11 @@
             result = getMonthContent(userId, request);
             break;
         case "week":
+            result = getWeeklyContent(userId, request);
             break;
         default:
             result = "Please check target";
     }
 %>
-<%--<%=result%>--%>
-<% out.print(result);%>
+<%=result%>
 

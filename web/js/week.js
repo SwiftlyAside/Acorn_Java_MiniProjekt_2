@@ -8,7 +8,14 @@ $(document).ready(() => {
   $('#makePlanDiv > button').unbind('click');
   $('#makeTaskDiv > button').unbind('click');
 
-  let getPlan = function f() {
+  let today = new Date();
+  let currentMonth = today.getMonth();
+  let currentMonthLastDate = new Date(today.getFullYear(), currentMonth + 1, 0);
+  const currentDay = today.getDay();
+  let startDate = today.getDate() - today.getDay();
+
+  const getPlan = function f(source) {
+    console.log(source);
     $.ajax({
       type: 'POST',
       url: '/calendar/calendarController.jsp?target=week',
@@ -16,7 +23,7 @@ $(document).ready(() => {
       dataType: 'json',
 
       data: {
-        currentWeek : //dateArr 의 값을 가져가서 조정합시다.
+        currentWeek: source,
       },
 
       success(json) {
@@ -25,15 +32,9 @@ $(document).ready(() => {
 
       error(html) {
 
-      }
+      },
     });
   };
-
-  let today = new Date();
-  let currentMonth = today.getMonth();
-  let currentMonthLastDate = new Date(today.getFullYear(), currentMonth + 1, 0);
-  const currentDay = today.getDay();
-  let startDate = today.getDate() - today.getDay();
 
   function todayWeek(dateArr) {
     $('.myWeek').each(function (idx, arr) {
@@ -48,6 +49,10 @@ $(document).ready(() => {
 
     $('#sd1 > input').val(`${today.getFullYear()}/${currentMonth + 1}/${dateArr[0]}`);
     $('#sd1').datepicker('update', `${today.getFullYear()}/${currentMonth + 1}/${dateArr[0]}`);
+
+    const source = `${currentMonth + 1}/${dateArr[0]}`;
+    getPlan(source);
+    console.log(source);
   }
 
   function nextWeek() {
