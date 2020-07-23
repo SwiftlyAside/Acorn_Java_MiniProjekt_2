@@ -64,7 +64,7 @@
             break;
         case "task":
             if (storeTask(userId, request))
-                result = "tasl store success";
+                result = "task store success";
             break;
         case "month":
             break;
