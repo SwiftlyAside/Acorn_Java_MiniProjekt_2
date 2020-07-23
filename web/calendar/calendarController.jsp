@@ -40,15 +40,13 @@
         System.out.println("storing task...");
         return taskService.storeTask(taskData).contentEquals("SUCCESS");
     }
-%>
 
-<%
+    private String getMonthContent(String userId, HttpServletRequest request) {
+        String currentDate = request.getParameter("currentDate");
+        String monthlyPlan = planService.getMonthlyPlans(userId, currentDate);
 
-
-
-    String currentDate = request.getParameter("currentDate");
-
-
+        return monthlyPlan;
+    }
 %>
 <%
     // current login user
@@ -67,6 +65,7 @@
                 result = "task store success";
             break;
         case "month":
+            result = getMonthContent(userId, request);
             break;
         case "week":
             break;
@@ -74,6 +73,6 @@
             result = "Please check target";
     }
 %>
-
-<%=result%>
+<%--<%=result%>--%>
+<% out.print(result);%>
 

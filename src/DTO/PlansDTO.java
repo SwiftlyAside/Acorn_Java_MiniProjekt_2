@@ -71,16 +71,22 @@ public class PlansDTO {
 
     @Override
     public String toString() {
+        // { "id" : "id", ..}
         StringBuilder sb = new StringBuilder();
-        sb.append("[\"");
+        sb.append("{");
+        sb.append("\"no\" : \"");
         sb.append(this.planNo);
-        sb.append("\",\"");
+        sb.append("\", \"userId\" : \"");
+        sb.append(this.userId);
+        sb.append("\", \"title\" : \"");
         sb.append(this.planTitle);
-        sb.append("\",\"");
+        sb.append("\", \"content\" : \"");
         sb.append(this.planContent);
-        sb.append("\",\"");
+        sb.append("\", \"startTime\" : \"");
         sb.append(this.startDate);
-        sb.append("\"]");
+        sb.append("\", \"endTime\" : \"");
+        sb.append(this.endDate);
+        sb.append("\"}");
         return sb.toString();
     }
 }

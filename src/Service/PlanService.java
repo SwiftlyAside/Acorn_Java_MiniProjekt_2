@@ -46,7 +46,6 @@ public class PlanService implements IPlanService {
                 "AND STARTDATE <= DATE '" + secondCondition + "'";
 
         List<PlansDTO> plansDTOList = planDAO.selectAllPlans(userId, conditionStr);
-        // 각 객체에서 no, title, start date만 뽑읍시다
         StringBuilder sb = new StringBuilder("[");
         String pre = "";
         for (PlansDTO obj : plansDTOList) {
