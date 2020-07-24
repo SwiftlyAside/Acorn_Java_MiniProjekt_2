@@ -68,18 +68,40 @@ public class PlanService implements IPlanService {
     }
 
     @Override
-    public String getWeeklyPlans(String userId, String currentWeek) {
+    public String getWeeklyPlans(String userId, String currentWeek) { // 6/28
         Calendar calendar = Calendar.getInstance();
-        Date date = new Date(calendar.getTime().getTime());
+        Date date = new Date(calendar.getTime().getTime()); // for twice converting util -> sql
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/");
         StringBuilder sb = new StringBuilder();
         sb.append(sdf.format(date));
-        sb.append(currentWeek);
+        sb.append(currentWeek); // first condition
+        System.out.println("sb :" +sb); // yyyy/MM/dd
+        String[] strArr = sb.toString().split("/");
 
-        System.out.println(sb); // yyyy/MM/dd
-        // 이 일로부터 7일을 계산..
+        // 둘째 조건과 currentWeek의 마지막 날 구하기
+        int [] intStrArr = Arrays.stream(strArr).mapToInt(Integer::parseInt).toArray();
+        Date endWeek = new Date(intStrArr[0] - 1900, intStrArr[1], 0);
+        int currentMonthLastDate = endWeek.getDate();
+        System.out.println("currentMonthLastDate :"+ currentMonthLastDate);
 
+        // last date
+        int lastDate = Integer.parseInt(strArr[2]);
+        System.out.println("lastDate :"+lastDate);
+        int[] days = new int[7];
+        for (int i = 0; i < days.length; i += 1) {
+            days[i] = lastDate + i;
+        }
+        System.out.println("before days[6]: "+days[6]);
+        if (days[6] > currentMonthLastDate)
+            days[6] -= currentMonthLastDate;
+        System.out.println("after days[6] :"+days[6]);
 
+        // 둘째 조건
+        endWeek = new Date(intStrArr[0] - 1900, intStrArr[1], days[6]);
+        System.out.println(endWeek);
+
+        String firstCondition = sb.toString().replace("/", "-");
+        String secondCondition = endWeek.toString();
 
         return null;
     }
