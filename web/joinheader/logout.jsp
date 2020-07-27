@@ -3,5 +3,6 @@
 <%
 	if(session.getAttribute("userId") != null){
 		session.removeAttribute("userId");
+		session.removeAttribute("condition");
 	}
 %>

@@ -9,7 +9,7 @@
 	ILoginService loginserv = new LoginService();
 	if(loginserv.checkLogin(userId, userPass)){
 		session.setAttribute("userId", userId);
-		str = "{\"boolean\":\"true\"}";
+		str = "{\"boolean\":\"true\",\"userId\":\"" + userId + "\"}";
 	}
 %>
 <%=str%>

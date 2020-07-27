@@ -49,12 +49,15 @@ public class RecordsService implements IRecordsService {
 	private void setMediaDAO(String recordNo, String content) {
 		MediaDAO dao = MediaDAO.getInstance();
 		String preContent = content;
-
-		int pos = preContent.indexOf("<img");
-		String temp = preContent.substring(pos, preContent.length());
 		
-		int pos2 = preContent.indexOf(">")+1;
-		String temp2 = preContent.substring(0, pos2);
+		/* 삭제내용
+		 * int pos = preContent.indexOf("<img"); String temp = preContent.substring(pos,
+		 * preContent.length());
+		 * 
+		 * int pos2 = preContent.indexOf(">")+1; String temp2 = preContent.substring(0,
+		 * pos2);
+		 */
+		//미디어 테이블에 저장
 		//if(!dao.insertMedia(recordNo, mediaList))
 	}
 	@Override

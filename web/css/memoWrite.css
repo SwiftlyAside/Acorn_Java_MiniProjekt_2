@@ -28,17 +28,8 @@ p.header{ margin:0px; margin-right:5px;}
 	margin-top: 10px;
 	width: 200px;
 }
-.Rwrite_txt_txtarea{ 
-	resize: none;
-	min-height: 300px;
-	background-color: #E5F3E7;
-	}
-.Rwrite_txt_txtarea:focus{ 
-	border: 1px solid #8bc34a;
-    box-shadow: 0 0 0 0.2rem rgba(139, 195, 74, .25);
-}
 .Rwrite_txt_title{ 
-	height: 20%;
+	height: 40%;
 	background-color: #E5F3E7;
 	}
 .Rwrite_txt_title:focus{

@@ -23,6 +23,8 @@ $(() => {
           $(location).attr('href', '/index.jsp');
         },
       });
+    } else if (item === 'condition') {
+      $mainContainer.load('/joinheader/condition.jsp');
     } else if (item === 'diary') {
       $mainContainer.load(`/diary/diaryList.jsp?record=${getParameter('record')}`);
     } else if (item === 'memo') {
