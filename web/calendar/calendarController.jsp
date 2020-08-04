@@ -54,7 +54,7 @@
         String currentWeek = request.getParameter("currentWeek");
         String weeklyPlan = planService.getWeeklyPlans(userId, currentWeek);
 
-        return null;
+        return weeklyPlan;
     }
 %>
 <%

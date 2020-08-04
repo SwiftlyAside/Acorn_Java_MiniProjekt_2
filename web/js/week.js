@@ -15,7 +15,6 @@ $(document).ready(() => {
   let startDate = today.getDate() - today.getDay();
 
   const getPlan = function f(source) {
-    console.log(source);
     $.ajax({
       type: 'POST',
       url: '/calendar/calendarController.jsp?target=week',
@@ -27,11 +26,26 @@ $(document).ready(() => {
       },
 
       success(json) {
+        /* 1. 시간으로 위치 찾고
+        2. 요일 idx로 위치 찾자. */
+        // 시간 위치: 임시로 0시
+        const planDays = [];
+        for (const i in json) {
+          const idx = json[i].startTime.substring(8, 10) < 10 ? 9 : 8;
+          planDays[i] = json[i].startTime.substring(idx, 10);
+        }
+        console.log(planDays);
 
+        for (const day in planDays) {
+          $(`#day0h_${planDays[day]}`).append(`<li id="${json[day].no}">${json[day].title}</li>`);
+          $(`#day0h_${planDays[day]}`).click(() => {
+            alert(`${json[day].content}`);
+          });
+        }
       },
 
       error(html) {
-
+        alert('관리자에게 문의하세요');
       },
     });
   };
@@ -50,9 +64,9 @@ $(document).ready(() => {
     $('#sd1 > input').val(`${today.getFullYear()}/${currentMonth + 1}/${dateArr[0]}`);
     $('#sd1').datepicker('update', `${today.getFullYear()}/${currentMonth + 1}/${dateArr[0]}`);
 
-    const source = `${currentMonth + 1}/${dateArr[0]}`;
+    const source = `${currentMonth + 1}-${dateArr[0]}`;
+    makeDayDiv(dateArr);
     getPlan(source);
-    console.log(source);
   }
 
   function nextWeek() {
@@ -98,6 +112,17 @@ $(document).ready(() => {
 
     return dateArr;
   }
+
+  let makeDayDiv = function (dateArr) {
+    const dayBlockDiv = $('#dayBlockDiv');
+    dayBlockDiv.html('');
+    for (let hour = 0; hour < 24; hour += 1) {
+      dayBlockDiv.append(`<div id=day${hour}h_ class='row'></div>`);
+      for (let day = 0; day < 7; day += 1) {
+        $(`#day${hour}h_`).append(`<div id=day${hour}h_${dateArr[day]} class='col'></div>`);
+      }
+    }
+  };
 
   $('#todayButton').click(() => {
     const today = new Date();

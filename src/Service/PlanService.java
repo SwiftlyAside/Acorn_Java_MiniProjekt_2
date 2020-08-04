@@ -68,42 +68,57 @@ public class PlanService implements IPlanService {
     }
 
     @Override
-    public String getWeeklyPlans(String userId, String currentWeek) { // 6/28
+    public String getWeeklyPlans(String userId, String currentWeek) { // param ex: 6/28
         Calendar calendar = Calendar.getInstance();
-        Date date = new Date(calendar.getTime().getTime()); // for twice converting util -> sql
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/");
+        Date date = new Date(calendar.getTimeInMillis());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-");
         StringBuilder sb = new StringBuilder();
         sb.append(sdf.format(date));
         sb.append(currentWeek); // first condition
-        System.out.println("sb :" +sb); // yyyy/MM/dd
-        String[] strArr = sb.toString().split("/");
+        //System.out.println("sb :" +sb); // yyyy-MM-dd
 
+        String[] strArr = sb.toString().split("-");
         // 둘째 조건과 currentWeek의 마지막 날 구하기
         int [] intStrArr = Arrays.stream(strArr).mapToInt(Integer::parseInt).toArray();
         Date endWeek = new Date(intStrArr[0] - 1900, intStrArr[1], 0);
         int currentMonthLastDate = endWeek.getDate();
-        System.out.println("currentMonthLastDate :"+ currentMonthLastDate);
+        //System.out.println("currentMonthLastDate :"+ currentMonthLastDate);
 
         // last date
         int lastDate = Integer.parseInt(strArr[2]);
-        System.out.println("lastDate :"+lastDate);
+        //System.out.println("lastDate :"+lastDate);
         int[] days = new int[7];
         for (int i = 0; i < days.length; i += 1) {
             days[i] = lastDate + i;
         }
-        System.out.println("before days[6]: "+days[6]);
+        //System.out.println("before days[6]: "+days[6]);
         if (days[6] > currentMonthLastDate)
             days[6] -= currentMonthLastDate;
-        System.out.println("after days[6] :"+days[6]);
+        else
+            intStrArr[1] -= 1;
+        //System.out.println("after days[6] :"+days[6]);
 
         // 둘째 조건
         endWeek = new Date(intStrArr[0] - 1900, intStrArr[1], days[6]);
-        System.out.println(endWeek);
+        //System.out.println(endWeek);
 
-        String firstCondition = sb.toString().replace("/", "-");
+        String firstCondition = sb.toString();
         String secondCondition = endWeek.toString();
 
-        return null;
+        String conditionStr = "AND STARTDATE >= DATE '" + firstCondition + "' " +
+                "AND STARTDATE <= DATE '" + secondCondition + "'";
+
+        List<PlansDTO> plansDTOList = planDAO.selectAllPlans(userId, conditionStr);
+        sb = new StringBuilder("[");
+        String pre = "";
+        for (PlansDTO obj : plansDTOList) {
+            sb.append(pre);
+            sb.append(obj.toString());
+            pre = ",";
+        }
+        sb.append("]");
+        System.out.println(sb);
+        return sb.toString();
     }
 
 }
