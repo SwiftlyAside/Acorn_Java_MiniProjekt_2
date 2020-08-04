@@ -4,9 +4,10 @@ import DAO.PlansDAO;
 import DTO.PlansDTO;
 
 import java.sql.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.*;
 
 public class PlanService implements IPlanService {
     private PlansDTO planDTO;
@@ -22,8 +23,16 @@ public class PlanService implements IPlanService {
         planDTO.setUserId(data.get("userId"));
         planDTO.setPlanTitle(data.get("title"));
         planDTO.setPlanContent(data.get("content"));
-        planDTO.setStartDate(new Date(Long.parseLong(data.get("startDate"))));
-        planDTO.setEndDate(new Date(Long.parseLong(data.get("endDate"))));
+
+        long start = Long.parseLong(data.get("startDate"));
+        long end = Long.parseLong(data.get("endDate"));
+
+        Timestamp timestamp = new Timestamp(start);
+        planDTO.setStartDate(new Date(timestamp.getTime()));
+
+        timestamp = new Timestamp(end);
+        planDTO.setEndDate(new Date(timestamp.getTime()));
+
 
         if (planDAO.insertPlan(planDTO))
             return "SUCCESS";
@@ -46,7 +55,6 @@ public class PlanService implements IPlanService {
                 "AND STARTDATE <= DATE '" + secondCondition + "'";
 
         List<PlansDTO> plansDTOList = planDAO.selectAllPlans(userId, conditionStr);
-        // 각 객체에서 no, title, start date만 뽑읍시다
         StringBuilder sb = new StringBuilder("[");
         String pre = "";
         for (PlansDTO obj : plansDTOList) {
@@ -58,4 +66,59 @@ public class PlanService implements IPlanService {
         System.out.println(sb);
         return sb.toString();
     }
+
+    @Override
+    public String getWeeklyPlans(String userId, String currentWeek) { // param ex: 6/28
+        Calendar calendar = Calendar.getInstance();
+        Date date = new Date(calendar.getTimeInMillis());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-");
+        StringBuilder sb = new StringBuilder();
+        sb.append(sdf.format(date));
+        sb.append(currentWeek); // first condition
+        //System.out.println("sb :" +sb); // yyyy-MM-dd
+
+        String[] strArr = sb.toString().split("-");
+        // 둘째 조건과 currentWeek의 마지막 날 구하기
+        int [] intStrArr = Arrays.stream(strArr).mapToInt(Integer::parseInt).toArray();
+        Date endWeek = new Date(intStrArr[0] - 1900, intStrArr[1], 0);
+        int currentMonthLastDate = endWeek.getDate();
+        //System.out.println("currentMonthLastDate :"+ currentMonthLastDate);
+
+        // last date
+        int lastDate = Integer.parseInt(strArr[2]);
+        //System.out.println("lastDate :"+lastDate);
+        int[] days = new int[7];
+        for (int i = 0; i < days.length; i += 1) {
+            days[i] = lastDate + i;
+        }
+        //System.out.println("before days[6]: "+days[6]);
+        if (days[6] > currentMonthLastDate)
+            days[6] -= currentMonthLastDate;
+        else
+            intStrArr[1] -= 1;
+        //System.out.println("after days[6] :"+days[6]);
+
+        // 둘째 조건
+        endWeek = new Date(intStrArr[0] - 1900, intStrArr[1], days[6]);
+        //System.out.println(endWeek);
+
+        String firstCondition = sb.toString();
+        String secondCondition = endWeek.toString();
+
+        String conditionStr = "AND STARTDATE >= DATE '" + firstCondition + "' " +
+                "AND STARTDATE <= DATE '" + secondCondition + "'";
+
+        List<PlansDTO> plansDTOList = planDAO.selectAllPlans(userId, conditionStr);
+        sb = new StringBuilder("[");
+        String pre = "";
+        for (PlansDTO obj : plansDTOList) {
+            sb.append(pre);
+            sb.append(obj.toString());
+            pre = ",";
+        }
+        sb.append("]");
+        System.out.println(sb);
+        return sb.toString();
+    }
+
 }

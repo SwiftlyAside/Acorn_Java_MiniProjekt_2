@@ -127,6 +127,9 @@ public class PlansDAO {
                 plan.setPlanTitle(rs.getString("planTitle"));
                 plan.setPlanContent(rs.getString("planContent"));
                 plan.setStartDate(rs.getDate("StartDate"));
+                /*System.out.println(rs.getDate("StartDate"));
+                System.out.println(rs.getTime("StartDate"));
+                !! System.out.println(rs.getTimestamp("StartDate"));*/
                 plan.setEndDate(rs.getDate("EndDate"));
 
                 plansList.add(plan);
