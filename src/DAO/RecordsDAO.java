@@ -77,6 +77,28 @@ public class RecordsDAO {
 		
 		return recordNo;
 	}
+	public String getMemoRecordNo(){
+		String getDiaryListSQL = "select recordNo from RECORDS where recordNo like 'R%' order by recordDate desc";
+		
+		Connection conn = DBManager.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String recordNo = null;
+		try {
+			pstmt = conn.prepareStatement(getDiaryListSQL);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				recordNo = rs.getString("recordNo");
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		
+		return recordNo;
+	}
 	public List<RecordsDTO> getRecord(String userId, String condition){
 		List<RecordsDTO> list = new ArrayList<RecordsDTO>();
 		
@@ -139,7 +161,7 @@ public class RecordsDAO {
 	}
 	public boolean setRecord(RecordsDTO recordsdto) {
 		boolean b = false;
-		String insertRecordsSQL = "insert into Records(recordNo, userId, recordDate, title, content) values(?,?,?,?,?) ";
+		String insertRecordsSQL = "insert into Records(recordNo, userId, recordDate, title, content) values(?,?,sysdate,?,?) ";
 		
 		Connection conn = DBManager.getConnection();
 		PreparedStatement pstmt = null;
@@ -148,9 +170,8 @@ public class RecordsDAO {
 			
 			pstmt.setString(1, recordsdto.getRecordNo());
 			pstmt.setString(2, recordsdto.getUserId());
-			pstmt.setDate(3, recordsdto.getRecordDate());
-			pstmt.setString(4, recordsdto.getTitle());
-			pstmt.setString(5, recordsdto.getContent());
+			pstmt.setString(3, recordsdto.getTitle());
+			pstmt.setString(4, recordsdto.getContent());
 			pstmt.execute();
 			
 			b = true;

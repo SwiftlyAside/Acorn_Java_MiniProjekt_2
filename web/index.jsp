@@ -4,7 +4,7 @@
     if (open == null) open = "";
     String jsClass = open;
 
-    session.setAttribute("userId", "admin");
+    String userId = (String) session.getAttribute("userId");
 %>
 <!DOCTYPE html>
 <html>
@@ -78,10 +78,16 @@
                     <i class="fas fa-search"></i>
                 </button>
             </form>
+            <% if (userId == null) { %>
             <a class="list-group-item list-group-item-action waves-effect" href="?open=login">
                 <i class="fas fa-sign-in-alt mr-3"></i>로그인</a>
+            <% } else { %>
+            <a class="list-group-item list-group-item-action waves-effect" href="?open=logout">
+                <i class="fas fa-sign-in-alt mr-3"></i>로그아웃</a>
             <a class="list-group-item list-group-item-action waves-effect" href="?open=diary">
                 <i class="fas fa-book mr-3"></i>다이어리</a>
+            <a class="list-group-item list-group-item-action waves-effect" href="?open=memo">
+                <i class="far fa-sticky-note mr-3"></i>메모</a>
             <a class="list-group-item list-group-item-action waves-effect" href="?open=explorer">
                 <i class="fab fa-wpexplorer mr-3"></i>탐색기</a>
             <a class="list-group-item list-group-item-action waves-effect"
@@ -90,6 +96,8 @@
             <a class="list-group-item list-group-item-action waves-effect" id="readerAnchor" data-toggle="modal"
                data-target=".bd-example-modal-xl" href="#">
                 <i class="fas fa-book-reader mr-3"></i>모아보기</a>
+            <% } %>
+
         </div>
 
         <div id="timeLineDiv"></div>
@@ -123,6 +131,7 @@
     </div>
 </main>
 <!--Main layout-->
+
 <!--footer-->
 <footer class="page-footer font-small">
     <div class="footer-copyright text-center py-3">© 2020 Copyright: An Acorn Academy Project Team</div>

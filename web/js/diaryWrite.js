@@ -66,8 +66,31 @@ $(document).ready(function(){
 			['table', ['table']],
 			['insert', ['link', 'picture', 'video']],
 			['view', ['fullscreen', 'codeview', 'help']]
-	   ]
+	   ]/*,
+	   callbacks: {
+			onImageUpload: function(files, editor, welEditable) {
+	            for (var i=0;i<files.length;i++) {
+	            	sendFile(files[i], this);
+	            }
+			}
+	   }*/
 	});
+	/*function sendFile(file, el) {
+	      var form_data = new FormData();
+	      form_data.append('file', file);
+	      $.ajax({
+	        data: form_data,
+	        type: "POST",
+	        cache: false,
+	        contentType: false,
+	        enctype: 'multipart/form-data',
+	        processData: false,
+	        success: function(url) {
+	          $(el).summernote('editor.insertImage', url);
+	          
+	        }
+	      });
+	    }*/
 })
 function getCurrentTime() {
 	var date = new Date();

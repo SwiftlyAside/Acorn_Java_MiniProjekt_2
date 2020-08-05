@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page
         import="DTO.MediaDTO, DTO.PlansDTO, DTO.RecordsDTO, Service.ExplorerService, java.io.IOException, java.time.LocalDate, java.util.List, java.util.Map" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
@@ -89,6 +88,7 @@
                 if (i % 3 == 0)
                     out.print(divRow);
                 out.print("<div class='col-3 border-lightgreen rounded m-2'>");
+                out.print("<div class='row-1 font-weight-bold pale-text'>" + list.get(i).getStartDate() + "</div>");
                 out.print("<a class='view overlay zoom' href='/index.jsp?open=calendar&plan=" +
                         list.get(i).getPlanNo() + "'>" + list.get(i).getPlanTitle() + "</a></div>");
                 if (i % 3 == 2 || i == list.size() - 1)

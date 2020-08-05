@@ -18,6 +18,11 @@ a {
   color: #3f4641;
 }
 
+.titleLink {
+  font-weight: bold !important;
+  text-decoration: underline !important;
+}
+
 .pale-text {
   color: #9fa1a4 !important;
 }
