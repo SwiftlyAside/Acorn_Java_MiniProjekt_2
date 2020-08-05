@@ -15,4 +15,5 @@ public interface IPlanService {
     // 1. plan
     String getMonthlyPlans(String userId, String currentDate);
 
+    String getWeeklyPlans(String userId, String currentWeek);
 }
