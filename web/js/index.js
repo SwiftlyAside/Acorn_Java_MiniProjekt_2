@@ -38,6 +38,11 @@ $(() => {
     }
   });
 
+  
+
+
+
+
   $('#timeLineDiv').load('/timeline/timeline.jsp');
   $('#scrollData').load('/timeline/scrollData.jsp');
 
